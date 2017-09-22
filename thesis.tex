@@ -518,6 +518,33 @@ Em relação ao GoogleFit tem uma boa \gls{API} \gls{REST}, apesar de não haver
 \par 
 O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} Schemas definidos que podem ser utilizados para validar a entrada dos dados no backend. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} schemas podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil
 
+\chapter{ novo Capítulo}
+
+
+\section{OMH}
+
+\subsection{Criar novo tipo de dados}
+A criação de um novo tipo de dados pode ser feita com a ajuda do repositório ''schemas'' \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de umas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou desrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados.
+
+\begin{enumerate}
+  \item Clonar o repositório correspondente para um diretório à sua escolha com o comando \par
+  ''git clone https://github.com/openmhealth/schemas'' 
+  De seguida vamos fazer duas coisas principais: uma delas é criar o ficheiro que define o novo tipo de dados; a outra é criar um ficheiro com uma amostra do novo tipo de dados.
+  \item Adicionar um novo ficheiro no diretório schema/omh como por exemplo my-datapoint-1.0.json \par A versão escolhida aqui é a 1.0 mas podia ser qualquer outra. Pode reparar que neste ponto tem acesso a todos os ficheiros que definem os tipos de dados disponíveis.
+  \item Adicionar uma nova pasta ao diretório testdata/omh como o nome respetivo ao ficheiro criado anteriormente. Neste caso  a pasta my-datapoint
+  \item Vai agora criar um diretório correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e um outro diretório dentro do 1.0 com o nome shouldPass.
+  \item Dentro do diretório shouldPass vai ter que criar um ficheiro com o nome my-datapoint-sample.json \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão .json
+  
+  \begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{imgs/newsampledata.png}
+  \caption[Esquema de diretório para o novo sample]{Esquema de diretório para o exemplo do novo tipo de dados}
+  
+  \label{f:directorynewsample}
+\end{figure}
+  
+\item Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados
+  \end{enumerate}
 
 \chapter{Conclus\~ oes}
 
