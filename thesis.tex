@@ -523,17 +523,19 @@ O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a po
 
 \section{OMH}
 
-\subsection{Criar novo tipo de dados}
-A criação de um novo tipo de dados pode ser feita com a ajuda do repositório ''schemas'' \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de umas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou desrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados.
+\subsection{Criar um novo tipo de dados}
+A criação de um novo tipo de dados pode ser feita com a ajuda do repositório ''schemas'' \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de algumas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do \gls{VJ}.
 
 \begin{enumerate}
   \item Clonar o repositório correspondente para um diretório à sua escolha com o comando \par
   ''git clone https://github.com/openmhealth/schemas'' 
   De seguida vamos fazer duas coisas principais: uma delas é criar o ficheiro que define o novo tipo de dados; a outra é criar um ficheiro com uma amostra do novo tipo de dados.
-  \item Adicionar um novo ficheiro no diretório schema/omh como por exemplo my-datapoint-1.0.json \par A versão escolhida aqui é a 1.0 mas podia ser qualquer outra. Pode reparar que neste ponto tem acesso a todos os ficheiros que definem os tipos de dados disponíveis.
-  \item Adicionar uma nova pasta ao diretório testdata/omh como o nome respetivo ao ficheiro criado anteriormente. Neste caso  a pasta my-datapoint
-  \item Vai agora criar um diretório correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e um outro diretório dentro do 1.0 com o nome shouldPass.
-  \item Dentro do diretório shouldPass vai ter que criar um ficheiro com o nome my-datapoint-sample.json \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão .json
+  \item Criar um ficheiro que define o tipo de dados em \gls{JSON} schema, para isso, adicione um novo ficheiro no diretório schema/omh. O nome deste ficheiro tem que ser composto pelo nome que quer dar ao tipo de dados e a versão correspondente, tem que terminar com a extensão .json. No meu caso criei com o nome accelerometer-1.0.json  \par A versão escolhida aqui é a 1.0 mas podia ser qualquer outra. Pode reparar que no diretório schema/omh tem acesso a todos os ficheiros que definem todos os tipos de dados.
+  \item Adicionar uma nova pasta ao diretório testdata/omh como o nome respetivo ao ficheiro criado anteriormente. Neste caso criar uma pasta com o nome accelerometer.
+  \item Vai agora criar uma pasta correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e uma outra pasta dentro da criada anteriormente com o nome shouldPass.
+  \item Dentro do diretório shouldPass vai ter que criar um ou vários ficheiros para ser utilizados como amostras do tipo de dados. O objetivo deste diretório é ter várias amostras válidas testando-as com o tipo de dados criado no ponto 2. Para este tutorial criei o ficheiro example.json. \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão .json
+  Como criou o diretório shouldPass, pode também criar o diretório shouldFail criando também vários ficheiros para testar o tipo de dados criado. \par 
+  Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados
   
   \begin{figure}[!ht]
   \centering
@@ -543,8 +545,27 @@ A criação de um novo tipo de dados pode ser feita com a ajuda do repositório 
   \label{f:directorynewsample}
 \end{figure}
   
-\item Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados
-  \end{enumerate}
+\item Vamos agora preencher o ficheiro com a definição do novo tipo de dados, aquele que criou no ponto 2. O ficheiro vai ser criado no formato de \gls{JSON} schema. Para suportar a criação deste ficheiro pode reutilizar schemas existentes \cite{schema-library} e referênciá-los, deste modo estará a criar um modelo com tipos de dados normalizados. No meu caso vou reutilizar um schema para definir a data/hora e um outro para definir o tipo de atividade que está a efetuar no momento da leitura. Os restantes dados estão relacionados com o acelerómetro em si, a sessão e a leitura respetiva.
+O ficheiro fica do seguinte modo: 
+
+\begin{figure}[H]
+\inputminted{json}{code/accelerometer-1.0.json}
+\caption[\gls{JSON} schema para o novo tipo de dados de acelerómetro]{\gls{JSON} schema para o novo tipo de dados de acelerómetro}
+\label{f:accelerometer-json-schema}
+\end{figure}
+
+\item Preencha o ficheiro com uma amostra do novo tipo de dados, para isso tem que ter em conta a definição utilizada, pois porque se esta amostra não for compatível não vai passar no validador.
+
+\begin{figure}[H]
+\inputminted{json}{code/example.json}
+\caption[Exemplo do tipo de dados de acelerómetro]{Exemplo do tipo de dados de acelerómetro}
+\label{f:accelerometer-json-data}
+\end{figure}
+
+\item Para compilar e executar o validador tem que executar o comando ''./gradlew test-data-validator:bootRun'' no diretório principal ''schemas'' ou então execute o comando ''./gradlew bootRun'' no diretório ''schemas/test-data-validator''. 
+
+
+\end{enumerate}
 
 \chapter{Conclus\~ oes}
 
