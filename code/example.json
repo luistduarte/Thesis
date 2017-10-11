@@ -1,11 +1,16 @@
 {
-    "effective_time_frame": { "date_time": "2017-10-24T16:01:43Z" },
-    "session": 1,
-    "part_number":1,
-    "values": {
-      "x": 1,
-      "y": 2,
-      "z":3
-    },
-    "temporal_relationship_to_physical_activity": "during exercise"
+	"effective_time_frame": {
+		"date_time": "2017-09-30T01:31:50Z"
+	},
+	"accelerometer": {
+		"unit": "mS",
+		"values": {
+			"x": 3,
+			"y": -4,
+			"z": 33
+		},
+		"session": 30,
+		"part_number": 46
+	},
+	"temporal_relationship_to_physical_activity": "active"
 }

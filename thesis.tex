@@ -33,7 +33,6 @@
 \usepackage{glossary-mcols}
 
 
-
 % optional (comment to use default)s
 %   depth of the table of contents
 %     1 ... chapther and sections
@@ -199,6 +198,9 @@ Dedico este trabalho aos meus pais e amigos.
 \newacronym{HL7}{HL7}{Health Level Seven}
 \newacronym{FHIR}{FHIR}{Fast Healthcare Interoperability Resources}
 \newacronym{RFC}{RFC}{Request For Comments}
+\newacronym{JVM}{JVM}{Java Virtual Machine}
+\newacronym{RIM}{RIM}{Reference Information Model}
+
 
 
 % The chapters (usually written using the isolatin font encoding ...)
@@ -378,6 +380,29 @@ Segundo Elkstein\cite{whatisrest}, o \gls{REST} é um estilo de arquitetura que 
 
 \gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \gls{URI}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas acções \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro acções podem ser mapeadas para as acções típicas de dados \gls{CRUD}. A representação de cada recurso identificado por um URI, pode variar, podendo ser represendado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
 
+\subsubsection{Vert.x}
+
+
+Vert.x é uma framework poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \gls{JVM}. É uma framework orientada a eventos e assíncrona, implementada sobre um modelo de concorrência assíncrono que permite a criação de aplicações facilmente escaláveis, de uma forma simples. Pode ser utilizada desde por simples aplicações, até aplicações Web sofisticadas e modernas, micro serviços \gls{HTTP}/\gls{REST}.\cite{vertx-io}
+
+O Vert.x é composto por um conjunto componentes que são importantes para o desenvolvimento de aplicações. Entre eles temos: 
+
+\begin{itemize}
+  \item Verticle: Um verticle é definido por ter uma função principal (main), que corre um script específico. Um verticle pode ser escrito em múltiplas linguagens (Java, Javacript, Ruby, Groovy, Ceylon, Scala e Kotlin). Vários verticles podem ser executados na mesma instância do Vert.x.
+  \item EventLoops: São threads que estão sempre a correr e estão sempre à escuta, de forma a verificar se existem operações a executar ou dados a tratar. A gestão destas threads é feita por uma instância do Vert.x, que aloca um número específico de threads a cada núcleo do servidor.
+  \item Handler: É uma entidade que recebe mensagens do eventbus depois de se registar num determinado endereço.
+  \item EventBus: Esta é uma característica do Vert.x bastante importante que permite a comunicação entre vários verticles. Para além disso, é possível haver uma comunicação não só entre verticles mas entre entidades que registem handlers num servidor (ex. clientes). Desta forma é possível a entrega das mensagens a todos os handlers que estiverem registados num determinado endereço. Esta característica é um padrão na troca de mensagens conhecido por publish–subscribe.
+\end{itemize}
+
+Na figura seguinte podemos visualizar uma arquitetura simples do Vert.x. \cite{vertx-study}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{imgs/vertx_arch.png}
+  \caption[Arquitetura simples do Vert.x]{Arquitetura simples do Vert.x}
+  \label{f:vertxarch}
+\end{figure}
+
 
 \subsubsection{JSON}
 
@@ -466,9 +491,31 @@ Reconhecendo dos desafios da norma \gls{HL7}, a organização que definiu o \gls
 A norma HL7 define uma Framework, e normas relacionadas, para troca, integração, partilha e requisição de  registos clínicos em formato eletrónico\cite{hl7}.
 O HL7 encontra-se atualmente na sua versão 3\cite{corepointhealth}, mas a versão 2 do \gls{HL7} ainda é bastante utilizada, especialmente em sistemas antigos. 
 \par
-O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. O que acontece é que por exemplo, se formos desenvolver uma aplicação que comunica com vários  sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
+O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. Como esta versão 2 não possui um modelo explícito de informação, mas definições vagas para muitos campos de dados e também campos opcionais. Estas características conferem-lhe uma maior flexibilidade, mas tornam necessários acordos bilaterais detalhados, de forma, a permitir a interoperabilidade entre os sistemas envolvidos, de forma a garantir a interoperabilidade. Quando estes acordos não são efetuados, se formos desenvolver uma aplicação que comunica com vários  sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
 \par
 Para resolver este problema saiu a versão 3, mas a sua adoção é cara e irá demorar bastante tempo \cite{corepointhealth}.
+
+A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado aos objetos, denominado por \gls{RIM}. Este é constituído por 4 classes principais, tendo como objetivo garantir a interoperabilidade semântica que não existia nas versões anteriores. Estas quatro classes principais são: Entidade, Papel/Cargo, Participação e Ato\cite{hl7-rim}.
+\par 
+O modelo \gls{RIM} é construído à volta de 5 conceitos principais:
+\begin{itemize}
+  \item Todo o acontecimento é um ato
+  \item Atos estão relacionados com uma relação de ação (ActRelationship)
+  \item A participação define o contexto de um ato
+  \item Os participantes têm um papel/cargo
+  \item Cada cargo/papel é desempenhado por uma entidade
+\end{itemize}
+
+Na figura seguinte podemos visualizar a class \gls{RIM} da versão 3 do HL7.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{imgs/hl7-rim.png}
+  \caption[Classes principais do \gls{RIM}]{Classes principais do \gls{RIM} \cite{hl7-rim}}
+  
+  \label{f:rimclass}
+\end{figure}
+
 
 \subsection{GoogleFit}
 
