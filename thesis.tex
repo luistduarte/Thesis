@@ -347,7 +347,7 @@ Esta tecnologia está presente em grande percentagem de dispositivos eletrónico
 
 \subsubsection{Vital Jacket}
 
-O \gls{VJ} é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica, que permite uma monitorização contínua durante 72 horas seguidas. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como \gls{ECG}, frequência cardíaca, etc. É uma t-shirt confortável e fácil de vestir que vem equipada com um dispositivo que recolhe dados e os permite partilhar via Bluetooth em tempo real para os dispositivos móveis. \cite{vj}
+O \gls{VJ} é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica, que permite uma monitorização contínua durante 72 horas seguidas. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como \gls{ECG}, frequência cardíaca e ainda acelerómetro. É uma t-shirt confortável e fácil de vestir que vem equipada com um dispositivo que recolhe dados e os permite partilhar via Bluetooth em tempo real para os dispositivos móveis. \cite{vj}
 
 \begin{figure}[H]
   \centering
@@ -538,6 +538,7 @@ A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{
 
 \section{Análise Comparativa}
 
+Foi ainda feito um breve estudo em relação a outros três possíveis backends, não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na seguinte tabela.
 \begin{table}[H]
 \centering
 
@@ -549,21 +550,61 @@ A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{
 \textbf{Dados do Paciente} & - & X & - & X & X & X \\ \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & X & - & X & - & - & - \\ \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}Modelo de Dados \\ Normalizado\end{tabular}} & X & X & - & - & - & - \\ \hline
-\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & X & - & X & - & - & - \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & X & X & X & X & - & - \\ \hline
 \textbf{Interoperável} & X & X & - & - & - & - \\ \hline
-\textbf{Segurança e Privacidade} & X & X & X & X & & \\ \hline
-\textbf{MultiPlataforma} & X & X & X & & & \\ \hline
+\textbf{Segurança e Privacidade} & X & X & X & X & X & X \\ \hline
+\textbf{MultiPlataforma} & X & X & X & X & - & - \\ \hline
 \end{tabular}
 \caption{Comparação dos diferentes backends}
 \end{table}
 
-Depois de analisados três serviços de backend para dar suporte a uma aplicação móvel na àrea de saúde, faz-se aqui uma breve analise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
+Depois de analisados seis serviços de backend para dar suporte a uma aplicação móvel na àrea de saúde, faz-se aqui uma breve analise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
 \par 
-A complexidade do \gls{FHIR} é bastante grande, tornando-o bastante completo, a grande desvantagem deste backend é não ser possível extender os dados. Tendo em conta que um dos objetivos seria também ler, guardar e visualizar \gls{ECG}, este backend fica a perder, apesar da grande variedade dos tipos de dados existentes este não é contemplado.
+A complexidade do \gls{FHIR} é bastante grande, tornando-o bastante completo, a grande desvantagem deste backend é a sua complexidade, como é bastante completa a sua extensibilidade não é trivial. Tendo em conta que um dos objetivos seria também ler, guardar e visualizar \gls{ECG}, este backend fica a perder, apesar da grande variedade dos tipos de dados existentes este não é contemplado.
 \par 
 Em relação ao GoogleFit tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente a extensibilidade do modelo de dados é possível. O modelo de dados é extensível mas existe uma limitação quanto ao modelo de dados, apenas podem ser utilizados como tipo de dados o int e o float, ou seja, não existe o tipo objeto e array.
 \par 
-O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} Schemas definidos que podem ser utilizados para validar a entrada dos dados no backend. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} schemas podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil
+O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} Schemas definidos que podem ser utilizados para validar a entrada dos dados no backend. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} schemas podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
+
+\chapter{Capítulo 3}
+
+\section{Section1}
+Para a utilização da framework selecionada foi desenvolvidas duas aplicações. Uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação Web para visualizar esses dados recolhidos. O dispositivo utilizado para recolher os dados foi o Vital Jacket e os dados possíveis a ser recolhidos são: frequência cardíaca, \gls{ECG} e acelerómetro. Foi utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permitia recolher os tipos de dados que pretendíamos.
+
+As aplicações possuem dois tipos de utilizadores distintos:
+\begin{itemize}
+  \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores
+  \item Utilizador que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador
+\end{itemize}
+
+\subsection{Aplicação Móvel}
+O objetivo principal da aplicação móvel é através do Vital Jacket recolher várias sessões de leitura para serem posteriormente analisados e visualizados por investigadores/Revisores.
+\subsubsection{Casos de Uso}
+
+Nesta secção serão enumerados todos os casos de uso (cenários-objetivo) da aplicação móvel. O principal ator desta app é o utilizador(alvo de estudo).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{imgs/app-and-usecase.PNG}
+  \caption[Diagrama de casos de uso da aplicação móvel]{Diagrama de casos de uso da aplicação móvel}
+  
+  \label{f:usecaseandroidapp}
+\end{figure}
+
+
+\subsection{Aplicação Web}
+O objetivo principal da aplicação web é visualizar os dados inseridos pelos utilizadores.
+\subsubsection{Casos de Uso}
+
+Nesta secção serão enumerados todos os casos de uso (cenários-objetivo) da aplicação web. O principal ator desta app é o revisor/investigador.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{imgs/app-web-usecase.PNG}
+  \caption[Diagrama de casos de uso da aplicação web]{Diagrama de casos de uso da aplicação web}
+  
+  \label{f:usecasewebapp}
+\end{figure}
 
 \chapter{ novo Capítulo}
 
