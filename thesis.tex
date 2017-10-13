@@ -200,8 +200,7 @@ Dedico este trabalho aos meus pais e amigos.
 \newacronym{RFC}{RFC}{Request For Comments}
 \newacronym{JVM}{JVM}{Java Virtual Machine}
 \newacronym{RIM}{RIM}{Reference Information Model}
-
-
+\newacronym{ID}{I\&D}{Investigação e Desenvolvimento}
 
 % The chapters (usually written using the isolatin font encoding ...)
 
@@ -565,43 +564,43 @@ O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a po
 
 
 
+
+
+
+
+
+
+
 \chapter{Requisitos}
 
 \section{Visão geral do sistema}
-\textcolor{red}{{\huge TODO}}
-% nesta secção, apresentar o PRODUTO proposto: um sistema para apoiar projetos de I&D que incluem recolha de dados fisiológicos, que podem ocorrer em laboratório, como em ambulatório Identificar os atores envolvidos e as suas motivações Oct 12, 2017 12:01 PM
-
-\section{Casos de Uso e Requisitos}
-Para a utilização da framework selecionada foi desenvolvidas duas aplicações. Uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação Web para visualizar esses dados recolhidos. O dispositivo utilizado para recolher os dados foi o Vital Jacket e os dados possíveis a ser recolhidos são: frequência cardíaca, \gls{ECG} e acelerómetro. Foi utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permitia recolher os tipos de dados que pretendíamos.
-
-As aplicações possuem dois tipos de utilizadores distintos:
+% nesta secção, apresentar o PRODUTO proposto: um sistema para apoiar projetos de I&D que incluem recolha de dados fisiológicos, que podem ocorrer em laboratório, como em ambulatório Identificar os atores envolvidos e as suas motivações 
+O produto desenvolvido é um sistema que permite a recolha de dados fisiológicos de pessoas e a respetiva revisão e investigação dos dados recolhidos. A recolha pode ocorrer em laboratório ou em ambulatório, isto é, os utilizadores podem recolher estes dados presencialmente ou remotamente. Um dos objetivos deste sistema é apoiar projetos de \gls{ID} que são cada vez mais importantes para reduzir a incerteza na utilização de determinadas tecnologias e ideias.
+\par 
+O sistema é então composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação Web para visualizar esses dados recolhidos. O dispositivo com sensores utilizado foi o \gls{VJ} e os dados fisiológicos recolhidos são: frequência cardíaca, \gls{ECG} e acelerómetro. Foi utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permitia recolher os tipos de dados que pretendemos. O sistema é composto por dois atores distintos:
 \begin{itemize}
   \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores
-  \item Utilizador que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador
+  \item Utilizador(alvo de estudo) que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador
 \end{itemize}
 
-\subsection{Aplicação Móvel}
-O objetivo principal da aplicação móvel é através do Vital Jacket recolher várias sessões de leitura para serem posteriormente analisados e visualizados por investigadores/Revisores.
+\section{Casos de Utilização na Colheita de Dados}
 
-\subsubsection{Casos de Uso}
-\textcolor{red}{{\huge TODO}}
-%dividir o capitulo 3 em 3 subsecoes: - Visão geral do sistema - Casos de utilização na colheita de dados - Casos de utilização na revisão de casos Oct 12, 2017 12:04 PM
-Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação móvel. O principal ator desta app é o utilizador(alvo de estudo).
+Na figura seguinte podemos visualizar os casos de uso (cenários-objetivo) da aplicação móvel. O principal ator desta aplicação é o utilizador(alvo de estudo) que tem que recolher várias sessões de leitura para serem posteriormente analisadas e visualizadas por Investigadores/Revisores. 
+\par
+O ator pode estar envolvido nesta recolha de dados de duas maneiras diferentes. A primeira hipótese é fazer a recolha por ter o simples prazer de a realizar, pelo gosto e satisfação que lhe proporciona e por saber que está a ajudar a comunidade num caso de estudo. A segunda hipótese é fazer a recolha por ter algum problema físico, e querer com essa recolha que seja analisado os seus dados fisiológicos, com o objetivo de o ajudar no seu futuro com as conclusões obtidas.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/app-and-usecase.PNG}
-  \caption[Diagrama de casos de uso da aplicação móvel]{Diagrama de casos de uso da aplicação móvel}
+  \caption[Diagrama de casos de uso da aplicação móvel para colheita de dados]{Diagrama de casos de uso da aplicação móvel para colheita de dados}
   
   \label{f:usecaseandroidapp}
 \end{figure}
 
-\subsection{Aplicação Web}
-O objetivo principal da aplicação web é visualizar os dados inseridos pelos utilizadores.
 
-\subsubsection{Casos de Uso}
+\section{Casos de Utilização na Revisão de Dados}
 
-Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação web. O principal ator desta app é o revisor/investigador.
+Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação web. O principal ator desta aplicação é o revisor/investigador. visualizar os dados inseridos pelos utilizadores.
 
 \begin{figure}[H]
   \centering
@@ -611,10 +610,13 @@ Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo)
   \label{f:usecasewebapp}
 \end{figure}
 
-\section{Frameworks seleccionadas}
-A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend tanto para a aplicação móvel como para a aplicação web foram selecionadas três para ser desenvolvido um protótipo com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e GoogleFit.
-
 \cleardoublepage
+
+
+
+
+
+
 
 
 
@@ -624,6 +626,10 @@ A escolha de um backend para a solução era um ponto importante. Das várias fr
 \section{Cenário-tipo selecionado}
 \textcolor{red}{{\huge TODO}}
 %explicar qual foi o cenário selecionado para experimentar em cada plataforma (deve ser uma parte dos requisitos gerais do capítulo 3)
+
+
+%A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend tanto para a aplicação móvel como para a aplicação web foram selecionadas três para ser desenvolvido um protótipo com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e GoogleFit.
+
 
 \section{Implementação exploratória: Open mHealth}
 \textcolor{red}{{\huge TODO}}//todo
@@ -637,6 +643,13 @@ A escolha de um backend para a solução era um ponto importante. Das várias fr
 %ico: sistematizar aquilo que foi possível concluir das implementações exploratórias discutir pontos forte / fracos observados
 
 \cleardoublepage
+
+
+
+
+
+
+
 
 
 
@@ -655,7 +668,6 @@ A escolha de um backend para a solução era um ponto importante. Das várias fr
 \subsection{Extensão com módulos personalizados}
 
 
-
 \section{Modelo do domínio}
 //todo
 % descrever as estruturas de dados que vão ser usadas (o nosso Reference information model) 
@@ -665,17 +677,23 @@ A escolha de um backend para a solução era um ponto importante. Das várias fr
 // todo
 %  como é que a arquitetura proposta contribui para a preservação de privacidade e segurança dos dados?
 
-
 \cleardoublepage
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 \chapter{Implementação do sistema}
 %no capítulo de implementação é para mostrar como se fez. devem aparecer visualizações relacionas com o desenvolvimento, tais como classes ou diagramas da bd. Não é para usar o estilo documental de um relatório técnico, mas sim mais para enumerar as escolhas e dar algum enquadramento porque é que foi essa a escolha.
-
-
-
 
 \section{Implementação do backend}
 % podem ser outras as subsecções; estas são ilustrativas. A idei é discutir as opções concretas tomadas para a implementação e os artifacts criados
@@ -707,32 +725,9 @@ A escolha de um backend para a solução era um ponto importante. Das várias fr
 
 
 \section{Como aplicar e estender a pltaforma em novos contextos}
+\textcolor{red}{{\huge TODO}}
 //todo
 % explicar como se pega no que ficou feito para usar num novo projeto e como se pode estender (e.g: para novos tipos de dados)
-
-\cleardoublepage
-
-
-
-\chapter{Resultados}
-\section{Protótipo integrado}
-// todo
-%recapitular o que se pode fazer com o protótipo que foi construído e como é que ele está apto para suportar experiências de I&D
-
-\section{Adequação das plataformas estudadas}
-// todo
-% discutir de forma crítica o estado de protidão ou falta dela, das plataformas existentes para criar aplicações de mHealth como a que foi desenvolvida
-
-\section{Recomendações para o desenvolvimento de aplicações de mHealth}
-// todo
-% ace ao trabalho desenvolvido, que recomendações práticas podem ser apresentadas para o desenvolvimento de aplicações de mHealth, especialmente tendo em conta o backend e a utilizaçãod e soluções padronizadas?
-
-\cleardoublepage
-
-
-\chapter{ Mover para a secção correta}
-
-\section{OMH}
 
 \subsection{Criar um novo tipo de dados}
 A criação de um novo tipo de dados pode ser feita com a ajuda do repositório ''schemas'' \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de algumas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do \gls{VJ}.
@@ -782,6 +777,41 @@ Para adicionar o novo tipo de dados criado, tem que o integrar com os restantes 
 \end{enumerate}
 
 \cleardoublepage
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{Resultados}
+\section{Protótipo integrado}
+// todo
+%recapitular o que se pode fazer com o protótipo que foi construído e como é que ele está apto para suportar experiências de I&D
+
+\section{Adequação das plataformas estudadas}
+// todo
+% discutir de forma crítica o estado de protidão ou falta dela, das plataformas existentes para criar aplicações de mHealth como a que foi desenvolvida
+
+\section{Recomendações para o desenvolvimento de aplicações de mHealth}
+// todo
+% ace ao trabalho desenvolvido, que recomendações práticas podem ser apresentadas para o desenvolvimento de aplicações de mHealth, especialmente tendo em conta o backend e a utilizaçãod e soluções padronizadas?
+
+\cleardoublepage
+
+
+
+
+
+
+
+
+
 
 
 
