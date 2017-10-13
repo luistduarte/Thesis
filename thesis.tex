@@ -201,6 +201,7 @@ Dedico este trabalho aos meus pais e amigos.
 \newacronym{JVM}{JVM}{Java Virtual Machine}
 \newacronym{RIM}{RIM}{Reference Information Model}
 \newacronym{ID}{I\&D}{Investigação e Desenvolvimento}
+\newacronym{DSU}{DSU}{Data Storage Unit}
 
 % The chapters (usually written using the isolatin font encoding ...)
 
@@ -468,7 +469,7 @@ A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de e
 \end{figure}
 
 
-Existe uma implementação de uma \gls{REST}full \gls{API} que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0.
+Existe uma implementação de uma \gls{REST}full \gls{API} denominada por ''dataPoint API'' que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um ''dataPoint'' é um documento \gls{JSON} que representa um tipo de dados e está em conformidade com o ''dataschema'' relacionado.
 
 \subsection{FHIR}
 
@@ -575,9 +576,9 @@ O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o GoogleFit não tem a po
 
 \section{Visão geral do sistema}
 % nesta secção, apresentar o PRODUTO proposto: um sistema para apoiar projetos de I&D que incluem recolha de dados fisiológicos, que podem ocorrer em laboratório, como em ambulatório Identificar os atores envolvidos e as suas motivações 
-O produto desenvolvido é um sistema que permite a recolha de dados fisiológicos de pessoas e a respetiva revisão e investigação dos dados recolhidos. A recolha pode ocorrer em laboratório ou em ambulatório, isto é, os utilizadores podem recolher estes dados presencialmente ou remotamente. Um dos objetivos deste sistema é apoiar projetos de \gls{ID} que são cada vez mais importantes para reduzir a incerteza na utilização de determinadas tecnologias e ideias.
+O produto proposto é um sistema que permite a recolha de dados fisiológicos de pessoas e a respetiva revisão e investigação dos dados recolhidos. A recolha pode ocorrer em laboratório ou em ambulatório, isto é, os utilizadores podem recolher estes dados presencialmente ou remotamente. Um dos objetivos deste sistema é apoiar projetos de \gls{ID} que são cada vez mais importantes para reduzir a incerteza na utilização de determinadas tecnologias e ideias.
 \par 
-O sistema é então composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação Web para visualizar esses dados recolhidos. O dispositivo com sensores utilizado foi o \gls{VJ} e os dados fisiológicos recolhidos são: frequência cardíaca, \gls{ECG} e acelerómetro. Foi utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permitia recolher os tipos de dados que pretendemos. O sistema é composto por dois atores distintos:
+O sistema irá ser composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação Web para visualizar esses dados recolhidos. O dispositivo com sensores utilizado poderá ser o \gls{VJ} e os dados fisiológicos recolhidos serão a frequência cardíaca, \gls{ECG} e acelerómetro. Poderá ser utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permite recolher os tipos de dados que pretendemos. O sistema irá comtemplar então dois atores distintos:
 \begin{itemize}
   \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores
   \item Utilizador(alvo de estudo) que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador
@@ -622,7 +623,7 @@ Na figura \ref{f:usecasewebapp} podemos visualizar todos os casos de uso (cenár
 \section{Cenário-tipo selecionado}
 
 %explicar qual foi o cenário selecionado para experimentar em cada plataforma (deve ser uma parte dos requisitos gerais do capítulo 3)
-Antes de avançar com o desenvolvimento do sistema foi necessário escolher um backend para dar suporte tanto à aplicação móvel, como à aplicação web. Para isso foi desenvolvido um cenário idêntico em ambas as plataformas em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos dos diferentes backends escolhidos. \par 
+Antes de avançar com o desenvolvimento do sistema foi necessário escolher um backend para dar suporte tanto à aplicação móvel, como à aplicação web. Para isso foi desenvolvido um cenário idêntico com ambos os backends em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos entre eles. \par 
 O cenário escolhido para esta avaliação exploratória foi o simples ato de recolher a frequência cardíaca do sensor do \gls{VJ} e guardar no backend em estudo, para posteriormente visualizar um simples histórico dos dados inseridos. Na figura \ref{f:study-overview} temos uma simples visão das várias partes envolvidas nesta avaliação.
 
 \begin{figure}[H]
@@ -633,15 +634,32 @@ O cenário escolhido para esta avaliação exploratória foi o simples ato de re
   \label{f:study-overview}
 \end{figure}
 
-A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend foram selecionadas três para ser desenvolvido do cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e Google Fit.
+A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend foram selecionadas três para ser desenvolvido o cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e Google Fit.
 
 
 \section{Implementação exploratória: Open mHealth}
-\textcolor{red}{{\huge TODO}}//todo
+%http://www.openmhealth.org/documentation/#/store-data/storage-overview
+%http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
+
+
+Relativamente a este backend para solução do problema proposto temos à nossa disponibilidade um serviço denominado de \gls{DSU} que disponibiliza uma \gls{API} \gls{REST} denominada de ''dataPoint API''. A \gls{API} suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização. O servidor de autorização gere a concessão de tokens de acesso. \par 
+Com a introdução desta peça para o estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{imgs/study-overview.png}
+  \caption[Arquitetura do caso exploratório com o Open mHealth]{Arquitetura do caso exploratório com o Open mHealth}
+  
+  \label{f:exp-omh-arch}
+\end{figure}
+
+
 \section{Implementação exploratória: FHIR}
+%http://hapifhir.io/doc_jpa.html
 
 \section{Implementação exploratória: Google Fit}
+%https://developers.google.com/fit/rest/
 
 \section{Resultados e lições aprendidas}
 \textcolor{red}{{\huge TODO}}//todo
