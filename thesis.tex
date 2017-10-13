@@ -585,7 +585,7 @@ O sistema é então composto por uma aplicação móvel que tem como objetivo pr
 
 \section{Casos de Utilização na Colheita de Dados}
 
-Na figura seguinte podemos visualizar os casos de uso (cenários-objetivo) da aplicação móvel. O principal ator desta aplicação é o utilizador(alvo de estudo) que tem que recolher várias sessões de leitura para serem posteriormente analisadas e visualizadas por Investigadores/Revisores. 
+Na figura \ref{f:usecaseandroidapp} podemos visualizar os casos de uso (cenários-objetivo) da aplicação móvel. O principal ator desta aplicação é o utilizador(alvo de estudo) que tem que recolher várias sessões de leitura para serem posteriormente analisadas e visualizadas por Investigadores/Revisores. 
 \par
 O ator pode estar envolvido nesta recolha de dados de duas maneiras diferentes. A primeira hipótese é fazer a recolha por ter o simples prazer de a realizar, pelo gosto e satisfação que lhe proporciona e por saber que está a ajudar a comunidade num caso de estudo. A segunda hipótese é fazer a recolha por ter algum problema físico, e querer com essa recolha que seja analisado os seus dados fisiológicos, com o objetivo de o ajudar no seu futuro com as conclusões obtidas.
 
@@ -600,7 +600,7 @@ O ator pode estar envolvido nesta recolha de dados de duas maneiras diferentes. 
 
 \section{Casos de Utilização na Revisão de Dados}
 
-Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação web. O principal ator desta aplicação é o revisor/investigador que pode fazer uma revisão das várias sessões de recolha efetuadas pelos utilizadores.
+Na figura \ref{f:usecasewebapp} podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação web. O principal ator desta aplicação é o revisor/investigador que pode fazer uma revisão das várias sessões de recolha efetuadas pelos utilizadores.
 
 \begin{figure}[H]
   \centering
@@ -620,11 +620,20 @@ Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo)
 \chapter{Avaliação exploratória}
 
 \section{Cenário-tipo selecionado}
-\textcolor{red}{{\huge TODO}}
+
 %explicar qual foi o cenário selecionado para experimentar em cada plataforma (deve ser uma parte dos requisitos gerais do capítulo 3)
+Antes de avançar com o desenvolvimento do sistema foi necessário escolher um backend para dar suporte tanto à aplicação móvel, como à aplicação web. Para isso foi desenvolvido um cenário idêntico em ambas as plataformas em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos dos diferentes backends escolhidos. \par 
+O cenário escolhido para esta avaliação exploratória foi o simples ato de recolher a frequência cardíaca do sensor do \gls{VJ} e guardar no backend em estudo, para posteriormente visualizar um simples histórico dos dados inseridos. Na figura \ref{f:study-overview} temos uma simples visão das várias partes envolvidas nesta avaliação.
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{imgs/study-overview.png}
+  \caption[Diagrama geral do cenário de estudo]{Diagrama geral do cenário de estudo}
+  
+  \label{f:study-overview}
+\end{figure}
 
-%A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend tanto para a aplicação móvel como para a aplicação web foram selecionadas três para ser desenvolvido um protótipo com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e GoogleFit.
+A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend foram selecionadas três para ser desenvolvido do cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e Google Fit.
 
 
 \section{Implementação exploratória: Open mHealth}
@@ -634,7 +643,7 @@ Na figura seguinte podemos visualizar todos os casos de uso (cenários-objetivo)
 
 \section{Implementação exploratória: Google Fit}
 
-\section{Resultados e lições aprendias}
+\section{Resultados e lições aprendidas}
 \textcolor{red}{{\huge TODO}}//todo
 %ico: sistematizar aquilo que foi possível concluir das implementações exploratórias discutir pontos forte / fracos observados
 
