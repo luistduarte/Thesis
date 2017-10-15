@@ -32,8 +32,6 @@ Tendo em conta que a mesma aplicação conseguia utilizar os três backends dist
 %http://www.openmhealth.org/documentation/#/store-data/storage-overview
 %http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
-
-
 Relativamente a este backend para solução do problema proposto temos à nossa disponibilidade um serviço denominado de \gls{DSU} que disponibiliza uma \gls{API} \gls{REST} denominada de ''dataPoint API''. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização. O servidor de autorização gere a concessão de tokens de acesso. \cite{omhstorage} \par
 Com a introdução desta peça para o estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}.
 
@@ -47,16 +45,30 @@ Com a introdução desta peça para o estudo exploratório ficamos com uma arqui
 
 \subsection{Implementação adicional}
 
-Foi adicionado ao processo de inserção dos denominados ''dataPoint'' que é um documento que representa e deve estar em conformidade com um dos tipos de dados disponíveis denominados ''dataschemas''. Apesar dos ''dataschemas'' especificarem um formato de dados, esta validação relativa ao formato de dados não estava a ser efetuada. Um ''datapoint'' é composto por um cabeçalho onde também é definido o tipo de dados associado, e por um corpo que é formatado através do ''dataschema'' associado. Foi então feita esta validação adicional, quando o datapoint chega para ser guardado, é validado para verificar se está formatado convenientemente. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
+Foi adicionado ao processo de inserção dos denominados ''dataPoint'' que é um documento que representa e deve estar em conformidade com um dos tipos de dados disponíveis denominados ''dataschemas''. Apesar dos ''dataschemas'' especificarem um formato de dados, esta validação relativa ao formato de dados não estava a ser efetuada. Um ''datapoint'' é composto por um cabeçalho onde também é definido o tipo de dados associado, e por um corpo que é formatado através do ''dataschema'' associado. Foi então feita esta validação adicional, quando o datapoint chega para ser guardado, é validado para verificar se está formatado convenientemente e só depois guardado. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
 \par 
 
 
 A \gls{OMH} tem definido um conjunto de ''data schemas'' \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Este conjunto de schemas pode ser estendido. Ao criar um novo tipo de dados(um novo ''data schema'') podemos reutilizar outros já existentes, criando um ''data schema'' que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros ''data schemas'' normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta experimentação foi conseguida com sucesso e foi uma coisa que saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber muito melhor a framework. \par 
+
+\subsection{Dificuldades e Adaptações}
+
 As dificuldades encontradas não foram muitas, pois a framework estava bastante bem estruturada e o grau de complexidade era aceitável. As possíveis falhas desta framework era a falta de esquemas de dados para o acelerómetro, \gls{ECG} e para dados demográficos dos utilizadores da framework.
 \clearpage
 
 \section{Implementação exploratória: FHIR}
 %http://hapifhir.io/doc_jpa.html
+O \gls{FHIR} ao contrário do Open mHealth é apenas uma definição de uma \gls{API} para armazenamento de informação e troca de dados clínicos entre hospitais e clínicas. Esta \gls{API} pode ser desenvolvida de diferentes maneiras. \par 
+Existe uma implementação de um projecto de código aberto com o nome Hapi-FHIR . Este projeto suporta todos os dados definidos pelo \gls{FHIR} e grande parte das operações sobre eles, como por exemplo criar, editar, eliminar, etc.
+\par 
+O projeto Hapi-FHIR tem um módulo denominado JPAServer  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor FHIR, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de ''endpoints'' \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados na backend. \par
+
+\subsection{Implementação adicional}
+O módulo utilizado tinha uma falha relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do Open mHealth).
+No JPAServer foi então desenvolvido um Intercetor que o que fazia, era verificar se o pedido efetuado era acompanhado por um token de acesso, caso isso acontecesse a validade do token é verificada ao servidor de autorização e então em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
+
+\subsection{Dificuldades e Adaptações}
+As dificuldades encontradas ainda foram algumas, neste caso temos uma definição de uma \gls{API} em vez de uma framework em si, ou seja, foram encontradas várias supostas resoluções, e no caso do Hapi-FHIR estava dívidida por vários módulos, que por um lado até se pode tornar mais vantajoso porque acabamos por utilizar só aquilo que é necessário. As possíveis falhas desta \gls{API} era a falta de tipos de recursos para o acelerómetro e \gls{ECG}. Ainda temos a falta de um servidor de gestão de identidades e a concessão de autorização ao pedidos efetuados.
 
 \begin{figure}[H]
   \centering
@@ -71,6 +83,11 @@ As dificuldades encontradas não foram muitas, pois a framework estava bastante 
 
 \section{Implementação exploratória: Google Fit}
 %https://developers.google.com/fit/rest/
+
+
+
+
+
 
 \section{Resultados e lições aprendidas}
 \textcolor{red}{{\huge TODO}}//todo
