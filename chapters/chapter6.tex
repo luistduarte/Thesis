@@ -40,7 +40,7 @@ Os utilizadores finais são guardados numa coleção do Mongo, a coleção é de
 \end{itemize}  
 
 \subsection{Servidor de recursos (dataPoint REST API) }
-O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints.Estes dataPoints estão a ser guardados numa base de dados Mongo numa collection com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
+O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints. Estes dataPoints estão a ser guardados numa base de dados Mongo numa coleção com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
 Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes dataPoints são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados (dataschema) associado e definido no cabeçalho do dataPoint. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do dataPoint está de acordo com o dataschema definido no cabeçalho do mesmo. \par
 Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes dataschemas foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}.
 \subsubsection{dataschema ECG}
@@ -76,9 +76,21 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
             \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
             \item Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'', ''schema\_version'', ''user\_id'' e o ''CAREGIVER\_KEY''
         \end{itemize}
-        
-        
 \end{itemize}  
+
+\subsection{Comunicação com módulos externos}
+No processo de inserção de novos dataPoints, depois de validados eles são reencaminhados para um endpoint \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema utilizado para validar o documento, como por exemplo "heart-rate" e um corpo do dataPoint inserido. Este documento é então inserido no ''EventBus'' do Vert.x, neste momento clientes podem se registar neste EventBus e verificar e analisar da maneira que quiser os dados inseridos. \par
+Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
+O projeto é então composto por dois verticles em que num dois verticles cria um endpoint \gls{REST} e permite publicar os mesmo Eventbus assim que os recebe.
+
+\subsection{Como instalar este backend}
+Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \cite{omh-code} e é um ''fork'' do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado \cite{omh-runnatively}.
+O código relativo à extensibilidade com módulos externos também está no github\cite{restpubsub} este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
+\begin{itemize}
+    \item vertx run SimpleREST.java -cluster
+    \item vertx run Receiver.java -cluster
+\end{itemize}
+O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvolvido para receber outro tipo de esquemas de dados e os analisar.
 
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
