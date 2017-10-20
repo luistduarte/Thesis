@@ -78,6 +78,8 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
         \end{itemize}
 \end{itemize}  
 
+Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os dataPoints inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do Mongo.
+
 \subsection{Comunicação com módulos externos}
 No processo de inserção de novos dataPoints, depois de validados eles são reencaminhados para um endpoint \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema utilizado para validar o documento, como por exemplo "heart-rate" e um corpo do dataPoint inserido. Este documento é então inserido no ''EventBus'' do Vert.x, neste momento clientes podem se registar neste EventBus e verificar e analisar da maneira que quiser os dados inseridos. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
