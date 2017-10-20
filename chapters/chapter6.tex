@@ -1,13 +1,85 @@
 \chapter{Implementação do sistema}
 %no capítulo de implementação é para mostrar como se fez. devem aparecer visualizações relacionas com o desenvolvimento, tais como classes ou diagramas da bd. Não é para usar o estilo documental de um relatório técnico, mas sim mais para enumerar as escolhas e dar algum enquadramento porque é que foi essa a escolha.
 
-\section{Implementação do backend}
+\section{Implementação e adaptação do backend}
 % podem ser outras as subsecções; estas são ilustrativas. A idei é discutir as opções concretas tomadas para a implementação e os artifacts criados
-\subsection{Implementação da persistência}
-\subsection{Implementação da API}
+\subsection{Servidor de Autorização e Autenticação}
+O servidor de autenticação e autorização disponibiliza uma \gls{API} para criação de novos utilizadores e solicitação de tokens de acesso relativamente a várias aplicações. Este serviço utiliza a framework Spring, mais concretamente a Spring Security \cite{spring-framework}. \par 
+No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os tokens de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. Para a base de dados relacional a escolha podia por exemplo ser efetuada entre o MySQL \cite{mysql} e PostgreSQL \cite{postgresql}, neste caso foi utilizado o PostgreSQL, o modelo de dados relacional está representado na Figura \ref{f:auth-diagram}. \par 
+Na tabela ''oauth\_client\_details'' estão guardadas todas as informações relativas à aplicação como por exemplo a sua identificação, a chave secreta, os tipos de autorização, etc. Relativamente à tabela ''oauth\_access\_token'' estão guardados os tokens de acesso por utilizador, relativamente a uma aplicação. Cada token de acesso tem relacionado a ele  um refresh token que está guardado numa tabela diferente, na tabela ''oauth\_refresh\_token''.
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{imgs/auth-diagram.png}
+  \caption[Diagrama do modelo de dados para guardar as credenciais dos clientes e os tokens de acesso]{Diagrama do modelo de dados para guardar as credenciais dos clientes e os tokens de acesso}
+  
+  \label{f:auth-diagram}
+\end{figure}
 
 
-\clearpage
+Os utilizadores finais são guardados numa coleção do Mongo, a coleção é denominada por ''endUser''. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}
+
+\begin{figure}[H]
+
+\inputminted[fontsize=\scriptsize]{json}{code/endUser.json}
+\caption[Formato do documento de um utilizador final]{Formato do documento de um utilizador final}
+\label{f:endUserCode}
+\end{figure}
+\subsubsection{API REST}
+\begin{itemize}
+    \item domain:port/users
+        \begin{itemize}
+            \item Serviço POST, para criação de novos utilizadores
+            \item Recebe um JSON composto por dois campos um ''username'' e ''password''
+        \end{itemize}
+    \item domain:port/oauth/token
+        \begin{itemize}
+            \item Serviço POST, utilizado para efetuar o pedido de um novo token de acesso
+            \item Recebe por parâmetros o ''username'', ''password'' e o ''grant\_type''
+        \end{itemize}
+\end{itemize}  
+
+\subsection{Servidor de recursos (dataPoint REST API) }
+O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints.Estes dataPoints estão a ser guardados numa base de dados Mongo numa collection com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
+Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes dataPoints são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados (dataschema) associado e definido no cabeçalho do dataPoint. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do dataPoint está de acordo com o dataschema definido no cabeçalho do mesmo. \par
+Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes dataschemas foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}.
+\subsubsection{dataschema ECG}
+\begin{figure}[H]
+\inputminted[fontsize=\scriptsize]{json}{code/ecg.json}
+\caption[Novo esquema de dados relativo ao ECG]{Novo esquema de dados relativo ao ECG}
+\label{f:ecgjsonschema}
+\end{figure}
+
+\subsubsection{API REST}
+\begin{itemize}
+    \item domain:port/dataPoints
+        \begin{itemize}
+            \item Serviço POST, para criação de novos dataPoints
+            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
+            \item Recebe um documento JSON que constituído por um cabeçalho e um corpo
+        \end{itemize}
+    \item domain:port/dataPoints/id
+        \begin{itemize}
+            \item Serviço DELETE, utilizado para efetuar a eliminação de um dataPoint
+            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
+            \item O id do dataPoint tem que ser referido no url
+        \end{itemize}
+    \item domain:port/dataPoints/id
+        \begin{itemize}
+            \item Serviço GET, utilizado para efetuar a consulta de um dataPoint
+            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
+            \item O id do dataPoint tem que ser referido no url
+        \end{itemize}
+    \item domain:port/dataPoints/caregiver
+        \begin{itemize}
+            \item Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado tipo de um utilizador em específico
+            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
+            \item Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'', ''schema\_version'', ''user\_id'' e o ''CAREGIVER\_KEY''
+        \end{itemize}
+        
+        
+\end{itemize}  
+
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
 %linguagens, bibliotecas, frameworks,..., usados na implementação desta parte
@@ -20,7 +92,6 @@
 %mostrar a organização do projeto de código, em termos da linguagem de programação em concreto
 
 
-\clearpage
 \section{Implementação da aplicação móvel}
 \subsection{Tecnologias integradas e fontes de dados}
 \subsection{Componentes da aplicação Android}
@@ -29,7 +100,7 @@
 
 
 
-\section{Como aplicar e estender a pltaforma em novos contextos}
+\section{Como aplicar e estender a plataforma em novos contextos}
 
 % explicar como se pega no que ficou feito para usar num novo projeto e como se pode estender (e.g: para novos tipos de dados)
 
@@ -60,7 +131,7 @@ A criação de um novo tipo de dados pode ser feita com a ajuda do repositório 
 O ficheiro fica do seguinte modo: 
 
 \begin{figure}[H]
-\inputminted{json}{code/accelerometer-1.0.json}
+\inputminted[fontsize=\scriptsize]{json}{code/accelerometer-1.0.json}
 \caption[\gls{JSON} schema para o novo tipo de dados de acelerómetro]{\gls{JSON} schema para o novo tipo de dados de acelerómetro}
 \label{f:accelerometer-json-schema}
 \end{figure}
@@ -68,7 +139,7 @@ O ficheiro fica do seguinte modo:
 \item Preencha o ficheiro com uma amostra do novo tipo de dados, para isso tem que ter em conta a definição utilizada, pois porque se esta amostra não for compatível não vai passar no validador.
 
 \begin{figure}[H]
-\inputminted{json}{code/example.json}
+\inputminted[fontsize=\scriptsize]{json}{code/example.json}
 \caption[Exemplo do tipo de dados de acelerómetro]{Exemplo do tipo de dados de acelerómetro}
 \label{f:accelerometer-json-data}
 \end{figure}

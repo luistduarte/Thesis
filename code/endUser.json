@@ -1,0 +1,6 @@
+{
+	"_id" : "usertest",
+	"_class" : "org.openmhealth.dsu.domain.EndUser",
+	"password_hash" : "$2a$10$a23I8/KW1KXwHApyd401h./EHFQA2jD6ck8JpgjIz1PiXDbAiD27W",
+	"registration_timestamp" : "2017-09-13T00:14:15.703+01:00"
+}
