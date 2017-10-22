@@ -94,6 +94,37 @@ O código relativo à extensibilidade com módulos externos também está no git
 \end{itemize}
 O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvolvido para receber outro tipo de esquemas de dados e os analisar.
 
+\section{Implementação da aplicação móvel}
+\subsection{Versões alvo}
+Esta aplicação móvel foi desenvolvida com o intuito de conseguir abranger grande maioria dos utilizadores, suporta da versão 16 à versão 25, ou seja,  desde o Android 4.1 (Jelly Bean) até ao Android 7.1. De acordo com as informações disponíveis na plataforma de desenvolvimento do Android atinge mais de 98\% dos utilizadores \cite{android-versions}.
+
+O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde esta configuração é efetuada, um excerto deste ficheiro de configuração pode ser visualizado na tabela \ref{t:defaultconfig}.
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{llll}
+\hline
+ & \multicolumn{2}{l}{defaultConfig \{}                                     &  \\
+ &    & applicationId {\color[HTML]{009901} ''pt.ua.ieeta.healthintegration''}                       &  \\
+ &    & minSdkVersion {\color[HTML]{0767D2}16}                                                    &  \\
+ &    & targetSdkVersion {\color[HTML]{0767D2}25}                                                 &  \\
+ &    & versionCode {\color[HTML]{0767D2}1}                                                       &  \\
+ &    & versionName {\color[HTML]{009901}''1.0''}                                                   &  \\
+ & \} &                                                                     & \\
+\hline
+\end{tabular}
+\caption[Excerto da configuração padrão da aplicação móvel]{Excerto da configuração padrão da aplicação móvel}
+\label{t:defaultconfig}
+\end{table}
+
+
+\subsection{Depêndencias}
+\subsection{Tecnologias integradas e fontes de dados}
+\subsection{Componentes da aplicação Android}
+\subsection{Interações suportadas }
+
+
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
 %linguagens, bibliotecas, frameworks,..., usados na implementação desta parte
@@ -106,10 +137,6 @@ O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvo
 %mostrar a organização do projeto de código, em termos da linguagem de programação em concreto
 
 
-\section{Implementação da aplicação móvel}
-\subsection{Tecnologias integradas e fontes de dados}
-\subsection{Componentes da aplicação Android}
-\subsection{Interações suportadas }
 
 
 
