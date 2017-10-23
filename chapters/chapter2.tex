@@ -305,7 +305,17 @@ A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{
 
 \subsubsection{Análise Comparativa}
 
-Foi ainda feito um breve estudo em relação a outros três possíveis backends, entre eles temos o Health Vault \footnote{https://international.healthvault.com}, Apple Research Kit \footnote{https://www.apple.com/pt/researchkit/} e o Research Stack \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}.
+Foi ainda feito um breve estudo em relação a outros três possíveis backends, entre eles temos o Health Vault \footnote{https://international.healthvault.com}, Apple Research Kit \footnote{https://www.apple.com/pt/researchkit/} e o Research Stack \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}. Os pontos requisitos analisados relativamente a cada possível backend foram: 
+\begin{itemize}
+  \item Possibilidade de guardar dados demográficos dos utentes
+  \item Análise do grau de complexidade  do backend para adaptação e implementação de novas funcionalidades
+  \item Estruturas de dados normalizadas
+  \item Possibilidade de adicionar novas estruturas de dados 
+  \item Possibilidade de importar/exportar dados de outros backends
+  \item Questões relativas a Segurança e Privacidade sobre os dados recolhidos e demográficos
+  \item Capacidade de ser integrado em ambientes diferentes, como android, ios ou web
+\end{itemize}
+
 \begin{table}[H]
 \centering
 
@@ -328,7 +338,7 @@ Foi ainda feito um breve estudo em relação a outros três possíveis backends,
 
 Depois de analisados seis serviços de backend para dar suporte a uma aplicação móvel na área de saúde, faz-se aqui uma breve análise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
 \par 
-A complexidade do \gls{FHIR} é bastante grande sendo uma desvantagem, apesar de o tornar muito completo. Devido ao seu grau de complexidade a sua extensibilidade não é trivial. Tendo em conta que um dos objetivos seria também ler, guardar e visualizar \gls{ECG}, este backend fica a perder, apesar da grande variedade dos tipos de dados existentes este não é contemplado.
+A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um backend bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro, pois estes não estão contemplados.
 \par 
 Em relação ao Google Fit tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente a extensibilidade do modelo de dados é possível. O modelo de dados é extensível mas existe uma limitação quanto ao modelo de dados, apenas podem ser utilizados como tipo de dados o int e o float, ou seja, não existe o tipo objeto e array.
 \par 
