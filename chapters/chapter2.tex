@@ -1,42 +1,39 @@
 \chapter{Aplica\c c\~oes mHealth e as suas arquiteturas}
 
-\section{A sa\'ude e os dispositivos eletr\'onicos}
+%2.3- Padrões de arquitetura em aplicações móveis --> 2.6
+
+%2.4- O backend nas aplicações de mHealth
+%--> parte do 2.7, 2.8. 2.9 e 2.10
+\section{eHealth: tecnologias de informação ao serviço da saúde}
 
 Nos dias que correm toda a sociedade tem dispon\'ivel muito facilmente a possibilidade de trocar informa\c c\~ao entre si, podendo permanecer numa constante troca de informa\c c\~ao.  Com esta realidade tem surgido novas tecnologias, ferramentas e aparelhos que facilitam, tendo em conta a sua implementa\c c\~ao e uso, o fortalecimento da informa\c c\~ao. 
 \par
 A \'area da sa\'ude cada vez mais est\'a identificada com esta realidade, as tecnologias da informa\c c\~ao e da comunica\c c\~ao t\^em sido um aliado para aumentar a efici\^encia e melhorar a qualidade da presta\c c\~ao de servi\c cos na \`area da sa\'ude, ajudando a popula\c c\~ao com o seu bem-estar. 
-
-
-
-\section{eHealth}
-O termo ''electronic Health'' mais conhecido por eHealth foi inicialmente utilizado por profissionais de sa\'ude, investigadores e no \^ambito acad\'emico, e est\'a aliado a cen\'arios que envolvem cuidados de sa\'ude, dispositivos eletr\'onicos e a Internet. O termo que at\'e 1999 pouco era utilizado, atualmente \'e um termo que n\~ao define unicamente a ''Medicina na Internet'', mas tamb\'em tudo aquilo que esteja relacionado com computadores e medicina \cite{ehealth}.
 \par
-O termo que foi inicialmente utilizado por l\'ideres de ind\'ustria e pessoal do marketing e ficou na linha de outras palavras como por exemplo ''e-commerce'', ''e-business''... A ideia foi colocar este termo no conjunto das ''e-words'' na tentativa de transmitir as promessas e os princ\'ipios ligados ao ''e-commerce'' (com\'ercio eletr\'onico) transmitindo \`as pessoas as possibilidades que a internet estava a abrir na \'area de cuidados de sa\'ude. 
+Surge então o termo ''electronic Health'' mais conhecido por eHealth, foi inicialmente utilizado por profissionais de sa\'ude, investigadores e no \^ambito acad\'emico, e est\'a aliado a cen\'arios que envolvem cuidados de sa\'ude, dispositivos eletr\'onicos e a Internet. O termo que at\'e 1999 pouco era utilizado, atualmente \'e um termo que n\~ao define unicamente a ''Medicina na Internet'', mas tamb\'em tudo aquilo que esteja relacionado com computadores e medicina \cite{ehealth}. Podemos ver o eHealth como uma designação abrangente para enquadrar a transformação digital da prestação de cuidados de saúde.
 \par A \gls{oms} define eHealth \cite{ehealth_oms} como uma ''utiliza\c c\~ao rent\'avel e segura das tecnologias da informa\c c\~ao e da comunica\c c\~ao no apoio \`a sa\'ude e \`as \'areas relacionadas com a sa\'ude, incluindo os servi\c cos de sa\'ude, vigil\^ancia na sa\'ude, literatura na sa\'ude, educa\c c\~ao na sa\'ude e investiga\c c\~ao na \'area da sa\'ude.''
 \par
 Uma defini\c c\~ao apresentada em \cite{ehealth}: ''eHealth \'e uma \'area emergente na interce\c c\~ao da inform\'atica m\'edica, sa\'ude p\'ublica e neg\'ocios, referindo-se aos servi\c cos de sa\'ude e entrega de informa\c c\~ao atrav\'es da Internet ou tecnologias semelhantes. Pensando de forma abrangente, o termo n\~ao \'e s\'o um desenvolvimento t\'ecnico, mas tamb\'em uma nova forma de pensar, uma atitude, um compromisso para a rede, um pensamento global, para melhorar o cuidado da sa\'ude, local, regional e global com o uso das tecnologias da informa\c c\~ao e da comunica\c c\~ao''.
 \par
 Alguns requisitos tamb\'em s\~ao colocados \cite{ehealth} para um sistema ser considerado eHealth, entre eles temos: efici\^encia; melhoria ao n\'ivel de qualidade do cuidado da sa\'ude; sistema baseado em evid\^encias; incentivar uma nova rela\c c\~ao entre o utente e o profissional de sa\'ude; de f\'acil uso.
-
-\section{Telemedicina}
-
-O termo telemedicina \'e utilizado para definir a presta\c c\~ao de cuidados de sa\'ude a longa dist\^ancia, isto \'e, permite a pessoas que estejam localizadas em ambientes mais rurais os cuidados de sa\'ude m\'inimos. A maior parte dos habitantes dos pa\'ises em desenvolvimento moram em zonas rurais dificultando o acesso a servi\c cos de sa\'ude, m\'edicos e tratamentos.
-
+\par
+Temos também a presta\c c\~ao de cuidados de sa\'ude a longa dist\^ancia, mais concretamente a telemedicina. A telemedicina permite a pessoas que estejam localizadas em ambientes mais rurais os cuidados de sa\'ude m\'inimos. A maior parte dos habitantes dos pa\'ises em desenvolvimento moram em zonas rurais dificultando o acesso a servi\c cos de sa\'ude, m\'edicos e tratamentos.
+\par
 A \gls{oms} define Telemedicina como \cite{ehealth_telemedicine} uma ''presta\c c\~ao de cuidados de servi\c cos de sa\'ude em situa\c c\~oes em que a dist\^ancia \'e um fator cr\'itico, por qualquer profissional de sa\'ude usando tecnologias de informa\c c\~ao e da comunica\c c\~ao para a partilha de informa\c c\~ao v\'alida para ser feito o diagn\'ostico, o tratamento e a preven\c c\~ao da doen\c ca e danos f\'isicos, pesquisa e avalia\c c\~ao, e para a forma\c c\~ao cont\'inua dos prestadores de cuidados de sa\'ude, com o objetivo da melhoria da sa\'ude dos indiv\'iduos e das suas comunidades''
 \par
 A grande vantagem que existe com a utiliza\c c\~ao da Telemedicina \'e o custo de deslocamento at\'e uma unidade de sa\'ude e a possibilidade de realiza\c c\~ao de consultas por especialistas de forma remota.
 \par
 Podemos verificar que a Telemedicina est\'a mais focada na realiza\c c\~ao de consultas e diagn\'osticos remotos, enquanto que eHealth encontra-se mais relacionado com o desenvolvimento de solu\c c\~oes e equipamentos que cuidem da sa\'ude do utente. Ap\'os esta conclus\~ao surge ent\~ao a necessidade de existir uma plataforma que possibilite o acesso aos m\'edicos das informa\c c\~oes obtidas dos seus utentes a qualquer momento e em tempo real, estando estes geograficamente em locais distintos.
 
-\section{mHealth}
 
+
+
+
+\section{mHealth: computação móvel em saúde}
 O termo \gls{mHealth} \'e definido segundo a OMS como uma componente da eHealth \cite{mhealth_oms} sendo esta definida como, o recurso a dispositivos m\'oveis, como por exemplo o telem\'ovel, tablet e outros dispositivos sem fios para a pr\'atica de cuidados de sa\'ude e m\'edicos.
 \par
-Uma aplica\c c\~ao mHealth pertence tamb\'em \`a componente de eHealth assim como \`a telemedicina. As aplica\c c\~oes de mHealth t\^em como o objetivo oferecer cuidados de sa\'ude e permitir a m\'edicos a monitoriza\c c\~ao de diferentes par\^ametros desde qualquer lugar e at\'e em movimento, usando dispositivos que fazem parte da componente eHealth e transmitindo, esses dados atrav\'es de dispositivos m\'oveis. 
-Como a mHealth permite superar as barreiras da localiza\c c\~ao entre os utentes e os m\'edicos podemos dizer que a Telemedicina tamb\'em est\'a presente nestas aplica\c c\~oes.
-
-\section{Aplica\c c\~oes mHealth}
-
+Uma aplica\c c\~ao mHealth pertence tamb\'em \`a componente de eHealth assim como \`a telemedicina. As aplica\c c\~oes de mHealth t\^em como o objetivo oferecer cuidados de sa\'ude e permitir a m\'edicos a monitoriza\c c\~ao de diferentes par\^ametros desde qualquer lugar e at\'e em movimento, usando dispositivos que fazem parte da componente eHealth e transmitindo, esses dados atrav\'es de dispositivos m\'oveis. Como a mHealth permite superar as barreiras da localiza\c c\~ao entre os utentes e os m\'edicos podemos dizer que a telemedicina tamb\'em est\'a presente nestas aplica\c c\~oes.
+\par
 Depois das redes m\'oveis come\c carem a suportar 3G e 4G para transporte de dados, a comunica\c c\~ao m\'ovel tem sido a  principal atra\c c\~ao de investigadores e de comunidades empresariais. Ofereceu excelentes oportunidades para a cria\c c\~ao de  aplica\c c\~oes m\'oveis na \'area da sa\'ude favorecendo a mesma. Com esta inova\c c\~ao nas redes m\'oveis a presta\c c\~ao de cuidados de sa\'ude em qualquer momento e em qualquer lugar, superando as barreiras geogr\'aficas, temporais e at\'e organizacionais deixou de ser um problema \cite{mhealth}.
 \par
 As \'areas abrangidas podem ser mesmo bastantes, basta haver aplica\c c\~oes desenvolvidas para o devido efeito e que estejam preparadas para receber dados dos respetivos dispositivos. Este \'ultimo ponto não \'e obrigat\'orio pois os dados podem ser obtidos em dispositivos isoladamente e adicionados manualmente na aplica\c c\~ao. 
@@ -58,16 +55,21 @@ Com a exist\^encia de muitas doen\c cas cr\'onicas como por exemplo a diabetes, 
   \end{itemize}
 \end{itemize}
 
-A maioria das aplica\c c\~oes mHealth t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente.
-
-\section{Arquitectura de uma aplica\c c\~ao m\'ovel}
-
-Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''magra'' onde a camada de negócio e a camada de dados está guardada num servidor. 
-
-No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação independente que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''magra''. Uma aplicação ''rica'' será uma aplicação mais complexa e mais difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
+A maioria das aplica\c c\~oes mHealth t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, tablet ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
 
-Na figura seguinte podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
+
+
+
+
+
+
+\section{Padrões de arquitetura em aplicações móveis}
+
+Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''leve'' onde a camada de negócio e a camada de dados está guardada num servidor. 
+\par
+No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e mais difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
+Na figura \ref{f:mobileapparch} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
 
 \begin{figure}[H]
   \centering
@@ -82,7 +84,7 @@ No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fat
 
 \subsection{Autenticação e Autorização}
 
-Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização.\cite{oauth20}
+Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza tokens para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
 
 \subsubsection{Protocolo de autorização OAuth}
 O Open Authorization Protocol - OAuth é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades tal como Leiba \cite{leiba_oauth} referiu.
@@ -110,17 +112,12 @@ Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessário
 \subsection{Armazenamento em Cache}
 
 A utilização da cache do dispositivo pode ser muito importante para aumentar o desempenho e a capacidade de resposta de uma aplicação. Quando não existe ligação à internet, a aplicação deve suportar a execução das operações principais, isto é, se uma aplicação tem como objetivo obter a frequência cardíaca de um paciente, é suposto se conseguir obter estes dados dos sensores mesmo sem estes poderem ser guardados no servidor, ou seja, podem ser guardados em cache até que se tenha possibilidade de fazer o envio para o servidor.
-\par
-Ao decidir os dados que podem ser guardados no dispositivo tem que se ter em atenção que os recursos são limitados, pois a memória de um smartphone não é como a de um computador.
 
 \subsection{Comunicação do dispositivo}
-
-
-A comunicação do dispositivo inclui a comunicação sem fios, comunicação com fios e ainda outro tipo de comunicação como por exemplo o Bluetooth. Na comunicação sem fios temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. 
+A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração
 \par
 Para comunicação entre dispositivos móveis e sensores será utilizada a tecnologia Bluetooth para cumprir o objetivo de selecionar os dispositivos e ler os dados recolhidos por estes.
-A informação a ser recolhida tinha como foco o \gls{ECG} e a frequência cardíaca, como hipótese para isso tínhamos o \gls{VJ} que tem como funcionalidades ler o sinal \gls{ECG}, frequência cardíaca, nível bateria do dispositivo, etc.
-A comunicação entre dispositivos móveis e backend será por Web services e para formato de dados será o JSON. Esta escolha foi feita pois desta maneira não vamos estar a limitar a plataforma que será protegida pelo protocolo de autorização OAuth. 
+
 
 \subsubsection{Bluetooth}
 
@@ -128,42 +125,24 @@ Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os senso
 Bluetooth é uma tecnologia criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conetar os dispositivos à distancia, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
 Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os smartphones têm esta tecnologia.
 
-\subsubsection{Vital Jacket}
-
-O \gls{VJ} é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica, que permite uma monitorização contínua durante 72 horas seguidas. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como \gls{ECG}, frequência cardíaca e ainda acelerómetro. É uma t-shirt confortável e fácil de vestir que vem equipada com um dispositivo que recolhe dados e os permite partilhar via Bluetooth em tempo real para os dispositivos móveis. \cite{vj}
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{imgs/vj.png}
-  \caption[Kit VitalJacket]{Kit VitalJacket. \cite{vj}}
-  \label{f:vjkit}
-\end{figure}
 
 \subsubsection{Web Services}
 
-Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela internet por Web Services. Na figura \ref{f:wsscheme} podemos ver uma troca de mensagens entre o cliente e o Web Service, em que um cliente envia uma mensagem de pedido a um Web Service, e recebe uma mensagem de resposta.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=0.6\textwidth]{imgs/wsscheme.png}
-  \caption[Troca de Mensagens entre cliente e servidor]{Troca de Mensagens entre cliente e servidor \cite{wsjakob}}
-  \label{f:wsscheme}
-\end{figure}
+Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela internet por Web Services.
 
 Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. O que acontece é uma interoperabilidade, apesar de os Web Services por exemplo serem desenvolvidos em Java, estes podem ser utilizados, ou seja, os pedidos podem ser efetuados através de um cliente que esteja a correr em Python.
 
-Jakob Jenkov \cite{wsjakob} afirma que inicialmente o único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas
-mais tarde foi permitido adicionalmente a utilização do \gls{HTML} e \gls{JSON} depois do aparecimento do \gls{REST}.
+O único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas mais tarde começou a poder ser utilizado o \gls{HTML} e o \gls{JSON} depois do aparecimento do \gls{REST} \cite{wsjakob}.
 
 \subsubsection{ REST Web Services}
 
-Segundo Elkstein\cite{whatisrest}, o \gls{REST} é um estilo de arquitetura que utiliza o \gls{HTTP} para fazer chamadas entre máquinas e tem como objetivo fundamental facultar serviços para ajudar no desenvolvimento de aplicações.
+O \gls{REST} é um estilo de arquitetura que utiliza o \gls{HTTP} para fazer chamadas entre máquinas e tem como objetivo fundamental facultar serviços para ajudar no desenvolvimento de aplicações \cite{whatisrest}.
 
 \gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \gls{URI}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas acções \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro acções podem ser mapeadas para as acções típicas de dados \gls{CRUD}. A representação de cada recurso identificado por um URI, pode variar, podendo ser represendado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
 
 \subsubsection{Vert.x}
 
-Vert.x é uma framework poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \gls{JVM}. É uma framework orientada a eventos e assíncrona, implementada sobre um modelo de concorrência assíncrono que permite a criação de aplicações facilmente escaláveis, de uma forma simples. Pode ser utilizada por simples aplicações, ou até aplicações Web sofisticadas e modernas, micro serviços \gls{HTTP}/\gls{REST}.\cite{vertx-io}
+Vert.x é uma framework poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \gls{JVM}. É uma framework orientada a eventos e assíncrona, que permite a criação de aplicações facilmente escaláveis de uma forma simples. Pode ser utilizada por pequenas aplicações, ou até aplicações Web sofisticadas e modernas, micro serviços \gls{HTTP}/\gls{REST}.\cite{vertx-io}
 
 O Vert.x é composto por um conjunto componentes que são importantes para o desenvolvimento de aplicações. Entre eles temos: 
 
@@ -179,7 +158,7 @@ Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{imgs/vertx_arch.png}
-  \caption[Arquitetura simples do Vert.x]{Arquitetura simples do Vert.x}
+  \caption[Arquitetura simples do Vert.x]{Arquitetura simples do Vert.x \cite{vertx-study}}
   \label{f:vertxarch}
 \end{figure}
 
@@ -190,11 +169,10 @@ O \gls{JSON} é um formato de dados baseado em texto, é leve e utilizado para t
 \par
 É um formato de dados  fácil de gerar, compreender e interpretar. Analisando código em \gls{JSON} é intuitivo associar a sua aparência, estrutura e sintaxe a muitas linguagens de programação existentes, razão pela qual foi facilmente adotada como uma alternativa ao \gls{XML} por parte de diversos programadores que viram no novo formato um modo mais natural e simples de definir dados.
 
-\section{Arquitectura de uma aplica\c c\~ao mHealth}
+\section{O backend nas aplicações de mHealth}
+O termo backend é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. É onde está a ser executado por exemplo a base de dados, \gls{API}s \gls{REST}, etc 
 
 Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web Services para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}.
-\par
-Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, tablet ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
 \begin{figure}[H]
   \centering
@@ -205,7 +183,7 @@ Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qu
 \end{figure}
 
 
-\section{Desenvolvimento de uma aplica\c c\~ao mHealth}
+\subsection{O desenvolvimento de uma aplica\c c\~ao mHealth}
 
 Uma pesquisa desenvolvida pela PricewaterhouseCoopers descobriu que as solu\c c\~oes de mHealth que abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
 \par
@@ -221,15 +199,16 @@ Depois deste estudo e discuss\~ao chegaram \`aa conclus\~ao que o desenvolviment
   \label{f:mhealthpipeline}
 \end{figure}
 
-\section{BackEnd para uma aplicação mHealth}
+\subsection{A escolha de um backend}
 
-Para dar suporte à aplicação móvel é necessário a escolha de um backend robusto e seguro para que possamos lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve se ter em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados. Vai ser agora apresentado algumas soluções possíveis.
+Para dar suporte à aplicação móvel é necessário a escolha de um backend robusto e seguro para que possamos lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve se ter em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados. A escolha de um backend para dar suporte às aplicações mHealth é bastante importante. Ao utilizar uma plataforma já desenvolvida e reconhecida estamos a aumentar as funcionalidades da aplicação pois estamos a permitir uma futura interoperabilidade e troca de dados entre outras aplicações que utilizem a mesma plataforma.
 
-\subsection{Open mHealth}
+
+\subsubsection{Open mHealth}
 
 A \gls{OMH} foi fundada em 2011 e descreve-se a si própria como "uma start-up sem fins lucrativos que quebra as barreiras de integração trazendo significado aos dados clínicos digitais na área da saúde" \cite{omhabout}. A \gls{OMH} trabalha com especialistas da área da saúde e com programadores com o objetivo de tornar os dados de saúde digitais úteis e possíveis de utilizar em diversas plataformas. 
 \par 
-Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}.
+Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o Open mHealth todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor.
 
 \begin{figure}[!ht]
   \centering
@@ -242,7 +221,7 @@ Um dos principais objetivos desta organização é que as aplicações na área 
 Através desta arquitetura podem ser partilhados diversos recursos entre as aplicações móveis na área da saúde, entre eles o mais importante é o modo e o local onde os dados são guardados, respeitando um padrão para o formato dos dados, ou seja, se duas aplicações diferentes forem guardar dados de um determinado tipo, como por exemplo frequência cardíaca, esses dados têm que respeitar um determinado formato, sendo estes guardados da mesma maneira independentemente da aplicação que o esteja a fazer.
 \par 
 
-A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes data schemas estão desenvolvidos em \gls{JSON} schema que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os datas schemas serem compatíveis com os \gls{JSON} schema associado. Na figura \ref{f:exemplo} podemos ver exemplo de dados que é compatível com o \gls{JSON} schema associado que é a frequência cardíaca\cite{omhheartrate}.
+A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes data schemas estão desenvolvidos em \gls{JSON} schema que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os datas schemas serem compatíveis com os \gls{JSON} schema associado. Na figura \ref{f:exemplo} podemos ver exemplo de dados que é compatível com o \gls{JSON} schema da figura \ref{f:hrjsonschema} associado que é a frequência cardíaca\cite{omhheartrate}.
 
 
 \begin{figure}[H]
@@ -250,21 +229,27 @@ A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de e
 \caption[Exemplo de um \gls{JSON} compatível associado à frequência cardíaca]{Exemplo de um \gls{JSON} compatível associado à frequência cardíaca \cite{omhheartrate}}
 \label{f:exemplo}
 \end{figure}
+\newpage
+\begin{figure}[!ht]
+\inputminted[fontsize=\scriptsize]{json}{code/hr-jsonschema.json}
+\caption[\gls{JSON} schema que define o tipo de dados para a frequência cardíaca]{\gls{JSON} schema que define o tipo de dados para a frequência cardíaca \cite{omhheartrate}}
+\label{f:hrjsonschema}
+\end{figure}
+
 
 
 Existe uma implementação de uma \gls{REST}full \gls{API} denominada por ''dataPoint API'' que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um ''dataPoint'' é um documento \gls{JSON} que representa um tipo de dados e está em conformidade com o ''dataschema'' relacionado.
 
-\subsection{FHIR}
+\subsubsection{FHIR}
 
 Como vimos anteriormente para que os sistemas de serviços hospitalares comuniquem e partilhem  informação entre si, e com as plataformas online, é imperativo que compreendam o que está a ser comunicado.
 \par 
 Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \gls{HL7} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade como uma norma flexível na troca de informação clínica estruturada.
 
 
-Reconhecendo dos desafios da norma \gls{HL7}, a organização que definiu o \gls{HL7} desenvolveu a sua própria norma denominada de \gls{FHIR} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizada com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações mobile ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
+A organização que definiu o \gls{HL7} desenvolveu a sua própria norma denominada de \gls{FHIR} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizada com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações mobile ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
 
-
-\subsubsection{HL7}
+\textbf{HL7}
 
 A norma HL7 define normas relacionadas, para troca, integração, partilha e requisição de  registos clínicos em formato eletrónico\cite{hl7}.
 O HL7 encontra-se atualmente na sua versão 3\cite{corepointhealth}, mas a versão 2 do \gls{HL7} ainda é bastante utilizada, especialmente em sistemas antigos. 
@@ -278,7 +263,7 @@ A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado aos o
 O modelo \gls{RIM} é construído à volta de 5 conceitos principais:
 \begin{itemize}
   \item Todo o acontecimento é um ato
-  \item Atos estão relacionados com uma relação de ação (ActRelationship)
+  \item Atos estão relacionados com um participante
   \item A participação define o contexto de um ato
   \item Os participantes têm um papel/cargo
   \item Cada cargo/papel é desempenhado por uma entidade
@@ -295,7 +280,7 @@ Na figura \ref{f:rimclass} podemos visualizar a class \gls{RIM} da versão 3 do 
 \end{figure}
 
 
-\subsection{Google Fit}
+\subsubsection{Google Fit}
 
 O Google Fit é uma aplicação móvel e uma \gls{API} \gls{REST} desenvolvido pela Google, na área do fitness. Permite aos utilizadores armazenar e aceder a informação relativa à sua condição física. Apesar de não ser desenvolvido com o objetivo de controlar os dados de saúde dos pacientes, pode ser visto como uma plataforma que cumpre alguns desses objetivos.
 \par 
@@ -314,7 +299,7 @@ Como podemos perceber existe dois métodos principais de interagir com a platafo
 
 A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{API} passa a ser possível a criação de aplicações para outras plataformas que não o Android, tornando o Google Fit apelativo para um maior número de utilizadores. Esta \gls{API} está protegida pelo protocolo de autorização OAuth 2.0 e utiliza para formato dos dados \gls{JSON}\cite{googlegetstarted}. 
 
-\section{Análise Comparativa}
+\subsubsection{Análise Comparativa}
 
 Foi ainda feito um breve estudo em relação a outros três possíveis backends, não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}.
 \begin{table}[H]
@@ -344,5 +329,14 @@ A complexidade do \gls{FHIR} é bastante grande sendo uma desvantagem, apesar de
 Em relação ao Google Fit tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente a extensibilidade do modelo de dados é possível. O modelo de dados é extensível mas existe uma limitação quanto ao modelo de dados, apenas podem ser utilizados como tipo de dados o int e o float, ou seja, não existe o tipo objeto e array.
 \par 
 O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o Google Fit não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} Schemas definidos que podem ser utilizados para validar a entrada dos dados no backend. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} schemas podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
+
+
+%A informação a ser recolhida tinha como foco o \gls{ECG} e a frequência cardíaca, como hipótese para isso tínhamos o \gls{VJ} que tem como funcionalidades ler o sinal \gls{ECG}, frequência cardíaca, nível bateria do dispositivo, etc.
+%A comunicação entre dispositivos móveis e backend será por Web services e para formato de dados será o JSON. Esta escolha foi feita pois desta maneira não vamos estar a limitar a plataforma que será protegida pelo protocolo de autorização OAuth. 
+
+
+% \subsubsection{Vital Jacket}
+
+%O \gls{VJ} é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica, que permite uma monitorização contínua durante 72 horas seguidas. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como \gls{ECG}, frequência cardíaca e ainda acelerómetro. É uma t-shirt confortável e fácil de vestir que vem equipada com um dispositivo que recolhe dados e os permite partilhar via Bluetooth em tempo real para os dispositivos móveis. \cite{vj}
 
 \cleardoublepage
