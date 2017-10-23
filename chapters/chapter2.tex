@@ -1,9 +1,5 @@
 \chapter{Aplica\c c\~oes mHealth e as suas arquiteturas}
 
-%2.3- Padrões de arquitetura em aplicações móveis --> 2.6
-
-%2.4- O backend nas aplicações de mHealth
-%--> parte do 2.7, 2.8. 2.9 e 2.10
 \section{eHealth: tecnologias de informação ao serviço da saúde}
 
 Nos dias que correm toda a sociedade tem dispon\'ivel muito facilmente a possibilidade de trocar informa\c c\~ao entre si, podendo permanecer numa constante troca de informa\c c\~ao.  Com esta realidade tem surgido novas tecnologias, ferramentas e aparelhos que facilitam, tendo em conta a sua implementa\c c\~ao e uso, o fortalecimento da informa\c c\~ao. 
@@ -124,13 +120,21 @@ Para comunicação entre dispositivos móveis e sensores será utilizada a tecno
 Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os sensores também têm formas de se comunicar, como foco desta dissertação é receber dados de sensores para os guardar num backend capaz de agrupar estes dados corretamente, a tecnologia responsável por esta função será o Bluetooth.
 Bluetooth é uma tecnologia criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conetar os dispositivos à distancia, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
 Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os smartphones têm esta tecnologia.
+\par 
+Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor bluetooth tem um conjunto de perfis bluetooth a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
+Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o Bluetooth de uma maneira normalizada. 
+\par 
+Foi criado um consórcio Bluetooth \gls{SIG} composto por empresas como Nokia, Ericsson, Intel, IBM e Toshiba, com o objetivo de desenvolver padrões que garantissem o uso e a interoperabilidade da tecnologia nos mais variados dispositivos.
+\par
+A Bluetooth \gls{SIG} lançou um perfil denominado de \gls{HDP}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia bluetooth. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \gls{SPP} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
+
 
 
 \subsubsection{Web Services}
 
 Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela internet por Web Services.
 
-Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. O que acontece é uma interoperabilidade, apesar de os Web Services por exemplo serem desenvolvidos em Java, estes podem ser utilizados, ou seja, os pedidos podem ser efetuados através de um cliente que esteja a correr em Python.
+Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os Web Services desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python.
 
 O único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas mais tarde começou a poder ser utilizado o \gls{HTML} e o \gls{JSON} depois do aparecimento do \gls{REST} \cite{wsjakob}.
 
@@ -185,7 +189,7 @@ Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web S
 
 \subsection{O desenvolvimento de uma aplica\c c\~ao mHealth}
 
-Uma pesquisa desenvolvida pela PricewaterhouseCoopers descobriu que as solu\c c\~oes de mHealth que abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
+As solu\c c\~oes de mHealth abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
 \par
 Apesar das aplica\c c\~oes mHealth estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido, para contrariar esta realidade foi gerada uma discuss\~ao para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao mHealth.
 \par
@@ -289,7 +293,7 @@ De seguida mostro uma vista geral da plataforma Google Fit.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.9\textwidth]{imgs/googleFitOverview.PNG}
+  \includegraphics[width=0.7\textwidth]{imgs/googleFitOverview.png}
   \caption[Vista geral da plataforma Google Fit]{Vista geral da plataforma Google Fit \cite{googlefit}}
   
   \label{f:googleFitOverview}
@@ -308,7 +312,7 @@ Foi ainda feito um breve estudo em relação a outros três possíveis backends,
 \label{tabelaComparativa}
 \begin{tabular}{|>{\columncolor[HTML]{C0C0C0}}c |c|c|c|c|c|c|}
 \hline
-\textbf{\backslashbox{Requisito}{Plataforma}}                                                                        & \cellcolor[HTML]{C0C0C0}\textbf{OMH} & \cellcolor[HTML]{C0C0C0}\textbf{FHIR} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Google\\ Fit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Health\\ Vault\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Apple\\ Research\\ Kit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Research\\ Stack\end{tabular}} \\ \hline
+\textbf{\backslashbox{Requisito}{Plataforma}}                                                                        & \cellcolor[HTML]{C0C0C0}\textbf{OMH} & \cellcolor[HTML]{C0C0C0}\textbf{FHIR} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Google\\ Fit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Health\\ Vault\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Apple\\ Research\\ Kit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}} Research\\ Stack \end{tabular}}  \\ \hline
 
 \textbf{Dados do Paciente} & - & X & - & X & X & X \\ \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & X & - & X & - & - & - \\ \hline
@@ -338,5 +342,9 @@ O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o Google Fit não tem a p
 % \subsubsection{Vital Jacket}
 
 %O \gls{VJ} é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica, que permite uma monitorização contínua durante 72 horas seguidas. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como \gls{ECG}, frequência cardíaca e ainda acelerómetro. É uma t-shirt confortável e fácil de vestir que vem equipada com um dispositivo que recolhe dados e os permite partilhar via Bluetooth em tempo real para os dispositivos móveis. \cite{vj}
+
+%How to establish a Bluetooth connection with your device?
+%The device works as a slave so it accepts Bluetooth connections. You can make Bluetooth connections with your smartphone, portable computer or any other Bluetooth enabled device using RFcomm Protocol (SPP – Serial Port Profile).
+%http://www.sdk.vitaljacket.com/?page_id=13
 
 \cleardoublepage
