@@ -1,10 +1,10 @@
-\chapter{Avaliação exploratória}
+\chapter{Avaliação exploratória de soluções para o backend}
 
 \section{Cenário-tipo selecionado}
 
 %explicar qual foi o cenário selecionado para experimentar em cada plataforma (deve ser uma parte dos requisitos gerais do capítulo 3)
-Antes de avançar com o desenvolvimento do sistema foi necessário escolher um backend para dar suporte tanto à aplicação móvel, como à aplicação web. Para isso foi desenvolvido um cenário idêntico com ambos os backends em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos entre eles. \par 
-O cenário escolhido para esta avaliação exploratória foi o simples ato de recolher a frequência cardíaca do sensor do VitalJacket e guardar no backend em estudo, para posteriormente visualizar um simples histórico dos dados inseridos. Na figura \ref{f:study-overview} temos uma simples visão das várias partes envolvidas nesta avaliação.
+Antes de avançar com o desenvolvimento do sistema foi necessário escolher um backend para dar suporte tanto à aplicação móvel, como à aplicação web. Para isso foi desenvolvido um cenário idêntico com os backends em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos entre eles. \par 
+O cenário escolhido para esta avaliação exploratória foi o simples ato de recolher a frequência cardíaca do sensor do VitalJacket e guardar no backend em estudo, para posteriormente visualizar um simples histórico dos dados inseridos. Na figura \ref{f:study-overview} temos uma simples visão das várias partes envolvidas nesta avaliação exploratória.
 
 \begin{figure}[H]
   \centering
@@ -16,15 +16,15 @@ O cenário escolhido para esta avaliação exploratória foi o simples ato de re
 
 A escolha de um backend para a solução era um ponto importante. Das várias frameworks disponíveis para um possível backend foram selecionadas três para ser desenvolvido o cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e Google Fit. \par
 
-Para utilizar cada uma destas frameworks, foi desenvolvida uma aplicação móvel, bastante simples, a aplicação móvel tinha várias funcionalidades. Entre elas temos:
+Para utilizar cada uma destas frameworks, foi desenvolvida uma aplicação móvel, bastante simples, a aplicação móvel tinha várias funcionalidades. Entre elas temos várias funcionalidades-chave:
 \begin{itemize}
-  \item Seleccionar o dispositivo com os sensores
+  \item Selecionar o dispositivo com os sensores
   \item Efetuar Login na respetiva framework
   \item Guardar leituras de frequência cardíaca num determinado segundo
   \item Visualizar as leituras inseridas
 \end{itemize}
 
-Tendo em conta que a mesma aplicação conseguia utilizar os três backends distintos, esta seleção era feita tendo em conta o tipo de login efetuado.
+Tendo em conta que a mesma aplicação conseguia utilizar os três backends distintos, esta seleção era feita tendo em conta o tipo de login efetuado. De seguida apresentamos as experiências exploratórias com cada plataforma.
 
 
 \section{Implementação exploratória: Open mHealth}
@@ -32,8 +32,9 @@ Tendo em conta que a mesma aplicação conseguia utilizar os três backends dist
 %http://www.openmhealth.org/documentation/#/store-data/storage-overview
 %http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
-Relativamente a este backend para solução do problema proposto temos à nossa disponibilidade um serviço denominado de \gls{DSU} que disponibiliza uma \gls{API} \gls{REST} denominada de ''dataPoint API''. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização. O servidor de autorização gere a concessão de tokens de acesso. \cite{omhstorage} \par
-Com a introdução desta franework no caso de estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}.
+Relativamente a este backend para solução do problema proposto disponível um serviço denominado de \gls{DSU} que disponibiliza um servidor de dados servido por uma \gls{API} \gls{REST} denominada de ''dataPoint API''. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de tokens de acesso. \cite{omhstorage} \par
+Com a introdução desta franework no caso de estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}. \par
+Foi então utilizado desta framework o servidor de dados (e alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
 
 \begin{figure}[H]
   \centering
@@ -44,12 +45,46 @@ Com a introdução desta franework no caso de estudo exploratório ficamos com u
 \end{figure}
 
 \subsection{Implementação adicional}
-
-Foi adicionado ao processo de inserção dos denominados ''dataPoint'' que é um documento que representa e deve estar em conformidade com um dos tipos de dados disponíveis denominados ''dataschemas''. Apesar dos ''dataschemas'' especificarem um formato de dados, esta validação relativa ao formato de dados não estava a ser efetuada. Um ''datapoint'' é composto por um cabeçalho onde também é definido o tipo de dados associado, e por um corpo que é formatado através do ''dataschema'' associado. Foi então feita esta validação adicional, quando o datapoint chega para ser guardado, é validado para verificar se está formatado convenientemente e só depois guardado. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
+\label{additionalImpl-omh}
+Um ''dataPoint'' é um documento \gls{JSON} que representa uma amostra de um determinado tipo de dados e que deve estar compatível com um tipo de dados(''dataschema'') disponível.
+No processo de criação de um novo ''dataPoint'' foi adicionada uma validação deste novo documento com o tipo de dados(''dataschema'') respetivo.
+Apesar dos ''dataschemas'' especificarem um formato de dados, esta validação relativa ao formato de dados não estava a ser efetuada. Um ''datapoint'' é composto por um cabeçalho onde também é definido o tipo de dados associado, e por um corpo que é formatado através do ''dataschema'' associado. Foi então feita esta validação adicional, quando o datapoint chega para ser guardado, é validado para verificar se está formatado convenientemente e só depois guardado. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
 \par 
 
 
-A \gls{OMH} tem definido um conjunto de ''data schemas'' \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Este conjunto de schemas pode ser estendido. Ao criar um novo tipo de dados(um novo ''data schema'') podemos reutilizar outros já existentes, criando um ''data schema'' que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros ''data schemas'' normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta experimentação foi conseguida com sucesso e foi uma coisa que saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber muito melhor a framework. \par 
+A \gls{OMH} tem definido um conjunto de ''data schemas'' \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo tipo de dados(um novo ''data schema'') podemos reutilizar outros já existentes, criando um ''data schema'' que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros ''data schemas'' normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso e foi uma coisa que saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber melhor a framework. \par 
+
+
+\begin{table}[H]
+\centering
+\label{t:schemaslist}
+\begin{tabularx}{1\textwidth}{p{4cm} p{10.7cm}}
+ \textbf{Esquema de }  &   \textbf{Nome do ficheiro e Descrição do esquema de dados}  \\
+ \textbf{dados (dataschema)} & \\
+\hline
+Frequência cardíaca & \textit{heart-rate-1.0.json} \\ 
+& Este esquema de dados representa a frequência cardíaca de uma pessoa e sua relação com a atividade física. O esquema pode ser usado para uma única medição de frequência cardíaca, podendo ser efetuadas várias medições\\ \hline
+
+Relação com a atividade & \textit{temporal-relationship-to-physical-activity-1.0.json} \\
+física& Este esquema de dados representa a relação temporal de uma colheita de dados com a atividade física (por exemplo, em repouso, durante o exercício, antes do exercício). \\ \hline
+
+Período de tempo & \textit{time-frame-1.0.json} \\
+& Este esquema de dados permite que um período de tempo específico seja definido como uma hora exata ou um intervalo de tempo. \\ \hline
+
+Pressão arterial & \textit{blood-pressure-2.0.json} \\ 
+& Este esquema de dados representa a pressão arterial de uma pessoa como uma combinação da pressão arterial sistólica com a pressão arterial diastólica. Permite indicar se o paciente estava deitado, sentado ou parado quando a medição foi obtida. Este esquema pode ser usado para uma medição única da pressão arterial, podendo ser efetuada várias medições. \\ \hline
+
+Temperatura do corpo & \textit{body-temperature-2.0.json} \\
+& Este esquema de dados representa a temperatura corporal e o local do corpo onde foi efetuada a medição. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições. \\ \hline
+
+Glicose no sangue & \textit{blood-glucose-2.0.json} \\ 
+& Este esquema de dados representa o nível de glicose no sangue de uma pessoa, e o tipo de amostra do corpo utilizada para efetuar a medição. É ainda apresentada a relação temporal relativamente à refeição e ao sono. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições.
+                 
+\end{tabularx}
+\caption{Breve descrição dos casos de utilização da aplicação de colheita de dados}
+\end{table}
+
+
 
 \subsection{Dificuldades e Adaptações}
 
@@ -110,8 +145,8 @@ Um dos pontos fracos do FHIR neste caso em concreto do Hapi-FHIR é a falta de s
 Um dos pontos fortes é saber que esta definição da \gls{API} é bastante utilizada por hospitais e clínicas.
 \subsection{Análise Comparativa}
 Tendo em conta que o produto proposto tinha como um dos objetivos guardar dados relativos ao \gls{ECG} e o Google Fit é limitado relativamente ao tipo de dados, ou seja, não suporta arrays para guardar os dados, fica logo praticamente excluído como possível escolha para o backend.
-Ficamos agora então com o Open mHealth e o FHIR, nenhum deles está apto a 100\% para ser utilizado sem qualquer alteração. Por um lado temos falhas nas duas frameworks que não contemplam todos os tipos de dados que precisam de ser guardados, como por exemplo o acelerómetro e o \gls{ECG}, apesar do \gls{FHIR} estar mais completo neste assunto.
+Ficamos agora então com o Open mHealth e o FHIR, nenhum deles está apto na totalidade para ser utilizado sem qualquer alteração. Por um lado temos falhas nas duas frameworks que não contemplam todos os tipos de dados que precisam de ser guardados, como por exemplo o acelerómetro e o \gls{ECG}, apesar do \gls{FHIR} estar mais completo neste assunto.
 Para além disto o \gls{FHIR} não contém nenhum serviço de autenticação e autorização sendo necessário utilizar um serviço externo.
-Não posso dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o Open mHealth é um projeto que foi desenvolvido com o objetivo de uniformizar os backends na área das aplicações móveis na área de saúde, vamos optar pela utilização esta framework.
+Não podemos dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o Open mHealth é um projeto que foi desenvolvido com o objetivo de uniformizar os backends na área das aplicações móveis na área de saúde, vamos optar pela utilização desta framework.
 
 \cleardoublepage
