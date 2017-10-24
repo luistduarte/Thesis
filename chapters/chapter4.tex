@@ -81,7 +81,7 @@ Glicose no sangue & \textit{blood-glucose-2.0.json} \\
 & Este esquema de dados representa o nível de glicose no sangue de uma pessoa, e o tipo de amostra do corpo utilizada para efetuar a medição. É ainda apresentada a relação temporal relativamente à refeição e ao sono. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições.
                  
 \end{tabularx}
-\caption{Breve descrição dos casos de utilização da aplicação de colheita de dados}
+\caption{Tabela com alguns dos esquemas de dados existentes da framework Open mHealth}
 \end{table}
 
 
@@ -98,7 +98,7 @@ Existe uma implementação de um projecto de código aberto com o nome Hapi-FHIR
 O projeto Hapi-FHIR tem um módulo denominado JPAServer  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor FHIR, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de ''endpoints'' \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados na backend. \par
 
 \subsection{Implementação adicional}
-O módulo utilizado tinha uma falha relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do Open mHealth).
+O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do Open mHealth).
 No JPAServer foi então desenvolvido um Intercetor que o que fazia, era verificar se o pedido efetuado era acompanhado por um token de acesso, caso isso acontecesse a validade do token era verificada pelo servidor de autorização e então em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
 \begin{figure}[H]
   \centering
@@ -114,7 +114,7 @@ As dificuldades encontradas ainda foram algumas, neste caso temos uma definiçã
 \section{Implementação exploratória: Google Fit}
 %https://developers.google.com/fit/rest/
 
-O Google Fit disponibiliza uma \gls{API} \gls{REST} que permite o armazenamento de dados. Esta \gls{API} permite a criação  de ''datasources''. Um ''datasource'' é criado por cada utilizador e representa  um conjunto de dados de um determinado tipo. Relativamente à concessão de acesso aos serviços \gls{REST} é utilizado o serviço de autenticação e autorização da Google baseado em OAuth 2.0. 
+O Google Fit disponibiliza uma \gls{API} \gls{REST} que permite o armazenamento de dados na nuvem. Esta \gls{API} permite a criação  de ''datasources''. Um ''datasource'' é criado por cada utilizador e representa  um conjunto de dados de um determinado tipo. Relativamente à concessão de acesso aos serviços \gls{REST} é utilizado o serviço de autenticação e autorização da Google baseado em OAuth 2.0. 
 \par
 O cenário objetivo foi desenvolvido com sucesso e na figura \ref{f:exp-googlefit-arch} podemos ver a arquitetura final deste caso exploratório.
 \begin{figure}[H]
@@ -131,19 +131,26 @@ Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de
 
 \section{Resultados e lições aprendidas}
 %ico: sistematizar aquilo que foi possível concluir das implementações exploratórias discutir pontos forte / fracos observados
-\subsection{Google Fit}
-Esta framework tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google.\par 
+
+\textbf{Google Fit}
+\par
+Esta framework tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google e do factos dos dados ficarem armazenados na nuvem.\par 
 O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e float. Para exemplificar como isto pode vir a ser um problema. No caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta framework não suporta arrays, tinha que ser feitos 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta framework ser da Google, o que isto quer dizer é que não é possível correr a framework de forma nativa e efetuar implementações extra sobre as já existentes.
-\subsection{Open mHealth}
+\par
+\textbf{Open mHealth}
+\par
 Como o \gls{OMH} é um projeto de código aberto um grande ponto forte é a possibilidade da implementação de novas funcionalidades poder ser efetuada com mais facilidade, como por exemplo a adição da validação dos dados inseridos. Tendo em conta que o projeto foi desenvolvido com o intuito de diminuir a ocorrência de formatos de dados próprios por cada aplicação móvel no âmbito da saúde, esta pode muito bem ser uma solução para o backend do produto proposto, dado que a possibilidade da extensibilidade dos dados também é possível através da criação de novos ''data schemas'' que são posteriormente utilizados para ser efetuada a validação dos dados inseridos.
 \par
-Uma fator menos positivo é que a framework não apresenta um modelo de dados 100\% normalizado, apesar de ter sido desenvolvido com a utilização da definição da \gls{API} do \gls{FHIR}, ou seja, foi utilizado um formato normalizado para  dar suporte ao desenvolvimento deste conjunto de modelos de dados.
-\subsection{FHIR}
-
+O conjunto de esquemas de dados criados para dar suporte à framework da \gls{OMH} foi criado utilizando referências de dados normalizados no ambiente hospitalar e clínico, uma dessas referências utilizada foi a \gls{API} do \gls{FHIR}.
+\par
+\textbf{FHIR}
+\par
 Um dos pontos fracos do FHIR neste caso em concreto do Hapi-FHIR é a falta de serviço de autenticação e autorização. Um outro ponto fraco é a inexistência de um projeto de código aberto ''oficial'', ou seja, existe bastantes possibilidades diferentes e descobrir qual poderia utilizar e da melhor maneira não foi uma coisa fácil.
 \par
 Um dos pontos fortes é saber que esta definição da \gls{API} é bastante utilizada por hospitais e clínicas.
-\subsection{Análise Comparativa}
+\par
+\textbf{Análise Comparativa}
+\par
 Tendo em conta que o produto proposto tinha como um dos objetivos guardar dados relativos ao \gls{ECG} e o Google Fit é limitado relativamente ao tipo de dados, ou seja, não suporta arrays para guardar os dados, fica logo praticamente excluído como possível escolha para o backend.
 Ficamos agora então com o Open mHealth e o FHIR, nenhum deles está apto na totalidade para ser utilizado sem qualquer alteração. Por um lado temos falhas nas duas frameworks que não contemplam todos os tipos de dados que precisam de ser guardados, como por exemplo o acelerómetro e o \gls{ECG}, apesar do \gls{FHIR} estar mais completo neste assunto.
 Para além disto o \gls{FHIR} não contém nenhum serviço de autenticação e autorização sendo necessário utilizar um serviço externo.
