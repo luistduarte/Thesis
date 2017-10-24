@@ -44,7 +44,7 @@ Na tabela seguinte temos disponível os métodos disponíveis do servidor de aut
 \subsection{Servidor de recursos (dataPoint REST API) }
 O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints. Estes dataPoints estão a ser guardados numa base de dados Mongo numa coleção com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
 Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes dataPoints são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados (dataschema) associado e definido no cabeçalho do dataPoint. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do dataPoint está de acordo com o dataschema definido no cabeçalho do mesmo. \par
-Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes dataschemas foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}.
+Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes dataschemas foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
 \subsubsection{dataschema ECG}
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/ecg.json}
@@ -163,7 +163,7 @@ A criação de um novo tipo de dados pode ser feita com a ajuda do repositório 
   \item Vai agora criar uma pasta correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e uma outra pasta dentro da criada anteriormente com o nome shouldPass.
   \item Dentro do diretório shouldPass vai ter que criar um ou vários ficheiros para ser utilizados como amostras do tipo de dados. O objetivo deste diretório é ter várias amostras válidas testando-as com o tipo de dados criado no ponto 2. Para este tutorial criei o ficheiro example.json. \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão .json
   Como criou o diretório shouldPass, pode também criar o diretório shouldFail criando também vários ficheiros para testar o tipo de dados criado. \par 
-  Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados
+  Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados.
   
   \begin{figure}[!ht]
   \centering

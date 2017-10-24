@@ -10,7 +10,7 @@ A \'area da sa\'ude cada vez mais est\'a identificada com esta realidade, as tec
 Surge então o termo ''electronic Health'' mais conhecido por eHealth, foi inicialmente utilizado por profissionais de sa\'ude, investigadores e no \^ambito acad\'emico, e est\'a aliado a cen\'arios que envolvem cuidados de sa\'ude, dispositivos eletr\'onicos e a Internet. O termo que at\'e 1999 pouco era utilizado, atualmente \'e um termo que n\~ao define unicamente a ''Medicina na Internet'', mas tamb\'em tudo aquilo que esteja relacionado com computadores e medicina \cite{ehealth}. Podemos ver o eHealth como uma designação abrangente para enquadrar a transformação digital da prestação de cuidados de saúde.
 \par A \gls{oms} define eHealth \cite{ehealth_oms} como uma ''utiliza\c c\~ao rent\'avel e segura das tecnologias da informa\c c\~ao e da comunica\c c\~ao no apoio \`a sa\'ude e \`as \'areas relacionadas com a sa\'ude, incluindo os servi\c cos de sa\'ude, vigil\^ancia na sa\'ude, literatura na sa\'ude, educa\c c\~ao na sa\'ude e investiga\c c\~ao na \'area da sa\'ude.''
 \par
-Uma defini\c c\~ao apresentada em \cite{ehealth}: ''eHealth \'e uma \'area emergente na interce\c c\~ao da inform\'atica m\'edica, sa\'ude p\'ublica e neg\'ocios, referindo-se aos servi\c cos de sa\'ude e entrega de informa\c c\~ao atrav\'es da Internet ou tecnologias semelhantes. Pensando de forma abrangente, o termo n\~ao \'e s\'o um desenvolvimento t\'ecnico, mas tamb\'em uma nova forma de pensar, uma atitude, um compromisso para a rede, um pensamento global, para melhorar o cuidado da sa\'ude, local, regional e global com o uso das tecnologias da informa\c c\~ao e da comunica\c c\~ao''.
+Uma defini\c c\~ao apresentada em \cite{ehealth}: ''eHealth \'e uma \'area emergente na interce\c c\~ao da inform\'atica m\'edica, sa\'ude p\'ublica e neg\'ocios, referindo-se aos servi\c cos de sa\'ude e entrega de informa\c c\~ao atrav\'es da Internet ou tecnologias semelhantes. Pensando de forma abrangente, o termo n\~ao \'e s\'o um desenvolvimento t\'ecnico, mas tamb\'em uma nova forma de pensar, uma atitude, um compromisso para a rede, um pensamento global, para melhorar o cuidado da sa\'ude local, regional e global com o uso das tecnologias da informa\c c\~ao e da comunica\c c\~ao''.
 \par
 Alguns requisitos tamb\'em s\~ao colocados \cite{ehealth} para um sistema ser considerado eHealth, entre eles temos: efici\^encia; melhoria ao n\'ivel de qualidade do cuidado da sa\'ude; sistema baseado em evid\^encias; incentivar uma nova rela\c c\~ao entre o utente e o profissional de sa\'ude; de f\'acil uso.
 \par
@@ -110,14 +110,12 @@ A utilização da cache do dispositivo pode ser muito importante para aumentar o
 
 
 \subsection{Comunicação do dispositivo}
-A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração.
-\par
-Para comunicação entre dispositivos móveis e sensores será utilizada a tecnologia Bluetooth para cumprir o objetivo de selecionar os dispositivos e ler os dados recolhidos por estes.
+A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. Para comunicação entre dispositivos móveis e sensores temos a tecnologia Bluetooth.
 
 
 \subsubsection{Bluetooth}
-Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os sensores também têm formas de se comunicar, como foco desta dissertação é receber dados de sensores para os guardar num backend capaz de agrupar estes dados corretamente, a tecnologia responsável por esta função será o Bluetooth.
-Bluetooth é uma tecnologia criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conectar os dispositivos à distancia, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
+Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os sensores também têm formas de se comunicar. %como foco desta dissertação é receber dados de sensores para os guardar num backend capaz de agrupar estes dados corretamente, a tecnologia responsável por esta função será o Bluetooth.
+O bluetooth é uma tecnologia que foi criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conectar os dispositivos à distancia, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
 Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os smartphones têm esta tecnologia.
 \par 
 Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor bluetooth tem um conjunto de perfis bluetooth a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
@@ -130,13 +128,13 @@ A Bluetooth \gls{SIG} lançou um perfil denominado de \gls{HDP}, foi um perfil c
 
 
 \subsubsection{Web Services}
-Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela internet por Web Services. Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os Web Services desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python. O único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas mais tarde começou a poder ser utilizado o \gls{HTML} e o \gls{JSON} depois do aparecimento do \gls{REST} \cite{wsjakob}.
+Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela Internet por Web Services. Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os Web Services desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python. O único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas mais tarde começou a poder ser utilizado o \gls{HTML} e o \gls{JSON} depois do aparecimento do \gls{REST} \cite{wsjakob}.
 
 
 
 \subsubsection{ REST Web Services}
 O \gls{REST} é um estilo de arquitetura que utiliza o \gls{HTTP} para fazer chamadas entre máquinas e tem como objetivo fundamental facultar serviços para ajudar no desenvolvimento de aplicações \cite{whatisrest}.
-\gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \gls{URI}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas acções \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro acções podem ser mapeadas para as acções típicas de dados \gls{CRUD}. A representação de cada recurso identificado por um URI, pode variar, podendo ser represendado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
+\gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \gls{URI}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas ações \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro acções podem ser mapeadas para as ações típicas de dados \gls{CRUD}. A representação de cada recurso identificado por um URI, pode variar, podendo ser representado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
 
 
 
@@ -154,7 +152,7 @@ Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{imgs/vertx_arch.png}
-  \caption[Arquitetura simples do Vert.x]{Arquitetura simples do Vert.x \cite{vertx-study}}
+  \caption[Arquitetura simples do Vert.x]{Arquitetura simples do Vert.x (Adaptado de\cite{vertx-study})}
   \label{f:vertxarch}
 \end{figure}
 
@@ -168,9 +166,7 @@ O \gls{JSON} é um formato de dados baseado em texto, é leve e utilizado para t
 
 
 \section{O backend nas aplicações de mHealth}
-O termo backend é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. É onde está a ser executado por exemplo a base de dados, \gls{API}s \gls{REST}, etc.
-
-Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web Services para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}.
+O termo backend é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web Services para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de Web Services. Do lado do servidor podemos ter sistemas de monitorização remotos que podem entrar em contacto com o utente ou médico em estado de emergência.
 
 \begin{figure}[H]
   \centering
@@ -182,7 +178,7 @@ Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web S
 
 
 
-\subsection{O desenvolvimento de uma aplica\c c\~ao mHealth}
+\subsection{O backend no desenvolvimento de uma aplica\c c\~ao mHealth}
 As solu\c c\~oes de mHealth abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
 \par
 Apesar das aplica\c c\~oes mHealth estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido, para contrariar esta realidade foi gerada uma discuss\~ao para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao mHealth.
@@ -209,8 +205,8 @@ Para dar suporte à aplicação móvel é necessário a escolha de um backend ro
 \subsubsection{Open mHealth}
 A \gls{OMH} foi fundada em 2011 e descreve-se a si própria como "uma start-up sem fins lucrativos que quebra as barreiras de integração trazendo significado aos dados clínicos digitais na área da saúde" \cite{omhabout}. A \gls{OMH} trabalha com especialistas da área da saúde e com programadores com o objetivo de tornar os dados de saúde digitais úteis e possíveis de utilizar em diversas plataformas. \par 
 Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o Open mHealth todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor.
-
-\begin{figure}[!ht]
+\newpage
+\begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/openmharch.png}
   \caption[Arquitetura mHealth: Própria(''afunilada'') vs Open]{Arquitetura mHealth: Própria(''afunilada'') vs Open. \cite{omharticle}}
@@ -228,7 +224,7 @@ A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de e
 \label{f:exemplo}
 \end{figure}
 \newpage
-\begin{figure}[!ht]
+\begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/hr-jsonschema.json}
 \caption[\gls{JSON} schema que define o tipo de dados para a frequência cardíaca]{\gls{JSON} schema que define o tipo de dados para a frequência cardíaca \cite{omhheartrate}}
 \label{f:hrjsonschema}
