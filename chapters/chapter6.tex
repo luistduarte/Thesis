@@ -5,7 +5,16 @@
 % podem ser outras as subsecções; estas são ilustrativas. A idei é discutir as opções concretas tomadas para a implementação e os artifacts criados
 \subsection{Servidor de Autorização e Autenticação}
 O servidor de autenticação e autorização disponibiliza uma \gls{API} para criação de novos utilizadores e solicitação de tokens de acesso relativamente a várias aplicações. Este serviço utiliza a framework Spring, mais concretamente a Spring Security \cite{spring-framework}. \par 
-No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os tokens de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. Para a base de dados relacional a escolha podia por exemplo ser efetuada entre o MySQL \cite{mysql} e PostgreSQL \cite{postgresql}, neste caso foi utilizado o PostgreSQL, o modelo de dados relacional está representado na Figura \ref{f:auth-diagram}. \par 
+No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os tokens de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. 
+Relativamente à base de dados não relacional os utilizadores finais são guardados numa coleção do Mongo, a coleção é denominada por ''endUser''. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}
+
+\begin{figure}[H]
+\inputminted[fontsize=\scriptsize]{json}{code/endUser.json}
+\caption[Formato do documento de um utilizador final]{Formato do documento de um utilizador final}
+\label{f:endUserCode}
+\end{figure}
+
+Para a base de dados relacional a escolha podia por exemplo ser efetuada entre o MySQL \cite{mysql} e PostgreSQL \cite{postgresql}, neste caso foi utilizado o PostgreSQL, o modelo de dados relacional está representado na Figura \ref{f:auth-diagram}. \par 
 Na tabela ''oauth\_client\_details'' estão guardadas todas as informações relativas à aplicação como por exemplo a sua identificação, a chave secreta, os tipos de autorização, etc. Relativamente à tabela ''oauth\_access\_token'' estão guardados os tokens de acesso por utilizador, relativamente a uma aplicação. Cada token de acesso tem relacionado a ele  um refresh token que está guardado numa tabela diferente, na tabela ''oauth\_refresh\_token''.
 
  \begin{figure}[H]
@@ -16,28 +25,21 @@ Na tabela ''oauth\_client\_details'' estão guardadas todas as informações rel
   \label{f:auth-diagram}
 \end{figure}
 
-
-Os utilizadores finais são guardados numa coleção do Mongo, a coleção é denominada por ''endUser''. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}
-
-\begin{figure}[H]
-
-\inputminted[fontsize=\scriptsize]{json}{code/endUser.json}
-\caption[Formato do documento de um utilizador final]{Formato do documento de um utilizador final}
-\label{f:endUserCode}
-\end{figure}
 \subsubsection{API REST}
-\begin{itemize}
-    \item domain:port/users
-        \begin{itemize}
-            \item Serviço POST, para criação de novos utilizadores
-            \item Recebe um JSON composto por dois campos um ''username'' e ''password''
-        \end{itemize}
-    \item domain:port/oauth/token
-        \begin{itemize}
-            \item Serviço POST, utilizado para efetuar o pedido de um novo token de acesso
-            \item Recebe por parâmetros o ''username'', ''password'' e o ''grant\_type''
-        \end{itemize}
-\end{itemize}  
+Na tabela seguinte temos disponível os métodos disponíveis do servidor de autorização e autenticação.
+\begin{table}[H]
+\label{t:apirest-auth}
+\centering
+\begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
+\multicolumn{2}{l}{\textbf{domain:port/users}}  \\ \hline 
+ & Serviço POST, para criação de novos utilizadores \\
+ & Recebe um JSON composto por dois campos um ''username'' e ''password'' \\ \hline
+\multicolumn{2}{l}{\textbf{domain:port/oauth/token}} \\ \hline
+ & Serviço POST, utilizado para efetuar o pedido de um novo token de acesso \\
+ & Recebe por parâmetros o ''username'', ''password'' e o ''grant\_type'' \\ \hline
+\end{tabularx}
+\caption{Tabela com a API REST do servidor de autorização e autenticação}
+\end{table}
 
 \subsection{Servidor de recursos (dataPoint REST API) }
 O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints. Estes dataPoints estão a ser guardados numa base de dados Mongo numa coleção com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
@@ -51,32 +53,35 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
 \end{figure}
 
 \subsubsection{API REST}
-\begin{itemize}
-    \item domain:port/dataPoints
-        \begin{itemize}
-            \item Serviço POST, para criação de novos dataPoints
-            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
-            \item Recebe um documento JSON que constituído por um cabeçalho e um corpo
-        \end{itemize}
-    \item domain:port/dataPoints/id
-        \begin{itemize}
-            \item Serviço DELETE, utilizado para efetuar a eliminação de um dataPoint
-            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
-            \item O id do dataPoint tem que ser referido no url
-        \end{itemize}
-    \item domain:port/dataPoints/id
-        \begin{itemize}
-            \item Serviço GET, utilizado para efetuar a consulta de um dataPoint
-            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
-            \item O id do dataPoint tem que ser referido no url
-        \end{itemize}
-    \item domain:port/dataPoints/caregiver
-        \begin{itemize}
-            \item Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado tipo de um utilizador em específico
-            \item No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado
-            \item Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'', ''schema\_version'', ''user\_id'' e o ''CAREGIVER\_KEY''
-        \end{itemize}
-\end{itemize}  
+
+\begin{table}[H]
+\label{t:apirest-data}
+\centering
+\begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
+\multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}}  \\ \hline 
+ & Serviço POST, para criação de novos dataPoints \\
+ & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
+\multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
+ & Serviço DELETE, utilizado para efetuar a eliminação de um dataPoint \\
+ & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & O id do dataPoint tem que ser referido no url \\ \hline
+ \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
+ & Serviço GET, utilizado para efetuar a consulta de um dataPoint \\
+ & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & O id do dataPoint tem que ser referido no url \\ \hline
+ \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
+ & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado tipo de um utilizador em específico \\
+ & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'', ''schema\_version'', ''user\_id'' e o ''CAREGIVER\_KEY'' \\ \hline
+ \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
+ & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado esquema de dados \\
+ & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'' e o ''schema\_version'' \\ \hline
+\end{tabularx}
+\caption{Tabela com a API REST do servidor de recursos}
+\end{table}
+
 
 Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os dataPoints inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do Mongo.
 
