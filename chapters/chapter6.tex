@@ -26,6 +26,7 @@ Na tabela ''oauth\_client\_details'' estão guardadas todas as informações rel
 \end{figure}
 
 \subsubsection{API REST}
+\label{l:restapiAUTH}
 Na tabela seguinte temos disponível os métodos disponíveis do servidor de autorização e autenticação.
 \begin{table}[H]
 \label{t:apirest-auth}
@@ -53,6 +54,7 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
 \end{figure}
 
 \subsubsection{API REST}
+\label{l:restapiRESOURCES}
 
 \begin{table}[H]
 \label{t:apirest-data}
@@ -149,45 +151,77 @@ O projeto tem um ficheiro por defeito designado por "build.gradle", que é o loc
 \label{t:defaultconfigdependency}
 \end{table}
 
-Relativamente às dependências temos que ter em atenção que existe duas dependências em especifico que tiveram que ser importadas manualmente. Uma delas é um \gls{SDK} para android (BioLib) \footnote{http://www.sdk.vitaljacket.com/} que disponibiliza uma biblioteca para a conexão a um dispositivo VitalJacket e facilita processamento e a receção dos dados pela aplicação. Uma outra biblioteca que foi utilizada foi o ''AChartEngine'' \footnote{https://github.com/ddanny/achartengine} que é uma biblioteca para android que permite o desenho de gráficos.
+Relativamente às dependências temos que ter em atenção que existe duas dependências em especifico que tiveram que ser importadas manualmente. Uma delas é um \gls{SDK} para android (BioLib) \footnote{http://www.sdk.vitaljacket.com/} que disponibiliza uma biblioteca para a conexão a um dispositivo VitalJacket e facilita o processamento e a receção dos dados pela aplicação. Uma outra biblioteca que foi utilizada foi o ''AChartEngine'' \footnote{https://github.com/ddanny/achartengine} que é uma biblioteca para android que permite o desenho de gráficos.
+
+
+
 
 \subsection{Tecnologias integradas e fontes de dados}
+A aplicação móvel está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, login e acesso aos dados. O serviço de recursos é utilizado para guardar todas as medições efetuadas e também para as consultar posteriormente.\par 
+Os dados estão a ser recolhidos através do VitalJacket que é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como o \gls{ECG}, frequência cardíaca e o acelerómetro. A comunicação entre o dispositivo móvel e o sensor é efetuada utilizando o \gls{SDK} para android da biblioteca da BioLib utilizando o perfil de bluetooth \gls{SPP}.
+
+
+
+
 \subsection{Componentes da aplicação Android}
+
+Relativamente às componentes utilizados, relativamente à comunicação com as \gls{REST} \gls{API} foi utilizado as Async Tasks\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a thread da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
+
+
+
 \subsection{Interações suportadas }
 Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar diferentes sessões de medições de dados identificando a relação temporal com a atividade física, todas as funcionalidades que tínhamos como objetivo implementar foram implementadas.
 \par
-\textbf{Antes ou depois de efetuar o login}
+\textbf{Menu de Lateral de Navegação}
 \par
-O participante ainda antes de efetuar o login pode alterar algumas opções de configuração, entre elas temos: o dispositivo ao qual se irá conectar (Figura \ref{f:devicesettings}), os tipos de dados que são para recolher e a sua relação temporal em relação à atividade física(Figura \ref{f:recordsettings}).
+Com este Menu o participante pode efetuar o registo e efetuar o Login na aplicação (Figura \ref{f:leftpannel}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.3\textwidth]{imgs/left.png}
+\caption[Menu lateral de Navegação]{Menu lateral de Navegação}
+\label{f:leftpannel}
+\end{figure}
 \par
 
-
-
-
-\textbf{Antes de efetuar o login}
+\textbf{Atividade Principal}
 \par
-Para isso então temos como atividade Principal uma lista de sessões que à primeira vista aparece vazia. Ela aparece vazia (Figura \ref{f:noLogin}), pois o Login tem que ser Efetuado. 
-
-
-
-Para ser efetuado o Login pode ser de duas maneiras diferentes (Figura \ref{f:canLogin}): Iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login.
-
-
-
-Caso não tenha uma conta para acesso esta pode ser criada utilizando menu lateral (Figura \ref{canLogin}). 
-
-
-
-Para efetuar a criação da conta tem que indicar um utilizador e password, o utilizador tem que estar disponível (Figura \ref{f:createaccount}). 
-
-
-Pode então proceder ao Login através da atividade desenvolvida para o Login\ref{f:dologin}.
+O participante antes de efetuar Login tem a atividade Principal praticamente vazia. Pode aceder ao menu lateral (Figura \ref{f:leftpannel}), ou às configurações (Figura \ref{f:seesettings}).
 \par
-\textbf{Depois de efetuar o login}
-\par
-Depois de o login estar estabelecido, o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.3\textwidth]{imgs/seesettings.png}
+\caption[Opção na atividade principal para abrir as configurações]{Opção na atividade principal para abrir as configurações}
+\label{f:seesettings}
+\end{figure}
 
-A qualquer momento o participante pode verificar as medições efetuadas relativas a cada sessão \ref{f:onreadSession}. Pode ser feito o logout no menu lateral esquerdo e login novamente com o mesmo participante ou com outro diferente.
+\textbf{Atividade de Configurações}
+Na atividade de configurações (Figura \ref{f:settings}) temos a possibilidade de: escolher o dispositivo que vai ser utilizado e ao qual se irá conectar; escolher tanto os tipos de dados que são para recolher como a sua relação temporal em relação à atividade física na altura que a medição está a ser efetuada.
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.7\textwidth]{imgs/settings.png}
+\caption[Menu de Configurações e as respetivas opções de configuração]{Menu de Configurações e as respetivas opções de configuração}
+\label{f:settings}
+\end{figure}
+\par
+\textbf{Atividade de Registo}
+O participante pode ainda não ter uma conta criada, mas a possibilidade de criar uma conta existe na aplicação e está disponível através do menu lateral. No processo de criação de uma nova conta o participante tem que escolher um utilizador que ainda não tenha sido utilizado e escolher uma password para essa conta de utilizador(Figura \ref{f:createaccount}). 
+\par
+\textbf{Atividade para efetuar o Login}
+\par
+Esta atividade pode ser chamada de duas duas maneiras diferentes: ao iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login no menu lateral.
+\par
+\textbf{Atividade associada a uma nova sessão de leitura}
+\par
+Depois de efetuar o login o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
+\par
+\textbf{Atividade Relativa a uma sessão}
+\par
+
+Depois do participante ter entrado na aplicação com a sua conta pode visualizar as medições relativas a uma sessão, para isso basta clicar numa das sessões que compõem a lista. Nesta atividade pode visualizar os dados relativos a cada tipo de medição, entre eles a frequência cardíaca, \gls{ECG} e acelerómetro, para isso tem disponível três diferentes separadores para mudar de tipo de medição.
+
+
+
 
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
