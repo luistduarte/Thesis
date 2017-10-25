@@ -171,57 +171,78 @@ Relativamente às componentes utilizados, relativamente à comunicação com as 
 
 \subsection{Interações suportadas }
 Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar diferentes sessões de medições de dados identificando a relação temporal com a atividade física, todas as funcionalidades que tínhamos como objetivo implementar foram implementadas.
-\par
-\textbf{Menu de Lateral de Navegação}
-\par
-Com este Menu o participante pode efetuar o registo e efetuar o Login na aplicação (Figura \ref{f:leftpannel}).
 
+
+\subsubsection{Menu Lateral de Navegação}
+Com este Menu o participante pode efetuar o registo e efetuar o Login na aplicação (Figura \ref{f:leftpannel}).
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/left.png}
 \caption[Menu lateral de Navegação]{Menu lateral de Navegação}
 \label{f:leftpannel}
 \end{figure}
-\par
 
-\textbf{Atividade Principal}
-\par
+\subsubsection{Atividade Principal}
 O participante antes de efetuar Login tem a atividade Principal praticamente vazia. Pode aceder ao menu lateral (Figura \ref{f:leftpannel}), ou às configurações (Figura \ref{f:seesettings}).
-\par
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/seesettings.png}
 \caption[Opção na atividade principal para abrir as configurações]{Opção na atividade principal para abrir as configurações}
 \label{f:seesettings}
 \end{figure}
+Quando o participante efetua o Login na aplicação as suas sessões são carregadas e são listadas para que se possa verificar as medições efetuadas correspondentemente a cada uma. Na Figura \ref{f:afterlogin} podemos ver do lado esquerdo a situação em que o participante ainda não tem sessões de medições efetuadas e do lado direito quando já efetuou duas sessões de medições.
 
-\textbf{Atividade de Configurações}
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.4\textwidth]{imgs/afterlogin.png}
+\caption[Atividade Principal depois do Login Efetuado]{Atividade Principal depois do Login Efetuado}
+\label{f:afterlogin}
+\end{figure}
+
+\subsubsection{Atividade de Configurações}
 Na atividade de configurações (Figura \ref{f:settings}) temos a possibilidade de: escolher o dispositivo que vai ser utilizado e ao qual se irá conectar; escolher tanto os tipos de dados que são para recolher como a sua relação temporal em relação à atividade física na altura que a medição está a ser efetuada.
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.7\textwidth]{imgs/settings.png}
+\includegraphics[height=0.6\textwidth]{imgs/settings.png}
 \caption[Menu de Configurações e as respetivas opções de configuração]{Menu de Configurações e as respetivas opções de configuração}
 \label{f:settings}
 \end{figure}
-\par
-\textbf{Atividade de Registo}
-O participante pode ainda não ter uma conta criada, mas a possibilidade de criar uma conta existe na aplicação e está disponível através do menu lateral. No processo de criação de uma nova conta o participante tem que escolher um utilizador que ainda não tenha sido utilizado e escolher uma password para essa conta de utilizador(Figura \ref{f:createaccount}). 
-\par
-\textbf{Atividade para efetuar o Login}
-\par
-Esta atividade pode ser chamada de duas duas maneiras diferentes: ao iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login no menu lateral.
-\par
-\textbf{Atividade associada a uma nova sessão de leitura}
-\par
+
+\subsubsection{Atividade de Registo}
+O participante pode ainda não ter uma conta criada, mas a possibilidade de criar uma conta existe na aplicação e está disponível através do menu lateral. No processo de criação de uma nova conta o participante tem que escolher um utilizador que ainda não tenha sido utilizado e escolher uma password para essa conta de utilizador(Figura \ref{f:createaccount}).
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.3\textwidth]{imgs/signup_app.png}
+\caption[Atividade para registo de um novo participante]{Atividade para registo de um novo participante}
+\label{f:createaccount}
+\end{figure}
+
+\subsubsection{Atividade para efetuar o Login}
+Esta atividade (Figura \ref{f:loginaccount}) pode ser chamada de duas duas maneiras diferentes: ao iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login no menu lateral. É neste momento que o servidor de autorização e autenticação devolve um token de acesso.
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.3\textwidth]{imgs/before_login.png}
+\caption[Atividade para efetuar o Login]{Atividade para efetuar o Login}
+\label{f:loginaccount}
+\end{figure}
+
+\subsubsection{Atividade associada a uma nova sessão de leitura}
 Depois de efetuar o login o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
-\par
-\textbf{Atividade Relativa a uma sessão}
-\par
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.3\textwidth]{imgs/reading.png}
+\caption[Atividade relativa a uma nova sessão de medições]{Atividade relativa a uma nova sessão de medições}
+\label{f:onNewSession}
+\end{figure}
 
-Depois do participante ter entrado na aplicação com a sua conta pode visualizar as medições relativas a uma sessão, para isso basta clicar numa das sessões que compõem a lista. Nesta atividade pode visualizar os dados relativos a cada tipo de medição, entre eles a frequência cardíaca, \gls{ECG} e acelerómetro, para isso tem disponível três diferentes separadores para mudar de tipo de medição.
-
-
-
+\subsubsection{Atividade Relativa a uma sessão}
+Depois do participante ter entrado na aplicação com a sua conta pode visualizar as medições relativas a uma sessão, para isso basta clicar numa das sessões que compõem a lista. Nesta atividade (Figura \ref{f:read_data}) pode visualizar os dados relativos a cada tipo de medição, entre eles a frequência cardíaca, \gls{ECG} e acelerómetro, para isso tem disponível três diferentes separadores para mudar de tipo de medição. 
+\begin{figure}[H]
+\centering
+\includegraphics[height=0.4\textwidth]{imgs/read_data.png}
+\caption[Atividade para visualizar os dados relacionados a uma determinada sessão]{Atividade para visualizar os dados relacionados a uma determinada sessão}
+\label{f:read_data}
+\end{figure}
 
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
