@@ -86,9 +86,17 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
 Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os dataPoints inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do Mongo.
 
 \subsection{Comunicação com módulos externos}
-No processo de inserção de novos dataPoints, depois de validados eles são reencaminhados para um endpoint \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema utilizado para validar o documento, como por exemplo "heart-rate" e um corpo do dataPoint inserido. Este documento é então inserido no ''EventBus'' do Vert.x, neste momento clientes podem se registar neste EventBus e verificar e analisar da maneira que quiser os dados inseridos. \par
+No processo de inserção de novos dataPoints, depois de validados eles são reencaminhados para um endpoint \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo "heart-rate" e um corpo do dataPoint inserido. Este documento é então inserido no ''EventBus'' do Vert.x, neste momento os módulos que subscreberam o esquema de dados ''heart-rate'' pode verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
 O projeto é então composto por dois verticles em que num dois verticles cria um endpoint \gls{REST} e permite publicar os mesmo Eventbus assim que os recebe.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{imgs/toExtSeqDiagram.png}
+  \caption[Diagrama de sequência com a comunicação com módulos externos]{Diagrama de sequência com a comunicação com módulos externos}
+  
+  \label{f:toExtSeqDiagram}
+\end{figure}
 
 \subsection{Como instalar este backend}
 Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \cite{omh-code} e é um ''fork'' do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado \cite{omh-runnatively}.
@@ -100,15 +108,15 @@ O código relativo à extensibilidade com módulos externos também está no git
 O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvolvido para receber outro tipo de esquemas de dados e os analisar.
 
 \section{Implementação da aplicação móvel}
-\subsection{Versões alvo}
+\subsection{Versões alvo e dependências}
 Esta aplicação móvel foi desenvolvida com o intuito de conseguir abranger grande maioria dos utilizadores, suporta da versão 16 à versão 25, ou seja,  desde o Android 4.1 (Jelly Bean) até ao Android 7.1. De acordo com as informações disponíveis na plataforma de desenvolvimento do Android atinge mais de 98\% dos utilizadores \cite{android-versions}.
 
-O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde esta configuração é efetuada, um excerto deste ficheiro de configuração pode ser visualizado na tabela \ref{t:defaultconfig}.
+O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde é efetuada a configuração relativa às versões alvo e às dependências existentes, um excerto deste ficheiro de configuração pode ser visualizado na tabela \ref{t:defaultconfigversions} e na tabela \ref{t:defaultconfigdependency} .
 
 
 \begin{table}[H]
 \centering
-\begin{tabular}{llll}
+\begin{tabular}{|llll|}
 \hline
  & \multicolumn{2}{l}{defaultConfig \{}                                     &  \\
  &    & applicationId {\color[HTML]{009901} ''pt.ua.ieeta.healthintegration''}                       &  \\
@@ -119,16 +127,67 @@ O projeto tem um ficheiro por defeito designado por "build.gradle", que é o loc
  & \} &                                                                     & \\
 \hline
 \end{tabular}
-\caption[Excerto da configuração padrão da aplicação móvel]{Excerto da configuração padrão da aplicação móvel}
-\label{t:defaultconfig}
+\caption[Excerto da configuração padrão da aplicação móvel relativo às versões]{Excerto da configuração padrão da aplicação móvel relativo às versões}
+\label{t:defaultconfigversions}
 \end{table}
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|llll|}
+\hline
+ & \multicolumn{2}{l}{dependencies \{}                                     &  \\
+ &    &  compile fileTree({\color[HTML]{009901} include}: [{\color[HTML]{009901} '*.jar'}], {\color[HTML]{009901} dir}: {\color[HTML]{009901} 'libs'})   &  \\
+ &    & compile {\color[HTML]{009901} 'com.android.support:appcompat-v7:25.3.1'} &  \\
+ &    & compile {\color[HTML]{009901} 'com.android.support:support-v4:25.3.1'} &  \\
+ &    & compile {\color[HTML]{009901} 'com.android.support:design:25.3.1'} &  \\
+ &    & compile files( {\color[HTML]{009901} 'libs/biolib.sdk.jar'})&  \\
+ &    & compile files( {\color[HTML]{009901} 'libs/achartengine-1.1.0.jar'})&  \\
+ & \} &                                                                     & \\
+\hline
+\end{tabular}
+\caption[Excerto da configuração padrão da aplicação móvel relativo às dependências]{Excerto da configuração padrão da aplicação móvel relativo às dependências}
+\label{t:defaultconfigdependency}
+\end{table}
 
-\subsection{Depêndencias}
+Relativamente às dependências temos que ter em atenção que existe duas dependências em especifico que tiveram que ser importadas manualmente. Uma delas é um \gls{SDK} para android (BioLib) \footnote{http://www.sdk.vitaljacket.com/} que disponibiliza uma biblioteca para a conexão a um dispositivo VitalJacket e facilita processamento e a receção dos dados pela aplicação. Uma outra biblioteca que foi utilizada foi o ''AChartEngine'' \footnote{https://github.com/ddanny/achartengine} que é uma biblioteca para android que permite o desenho de gráficos.
+
 \subsection{Tecnologias integradas e fontes de dados}
 \subsection{Componentes da aplicação Android}
 \subsection{Interações suportadas }
+Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar diferentes sessões de medições de dados identificando a relação temporal com a atividade física, todas as funcionalidades que tínhamos como objetivo implementar foram implementadas.
+\par
+\textbf{Antes ou depois de efetuar o login}
+\par
+O participante ainda antes de efetuar o login pode alterar algumas opções de configuração, entre elas temos: o dispositivo ao qual se irá conectar (Figura \ref{f:devicesettings}), os tipos de dados que são para recolher e a sua relação temporal em relação à atividade física(Figura \ref{f:recordsettings}).
+\par
 
+
+
+
+\textbf{Antes de efetuar o login}
+\par
+Para isso então temos como atividade Principal uma lista de sessões que à primeira vista aparece vazia. Ela aparece vazia (Figura \ref{f:noLogin}), pois o Login tem que ser Efetuado. 
+
+
+
+Para ser efetuado o Login pode ser de duas maneiras diferentes (Figura \ref{f:canLogin}): Iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login.
+
+
+
+Caso não tenha uma conta para acesso esta pode ser criada utilizando menu lateral (Figura \ref{canLogin}). 
+
+
+
+Para efetuar a criação da conta tem que indicar um utilizador e password, o utilizador tem que estar disponível (Figura \ref{f:createaccount}). 
+
+
+Pode então proceder ao Login através da atividade desenvolvida para o Login\ref{f:dologin}.
+\par
+\textbf{Depois de efetuar o login}
+\par
+Depois de o login estar estabelecido, o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
+
+A qualquer momento o participante pode verificar as medições efetuadas relativas a cada sessão \ref{f:onreadSession}. Pode ser feito o logout no menu lateral esquerdo e login novamente com o mesmo participante ou com outro diferente.
 
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas}
