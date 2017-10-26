@@ -163,9 +163,9 @@ Os dados estão a ser recolhidos através do VitalJacket que é um dispositivo m
 
 
 
-\subsection{Componentes da aplicação Android}
+\subsection{Componentes da aplicação}
 
-Relativamente às componentes utilizados, relativamente à comunicação com as \gls{REST} \gls{API} foi utilizado as Async Tasks\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a thread da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
+Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado as Async Tasks\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a thread da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
 
 
 
@@ -245,21 +245,97 @@ Depois do participante ter entrado na aplicação com a sua conta pode visualiza
 \end{figure}
 
 \section{Implementação da aplicação de revisão}
-\subsection{Tecnologias integradas}
-%linguagens, bibliotecas, frameworks,..., usados na implementação desta parte
+\subsection{Tecnologias integradas e fontes de dados}
 
+A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, login e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
 
-\subsection{Componentes da aplicação HTML5??}
-%mostrar a organização do projeto de código, em termos da linguagem de programação em concreto
+\subsection{Componentes da aplicação}
+Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML} Java Script e \gls{CSS}. \par 
+Foi utilizada a framework Bootstrap \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações web para desenvolvimento responsivo adaptável a plataformas móveis. \par
+Para a comunicação com a \gls{API} \gls{REST} foi utilizado o jQuery \cite{jquery}.
+Relativamente à visualização dos dados para cada sessão foi utilizado a bilbioteca HighCharts \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de Open mHealth Web Visualizations \cite{omhwebvisualizations}.
 
 \subsection{Interações suportadas }
-%mostrar a organização do projeto de código, em termos da linguagem de programação em concreto
 
 
+Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar a revisão dos dados inseridos pelos participantes. É então possível adicionar vários participantes e verificar as várias sessões de medições de dados.
+\subsubsection{Página Principal}
+A página principal tem uma secção de boas vindas e ainda permite a criação e a entrada na aplicação (Figura \ref{f:web-home}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/home.png}
+\caption[Página principal da aplicação de revisão]{Página principal da aplicação de revisão}
+\label{f:web-home}
+\end{figure}
+
+\subsubsection{Página de Registo}
+O revisor pode ainda não ter uma conta criada, por isso antes de entrar na aplicação terá que efetuar o registo de uma nova conta. Na criação é necessário escolher uma nova conta que ainda não tenha sido utilizada acompanhada de uma password (Figura \ref{f:web-registo}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/signup_web.png}
+\caption[Página de registo na aplicação de revisão]{Página de registo na aplicação de revisão}
+\label{f:web-registo}
+\end{figure}
+
+\subsubsection{Página para efetuar o Login}
+Esta página permite (Figura \ref{f:web-login}) pode ser chamada de duas maneiras diferentes. Ao clicar nos participantes da secção de boas vindas é detetado que o login ainda não foi efetuado e é feito o redirecionamento para esta página, ou então ao clicar no botão Entrar na página principal. Depois de efetuar o login pode visualizar os seus participantes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/login_web.png}
+\caption[Página de login na aplicação de revisão]{Página de login na aplicação de revisão}
+\label{f:web-login}
+\end{figure}
+
+\subsubsection{Página com todos os participantes}
+Esta página é composta por uma grelha onde pode visualizar todos os seus participantes e também adicionar novos participantes. Assim que são adicionados novos participantes a grelha vai ficando mais composta, como na Figura \ref{f:gridParticipante}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{imgs/list_after_add_web.png}
+\caption[Página com grelha de participantes]{Página com grelha de participantes}
+\label{f:gridParticipante}
+\end{figure}
 
 
+\subsubsection{Página para adicionar novo participante}
+Nesta página (Figura \ref{f:web-newparticipante}) pode adicionar um novo participante, para isso tem que identificar o username do participante e todos os dados demográficos disponíveis deste participante. Depois de adicionar vai ser redirecionado para a página relativa a todos os participantes. 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/add_participant_web.png}
+\caption[Página para adicionar novo participante ao estudo]{Página para adicionar novo participante ao estudo}
+\label{f:web-newparticipante}
+\end{figure}
+\newpage
+\subsubsection{Página com leituras do participante}
+Nesta página pode visualizar todos os dados demográficos e fisiológicos do participante. Os dados demográficos podem ser atualizados e os dados fisiológicos que podem ser consultados são todos aqueles inseridos pelo participante. Para isso terá que escolher um intervalo de datas para procurar por sessões de leitura nesse intervalo, depois disso as várias sessões compõem um dropdow menu (Figura \ref{f:webleiturassessoes}) onde pode escolher a sessão que pretende rever. 
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/user-info-web.png}
+\caption[Página com dados demográficos e fisiológicos do participante]{Página com dados demográficos e fisiológicos do participante}
+\label{f:webleiturassessoes}
+\end{figure}
+
+Podemos então visualizar os dados em gráficos relativos a cada tipo de dados recolhido (Figura \ref{f:leiturasdados}). 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/dadosfisiologicos-web.png}
+\caption[Dados fisiológicos do participante numa determinada sessão]{Dados fisiológicos do participante numa determinada sessão}
+\label{f:leiturasdados}
+\end{figure}
+ Relativamente a cada tipo de dados pode ser efetuado o zoom para em cada um dos gráficos, e ainda no caso do acelerómetro escolher os dados a apresentar, neste caso escolhi apenas a aceleração (Figura \ref{f:withzoom}).
+ 
+ \begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{imgs/withzoom-choosen-web.png}
+\caption[Dados fisiológicos do participante mais detalhados]{Dados fisiológicos do participante mais detalhados}
+\label{f:withzoom}
+ \end{figure}
 \section{Como aplicar e estender a plataforma em novos contextos}
 
 % explicar como se pega no que ficou feito para usar num novo projeto e como se pode estender (e.g: para novos tipos de dados)
