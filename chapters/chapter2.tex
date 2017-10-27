@@ -1,8 +1,8 @@
-\chapter{Aplica\c c\~oes mHealth e as suas arquiteturas}
+\chapter{Aplica\c c\~oes \textit{mHealth} e as suas arquiteturas}
 
 
 
-\section{eHealth: tecnologias de informação ao serviço da saúde}
+\section{\textit{eHealth}: tecnologias de informação ao serviço da saúde}
 Nos dias que correm toda a sociedade tem dispon\'ivel muito facilmente a possibilidade de trocar informa\c c\~ao entre si, podendo permanecer numa constante troca de informa\c c\~ao.  Com esta realidade tem surgido novas tecnologias, ferramentas e aparelhos que facilitam, tendo em conta a sua implementa\c c\~ao e uso, o fortalecimento da informa\c c\~ao. 
 \par
 A \'area da sa\'ude cada vez mais est\'a identificada com esta realidade, as tecnologias da informa\c c\~ao e da comunica\c c\~ao t\^em sido um aliado para aumentar a efici\^encia e melhorar a qualidade da presta\c c\~ao de servi\c cos na \`area da sa\'ude, ajudando a popula\c c\~ao com o seu bem-estar. 
@@ -26,8 +26,8 @@ Podemos verificar que a telemedicina est\'a mais focada na realiza\c c\~ao de co
 
 
 
-\section{mHealth: computação móvel em saúde}
-O termo \textit{\gls{mHealth}} \'e definido segundo a OMS como uma componente da \textit{eHealth} \cite{mhealth_oms} sendo esta definida como, o recurso a dispositivos m\'oveis, como por exemplo o telem\'ovel, tablet e outros dispositivos sem fios para a pr\'atica de cuidados de sa\'ude e m\'edicos.
+\section{\textit{mHealth}: computação móvel em saúde}
+O termo \textit{\gls{mHealth}} \'e definido segundo a OMS como uma componente da \textit{eHealth} \cite{mhealth_oms} sendo esta definida como, o recurso a dispositivos m\'oveis, como por exemplo o telem\'ovel, \textit{tablet} e outros dispositivos sem fios para a pr\'atica de cuidados de sa\'ude e m\'edicos.
 \par
 Uma aplica\c c\~ao \textit{mHealth} pertence tamb\'em \`a componente de \textit{eHealth} assim como \`a telemedicina. As aplica\c c\~oes de \textit{mHealth} t\^em como o objetivo oferecer cuidados de sa\'ude e permitir a m\'edicos a monitoriza\c c\~ao de diferentes par\^ametros desde qualquer lugar e at\'e em movimento, usando dispositivos que fazem parte da componente \textit{eHealth} e transmitindo, esses dados atrav\'es de dispositivos m\'oveis. Como a \textit{mHealth} permite superar as barreiras da localiza\c c\~ao entre os utentes e os m\'edicos podemos dizer que a telemedicina tamb\'em est\'a presente nestas aplica\c c\~oes.
 \par
@@ -51,7 +51,7 @@ Com a exist\^encia de muitas doen\c cas cr\'onicas como por exemplo a diabetes, 
     \item Esta aplica\c c\~ao foi desenvolvida para ajudar o utilizador na escolha de alimentos, atividade e monitoriza\c c\~ao da glicose  para um  estilo de vida saud\'avel.
   \end{itemize}
 \end{itemize}
-A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, tablet ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
+A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, \textit{tablet} ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
 
 
@@ -74,19 +74,19 @@ Na figura \ref{f:mobileapparch} podemos ver uma arquitetura comum de uma aplica�
   \label{f:mobileapparch}
 \end{figure}
 
-No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer smartphone. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em Cache, Comunicação, Acesso de dados, Gestão de Exceções. \cite{mobileappbook}
+No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer smartphone. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação, Acesso de dados, Gestão de Exceções. \cite{mobileappbook}
 
 
 \subsection{Autenticação e Autorização}
-Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza tokens para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
+Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
 
 
 \subsubsection{Protocolo de autorização OAuth}
-O Open Authorization Protocol - OAuth é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades tal como Leiba \cite{leiba_oauth} referiu.
- A primeira versão é a 1.0 e foi lançada em 2007, e sua última revisão foi publicada em 2010, sendo especificada no \gls{RFC} 5849 \cite{oauth10}. Em 2012, a versão 2.0 do protocolo, OAuth 2.0, foi lançada com objetivo de resolver problemas encontrados
+O \textit{Open Authorization Protocol} - OAuth é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades \cite{leiba_oauth}.
+ A primeira versão é a 1.0 e foi lançada em 2007, e sua última revisão foi publicada em 2010, sendo especificada no \textit{\gls{RFC}} 5849 \cite{oauth10}. Em 2012, a versão 2.0 do protocolo, OAuth 2.0, foi lançada com objetivo de resolver problemas encontrados
 na versão 1.0, entre esses problemas tínhamos escalabilidade e complexidade \cite{oauth20}.
 \par
-Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessários para a compreensão do fluxo de execução deste protocolo, são eles: Resource Owner - O proprietário do recurso, que é a entidade que tem o poder de conceder a permissão de acesso, aos seus recursos; Resource Server - O servidor de recursos, que é o responsável por guardar e responder às solicitações de acesso aos recursos protegidos, utilizando tokens de acesso; Client - Cliente, que é uma aplicação, que realiza solicitações de acesso aos recursos protegidos, ao servidor de recursos, em nome do proprietário, dono do recurso, após a obtenção de sua autorização; Authorization Server - O servidor de autorização, que é responsável por emitir tokens de acesso aos clientes, após autenticar e obter autorização do proprietário dos recursos \cite{oauth20}. Na figura \ref{f:oauth2flow} é apresentado o fluxo do protocolo OAuth 2.0 mostrando a interação entre estes quatro pontos de contacto.
+Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessários para a compreensão do fluxo de execução deste protocolo, são eles: \textit{Resource Owner} - O proprietário do recurso, que é a entidade que tem o poder de conceder a permissão de acesso, aos seus recursos; \textit{Resource Server} - O servidor de recursos, que é o responsável por guardar e responder às solicitações de acesso aos recursos protegidos, utilizando \textit{tokens} de acesso; \textit{Client} - Cliente, que é uma aplicação, que realiza solicitações de acesso aos recursos protegidos, ao servidor de recursos, em nome do proprietário, dono do recurso, após a obtenção de sua autorização; \textit{Authorization Server} - O servidor de autorização, que é responsável por emitir \textit{tokens} de acesso aos clientes, após autenticar e obter autorização do proprietário dos recursos \cite{oauth20}. Na figura \ref{f:oauth2flow} é apresentado o fluxo do protocolo OAuth 2.0 mostrando a interação entre estes quatro pontos de contacto.
 
 \begin{figure}[H]
   \centering
@@ -96,56 +96,56 @@ Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessário
 \end{figure}
 
 \begin{enumerate}[label=(\Alph*)]
-    \item O Client pede autorização ao Resource Owner para aceder aos seus recursos.
-    \item Assumindo que o Resource Owner autoriza o acesso, o Client recebe um authorization grant (garantia de autorização). Essa credencial representa a autorização concedida pelo Resource Owner.
-    \item O Client pede um access token ao Authorization Server, enviando o authorization grant.
-    \item Assumindo que o Client foi autorizado com sucesso e que o authorization grant é válido, o Authorization Server gera um access token, sendo este enviado para o Client.
-    \item O Client pede acesso a um recurso protegido pelo Resource Server, e autentica-se utilizando o access token.
-    \item Assumindo que o access token é válido, o Resource Server responde ao pedido do Client enviando o recurso pedido.
+    \item O \textit{Client} pede autorização ao \textit{Resource Owner} para aceder aos seus recursos.
+    \item Assumindo que o \textit{Resource Owner} autoriza o acesso, o \textit{Client} recebe um \textit{authorization grant} (garantia de autorização). Essa credencial representa a autorização concedida pelo \textit{Resource Owner}.
+    \item O \textit{Client} pede um \textit{token} de acesso ao \textit{Authorization Server}, enviando o \textit{authorization grant}.
+    \item Assumindo que o \textit{Client} foi autorizado com sucesso e que o \textit{authorization grant} é válido, o \textit{Authorization Server} gera um \textit{token} de acesso, sendo este enviado para o \textit{Client}.
+    \item O \textit{Client} pede acesso a um recurso protegido pelo \textit{Resource Server}, e autentica-se utilizando o \textit{token} de acesso.
+    \item Assumindo que o \textit{token} de acesso é válido, o \textit{Resource Server} responde ao pedido do \textit{Client} enviando o recurso pedido.
 \end{enumerate}
 
 
-\subsection{Armazenamento em Cache}
-A utilização da cache do dispositivo pode ser muito importante para aumentar o desempenho e a capacidade de resposta de uma aplicação. Quando não existe ligação à internet, a aplicação deve suportar a execução das operações principais, isto é, se uma aplicação tem como objetivo obter a frequência cardíaca de um paciente, é suposto se conseguir obter estes dados dos sensores mesmo sem estes poderem ser guardados no servidor, ou seja, podem ser guardados em cache até que se tenha possibilidade de fazer o envio para o servidor.
+\subsection{Armazenamento em \textit{Cache}}
+A utilização da \textit{cache} do dispositivo pode ser muito importante para aumentar o desempenho e a capacidade de resposta de uma aplicação. Quando não existe ligação à internet, a aplicação deve suportar a execução das operações principais, isto é, se uma aplicação tem como objetivo obter a frequência cardíaca de um paciente, é suposto se conseguir obter estes dados dos sensores mesmo sem estes poderem ser guardados no servidor, ou seja, podem ser guardados em \textit{cache} até que se tenha possibilidade de fazer o envio para o servidor.
 
 
 \subsection{Comunicação do dispositivo}
-A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. Para comunicação entre dispositivos móveis e sensores temos a tecnologia Bluetooth.
+A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. Para comunicação entre dispositivos móveis e sensores temos a tecnologia \textit{bluetooth}.
 
 
-\subsubsection{Bluetooth}
+\subsubsection{\textit{Bluetooth}}
 Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os sensores também têm formas de se comunicar. %como foco desta dissertação é receber dados de sensores para os guardar num backend capaz de agrupar estes dados corretamente, a tecnologia responsável por esta função será o Bluetooth.
-O bluetooth é uma tecnologia que foi criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conectar os dispositivos à distancia, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
-Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os smartphones têm esta tecnologia.
+O \textit{bluetooth} é uma tecnologia que foi criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conectar os dispositivos à distância, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
+Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os \textit{smartphones} têm esta tecnologia.
 \par 
-Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor bluetooth tem um conjunto de perfis bluetooth a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
-Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o Bluetooth de uma maneira normalizada. 
+Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor \textit{bluetooth} tem um conjunto de perfis \textit{bluetooth} a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
+Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o \textit{bluetooth} de uma maneira normalizada. 
 \par 
-Foi criado um consórcio Bluetooth \gls{SIG} composto por empresas como Nokia, Ericsson, Intel, IBM e Toshiba, com o objetivo de desenvolver padrões que garantissem o uso e a interoperabilidade da tecnologia nos mais variados dispositivos.
+Foi criado um consórcio \textit{bluetooth} denominado por \textit{ \gls{SIG} } composto por empresas como Nokia, Ericsson, Intel, IBM e Toshiba, com o objetivo de desenvolver padrões que garantissem o uso e a interoperabilidade da tecnologia nos mais variados dispositivos.
 \par
-A Bluetooth \gls{SIG} lançou um perfil denominado de \gls{HDP}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia bluetooth. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \gls{SPP} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
+A \textit{bluetooth} \gls{SIG} lançou um perfil denominado de \textit{\gls{HDP}}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia \textit{bluetooth}. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \textit{\gls{SPP}} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
 
 
 
-\subsubsection{Web Services}
-Os Web Services permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \gls{API} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela Internet por Web Services. Uma vantagem da utilização dos web services é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os Web Services desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python. O único formato de dados utilizado por um Web Service era apenas \gls{XML}, e só apenas mais tarde começou a poder ser utilizado o \gls{HTML} e o \gls{JSON} depois do aparecimento do \gls{REST} \cite{wsjakob}.
+\subsubsection{\textit{Web Services}}
+Os \textit{Web Services} ou serviços \textit{web} permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \textit{\gls{API}} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela Internet por serviços \textit{web}. Uma vantagem da utilização dos serviços \textit{web} é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os serviços \textit{web} desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python. O único formato de dados utilizado por um serviço \textit{web} era o \textit{\gls{XML}}, e só apenas mais tarde começou a poder ser utilizado o \textit{\gls{HTML}} e o \gls{JSON} depois do aparecimento do \textit{\gls{REST}} \cite{wsjakob}.
 
 
 
-\subsubsection{ REST Web Services}
-O \gls{REST} é um estilo de arquitetura que utiliza o \gls{HTTP} para fazer chamadas entre máquinas e tem como objetivo fundamental facultar serviços para ajudar no desenvolvimento de aplicações \cite{whatisrest}.
-\gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \gls{URI}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas ações \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro acções podem ser mapeadas para as ações típicas de dados \gls{CRUD}. A representação de cada recurso identificado por um URI, pode variar, podendo ser representado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
+\subsubsection{ REST \textit{Web Services}}
+O \gls{REST} é um estilo de arquitetura que utiliza o \textit{\gls{HTTP}} para fazer chamadas entre máquinas e tem como objetivo fundamental facultar serviços para ajudar no desenvolvimento de aplicações \cite{whatisrest}.
+\gls{REST} caracteriza uma arquitetura centrada em recursos, especificando que cada recurso é identificado por um \textit{\gls{URI}}, mediante o qual um conjunto de operações pode ser aplicado através de uma interface uniforme. Esta interface padrão uniforme para a comunicação entre servidores e clientes é o \gls{HTTP} e, em vez de declarar métodos, são aplicadas ações \gls{HTTP}, tais como POST, GET, PUT e DELETE. Estas quatro ações podem ser mapeadas para as ações típicas de dados \textit{\gls{CRUD}}. A representação de cada recurso identificado por um URI, pode variar, podendo ser representado em \gls{XML}, \gls{HTML}, \gls{JSON}, entre muitas outras possibilidades \cite{restwebservices}.
 
 
 
 \subsubsection{Vert.x}
-Vert.x é uma framework poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \gls{JVM}. É uma framework orientada a eventos e assíncrona, que permite a criação de aplicações facilmente escaláveis de uma forma simples. Pode ser utilizada por pequenas aplicações, ou até aplicações Web sofisticadas e modernas, micro serviços \gls{HTTP}/\gls{REST}\cite{vertx-io}.
-O Vert.x é composto por um conjunto componentes que são importantes para o desenvolvimento de aplicações. Entre eles temos: 
+Vert.x é uma \textit{framework} poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \textit{\gls{JVM}}. É uma \textit{framework} orientada a eventos e assíncrona, que permite a criação de aplicações facilmente escaláveis de uma forma simples. Pode ser utilizada por pequenas aplicações, por aplicações \textit{Web} sofisticadas e modernas e ainda para micro serviços \gls{HTTP}/\gls{REST}\cite{vertx-io}.
+O Vert.x é composto por um conjunto de componentes que são importantes para o desenvolvimento de aplicações. Entre eles temos: 
 \begin{itemize}
-  \item Verticle: Um verticle é definido por ter uma função principal (main), que corre um script específico. Um verticle pode ser escrito em múltiplas linguagens (Java, Javacript, Ruby, Groovy, Ceylon, Scala e Kotlin). Vários verticles podem ser executados na mesma instância do Vert.x.
-  \item EventLoops: São threads que estão sempre a correr e estão sempre à escuta, de forma a verificar se existem operações a executar ou dados a tratar. A gestão destas threads é feita por uma instância do Vert.x, que aloca um número específico de threads a cada núcleo do servidor.
-  \item Handler: É uma entidade que recebe mensagens do eventbus depois de se registar num determinado endereço.
-  \item EventBus: Esta é uma característica do Vert.x bastante importante que permite a comunicação entre vários verticles. Para além disso, é possível haver uma comunicação não só entre verticles mas entre entidades que registem handlers num servidor (ex. clientes). Desta forma é possível a entrega das mensagens a todos os handlers que estiverem registados num determinado endereço. Esta característica é um padrão na troca de mensagens conhecido por ''publish–subscribe''.
+  \item \textit{Verticle}: Um \textit{verticle} é definido por ter uma função principal (\textit{main}), que corre um \textit{script} específico. Um \textit{verticle} pode ser escrito em múltiplas linguagens (Java, Javacript, Ruby, Groovy, Ceylon, Scala e Kotlin). Vários \textit{verticles} podem ser executados na mesma instância do Vert.x.
+  \item \textit{EventLoops}: São \textit{threads} que estão sempre a correr e estão sempre à escuta, de forma a verificar se existem operações a executar ou dados a tratar. A gestão destas \textit{threads} é feita por uma instância do Vert.x, que aloca um número específico de \textit{threads} a cada núcleo do servidor.
+  \item \textit{Handler}: É uma entidade que recebe mensagens do \textit{eventbus} depois de se registar num determinado endereço.
+  \item \textit{EventBus}: Esta é uma característica do Vert.x bastante importante que permite a comunicação entre vários \textit{verticles}. Para além disso, é possível haver uma comunicação não só entre \textit{verticles} mas entre entidades que registem \textit{handlers} num servidor (ex. clientes). Desta forma é possível a entrega das mensagens a todos os \textit{handlers} que estiverem registados num determinado endereço. Esta característica é um padrão na troca de mensagens conhecido por \textit{publish–subscribe}.
 \end{itemize}
 Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x. \cite{vertx-study}
 
@@ -158,37 +158,37 @@ Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x
 
 
 \subsubsection{JSON}
-O \gls{JSON} é um formato de dados baseado em texto, é leve e utilizado para troca de informação independentemente da linguagem a ser utilizada. O \gls{JSON} é baseado em pares atributo-valor e a sua sintaxe é composta por quatro tipos de dados primitivos (strings, inteiros, booleans e null) e dois tipos estruturados (objetos e vetores) \cite{json}. 
+O \gls{JSON} é um formato de dados baseado em texto, é leve e utilizado para troca de informação independentemente da linguagem a ser utilizada. O \gls{JSON} é baseado em pares atributo-valor e a sua sintaxe é composta por quatro tipos de dados primitivos (\textit{strings}, inteiros, \textit{booleans} e \textit{null}) e dois tipos estruturados (objetos e vetores) \cite{json}. 
 \par
 É um formato de dados  fácil de gerar, compreender e interpretar. Analisando código em \gls{JSON} é intuitivo associar a sua aparência, estrutura e sintaxe a muitas linguagens de programação existentes, razão pela qual foi facilmente adotada como uma alternativa ao \gls{XML} por parte de diversos programadores que viram no novo formato um modo mais natural e simples de definir dados.
 
 
 
-
-\section{O backend nas aplicações de mHealth}
-O termo backend é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e Web Services para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de Web Services. Do lado do servidor podemos ter sistemas de monitorização remotos que podem entrar em contacto com o utente ou médico em estado de emergência.
+\newpage
+\section{O \textit{backend} nas aplicações de mHealth}
+O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e serviços \textit{web} para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de um serviço \textit{web}. Do lado do servidor podemos ter sistemas de monitorização remotos que podem entrar em contacto com o utente ou médico em estado de emergência.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.7\textwidth]{imgs/mHealthArch.png}
-  \caption[Arquitetura t\'ipica de uma  aplica\c c\~ao mHealth]{Arquitetura t\'ipica de uma  aplica\c c\~ao mHealth. \cite{mhealth}}
+  \caption[Arquitetura t\'ipica de uma  aplica\c c\~ao \textit{mHealth}]{Arquitetura t\'ipica de uma  aplica\c c\~ao \textit{mHealth}. \cite{mhealth}}
   
   \label{f:mhealtharch}
 \end{figure}
 
 
 
-\subsection{O backend no desenvolvimento de uma aplica\c c\~ao mHealth}
-As solu\c c\~oes de mHealth abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
+\subsection{O \textit{backend} no desenvolvimento de uma aplica\c c\~ao \textit{mHealth}}
+As solu\c c\~oes de \textit{mHealth} que abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
 \par
-Apesar das aplica\c c\~oes mHealth estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido, para contrariar esta realidade foi gerada uma discuss\~ao para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao mHealth.
+Apesar das aplica\c c\~oes \textit{mHealth} estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido, para contrariar esta realidade foi gerada uma discuss\~ao para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao \textit{mHealth}.
 \par
-Depois deste estudo e discuss\~ao chegaram \`aa conclus\~ao que o desenvolvimento de uma aplica\c c\~ao deve estar dividida em 4 partes distintas constituindo uma pipeline de desenvolvimento, entre elas temos:  Prepara\c c\~ao, Desenvolvimento do Back-End, Desenvolvimento do Front-End e Lan\c camento da Aplica\c c\~ao\cite{mhealth-pipeline}.
+Depois deste estudo e discuss\~ao chegaram \`a conclus\~ao que o desenvolvimento de uma aplica\c c\~ao deve estar dividida em 4 partes distintas criando uma pipeline de desenvolvimento, entre elas temos:  Prepara\c c\~ao, Desenvolvimento do \textit{Back-End}, Desenvolvimento do \textit{Front-End} e Lan\c camento da Aplica\c c\~ao\cite{mhealth-pipeline}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/mhealthDevPipeline.png}
-  \caption[Esquema proposto para o desevolvimento de uma aplica\c c\~ao mHealth]{Esquema proposto para o desevolviment de uma aplica\c c\~ao mHealth. \cite{mhealth-pipeline}}
+  \caption[Esquema proposto para o desenvolvimento de uma aplica\c c\~ao \textit{mHealth}]{Esquema proposto para o desevolvimento de uma aplica\c c\~ao \textit{mHealth}. \cite{mhealth-pipeline}}
   
   \label{f:mhealthpipeline}
 \end{figure}
@@ -196,27 +196,26 @@ Depois deste estudo e discuss\~ao chegaram \`aa conclus\~ao que o desenvolviment
 
 
 
-\subsection{A escolha de um backend}
-Para dar suporte à aplicação móvel é necessário a escolha de um backend robusto e seguro para que possamos lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve se ter em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados. A escolha de um backend para dar suporte às aplicações mHealth é bastante importante. Ao utilizar uma plataforma já desenvolvida e reconhecida estamos a aumentar as funcionalidades da aplicação pois estamos a permitir uma futura interoperabilidade e troca de dados entre outras aplicações que utilizem a mesma plataforma.
+\subsection{A escolha de um \textit{backend}}
+Para dar suporte à aplicação móvel é necessário a escolha de um \textit{backend} robusto e seguro para que possamos lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve ter-se em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados. A escolha de um \textit{backend} para dar suporte às aplicações \textit{mHealth} é bastante importante. Ao utilizar uma plataforma já desenvolvida e reconhecida estamos a aumentar as funcionalidades da aplicação pois estamos a permitir uma futura interoperabilidade e troca de dados entre outras aplicações que utilizem a mesma plataforma.
 
 
 
 
-\subsubsection{Open mHealth}
-A \gls{OMH} foi fundada em 2011 e descreve-se a si própria como "uma start-up sem fins lucrativos que quebra as barreiras de integração trazendo significado aos dados clínicos digitais na área da saúde" \cite{omhabout}. A \gls{OMH} trabalha com especialistas da área da saúde e com programadores com o objetivo de tornar os dados de saúde digitais úteis e possíveis de utilizar em diversas plataformas. \par 
-Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o Open mHealth todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor.
-\newpage
+\subsubsection{\textit{Open mHealth}}
+A \textit{\gls{OMH}} foi fundada em 2011 e descreve-se a si própria como "uma \textit{start-up} sem fins lucrativos que quebra as barreiras de integração trazendo significado aos dados clínicos digitais na área da saúde" \cite{omhabout}. A \gls{OMH} trabalha com especialistas da área da saúde e com programadores com o objetivo de tornar os dados de saúde digitais úteis e possíveis de utilizar em diversas plataformas. \par 
+Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o \gls{OMH} todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor para guardar os dados.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/openmharch.png}
-  \caption[Arquitetura mHealth: Própria(''afunilada'') vs Open]{Arquitetura mHealth: Própria(''afunilada'') vs Open. \cite{omharticle}}
+  \caption[Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}]{Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}. \cite{omharticle}}
   
   \label{f:omharch}
 \end{figure}
 
 Através desta arquitetura podem ser partilhados diversos recursos entre as aplicações móveis na área da saúde, entre eles o mais importante é o modo e o local onde os dados são guardados, respeitando um padrão para o formato dos dados, ou seja, se duas aplicações diferentes forem guardar dados de um determinado tipo, como por exemplo frequência cardíaca, esses dados têm que respeitar um determinado formato, sendo estes guardados da mesma maneira independentemente da aplicação que o esteja a fazer.
 \par 
-A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes data schemas estão desenvolvidos em \gls{JSON} schema que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os datas schemas serem compatíveis com os \gls{JSON} schema associado. Na figura \ref{f:exemplo} podemos ver exemplo de dados que é compatível com o \gls{JSON} schema da figura \ref{f:hrjsonschema} associado que é a frequência cardíaca\cite{omhheartrate}.
+A \gls{OMH} tem definido um conjunto de \textit{data schemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes \textit{data schemas} estão desenvolvidos em \gls{JSON} \textit{schema} que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os \textit{datas schemas} serem compatíveis com os \gls{JSON} \textit{schema} associado. Na figura \ref{f:exemplo} podemos ver exemplo de dados que é compatível com o \gls{JSON} \textit{schema} da figura \ref{f:hrjsonschema} associado que é a frequência cardíaca\cite{omhheartrate}.
 
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/heart-rate.json}
@@ -226,28 +225,29 @@ A \gls{OMH} tem definido um conjunto de ''data schemas'' que é um conjunto de e
 \newpage
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/hr-jsonschema.json}
-\caption[\gls{JSON} schema que define o tipo de dados para a frequência cardíaca]{\gls{JSON} schema que define o tipo de dados para a frequência cardíaca \cite{omhheartrate}}
+\caption[\gls{JSON} \textit{schema} que define o tipo de dados para a frequência cardíaca]{\gls{JSON} \textit{schema} que define o tipo de dados para a frequência cardíaca \cite{omhheartrate}}
 \label{f:hrjsonschema}
 \end{figure}
 
-Existe uma implementação de uma \gls{REST}full \gls{API} denominada por ''dataPoint API'' que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um ''dataPoint'' é um documento \gls{JSON} que representa um tipo de dados e está em conformidade com o ''dataschema'' relacionado.
+Existe uma implementação de uma \textit{\gls{REST}full \gls{API}} denominada por \textit{dataPoint API} que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
 
 
 
 \subsubsection{FHIR}
 Como vimos anteriormente para que os sistemas de serviços hospitalares comuniquem e partilhem  informação entre si, e com as plataformas online, é imperativo que compreendam o que está a ser comunicado.
 \par 
-Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \gls{HL7} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade como uma norma flexível na troca de informação clínica estruturada.
-A organização que definiu o \gls{HL7} desenvolveu a sua própria norma denominada de \gls{FHIR} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizada com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações mobile ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
+Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \textit{\gls{HL7}} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade como uma norma flexível na troca de informação clínica estruturada.
+A organização que definiu o \gls{HL7} desenvolveu a sua própria \gls{API} e formatos de dados denominada de \textit{\gls{FHIR}} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizados com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações móveis ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
 
 \textbf{HL7}
+\par
 A norma HL7 define normas relacionadas, para troca, integração, partilha e requisição de  registos clínicos em formato eletrónico\cite{hl7}.
 O HL7 encontra-se atualmente na sua versão 3\cite{corepointhealth}, mas a versão 2 do \gls{HL7} ainda é bastante utilizada, especialmente em sistemas antigos. 
 \par
-O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. Como esta versão 2 não possui um modelo explícito de informação, mas definições vagas para muitos campos de dados e também campos opcionais. Estas características conferem-lhe uma maior flexibilidade, mas tornam necessários acordos bilaterais detalhados, de forma, a permitir a interoperabilidade entre os sistemas envolvidos, de forma a garantir a interoperabilidade. Quando estes acordos não são efetuados, se formos desenvolver uma aplicação que comunica com vários  sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
+O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. Como esta versão 2 não possui um modelo explícito de informação, mas definições vagas para muitos campos de dados e também campos opcionais. Estas características conferem-lhe uma maior flexibilidade, mas tornam necessários acordos bilaterais detalhados, de forma, a permitir a interoperabilidade entre os sistemas envolvidos. Quando estes acordos não são efetuados, se formos desenvolver uma aplicação que comunica com vários sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
 \par
 Para resolver este problema saiu a versão 3, mas a sua adoção é cara e irá demorar bastante tempo \cite{corepointhealth}.
-A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado aos objetos, denominado por \gls{RIM}. Este é constituído por 4 classes principais, tendo como objetivo garantir a interoperabilidade semântica que não existia nas versões anteriores. Estas quatro classes principais são: Entidade, Papel/Cargo, Participação e Ato\cite{hl7-rim}.
+A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado aos objetos, denominado por \textit{\gls{RIM}}. Este é constituído por 4 classes principais, tendo como objetivo garantir a interoperabilidade semântica que não existia nas versões anteriores. Estas quatro classes principais são: Entidade, Papel/Cargo, Participação e Ato\cite{hl7-rim}.
 \par 
 O modelo \gls{RIM} é construído à volta de 5 conceitos principais:
 \begin{itemize}
@@ -271,34 +271,34 @@ Na figura \ref{f:rimclass} podemos visualizar a class \gls{RIM} da versão 3 do 
 
 
 
-\subsubsection{Google Fit}
-O Google Fit é uma aplicação móvel e uma \gls{API} \gls{REST} desenvolvido pela Google, na área do fitness. Permite aos utilizadores armazenar e aceder a informação relativa à sua condição física. Apesar de não ser desenvolvido com o objetivo de controlar os dados de saúde dos pacientes, pode ser visto como uma plataforma que cumpre alguns desses objetivos.
+\subsubsection{\textit{Google Fit}}
+O \textit{Google Fit} é uma \gls{API} \gls{REST} desenvolvido pela Google, na área do \textit{fitness}. Permite aos utilizadores armazenar e aceder a informação relativa à sua condição física. Apesar de não ser desenvolvido com o objetivo de controlar os dados de saúde dos pacientes, pode ser visto como uma plataforma que cumpre alguns desses objetivos.
 \par 
-O Google Fit é mais utilizado com o objetivo de monitorizar a condição física dos seus utilizadores, mas a Google permite o acesso aos dados recolhidos, através de \gls{API}’s criadas para esse efeito. Isto permite a criação de aplicações de saúde, visto que também é um dos objetivos da Google a integração de qualquer aparelho sensor. Resumindo, são dadas todas as ferramentas necessárias ao programador para aumentar o alcance da plataforma, permitindo-a ser utilizada com finalidades que a Google neste momento não cobre. 
-De seguida mostro uma vista geral da plataforma Google Fit.
+O \textit{Google Fit} é mais utilizado com o objetivo de monitorizar a condição física dos seus utilizadores, mas a Google permite o acesso aos dados recolhidos, através de \gls{API}’s criadas para esse efeito. Isto permite a criação de aplicações de saúde, visto que também é um dos objetivos da Google a integração de qualquer aparelho sensor. Resumindo, são dadas todas as ferramentas necessárias ao programador para aumentar o alcance da plataforma, permitindo-a ser utilizada com finalidades que a Google neste momento não cobre. 
+De seguida mostro uma vista geral da plataforma \textit{Google Fit}.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.7\textwidth]{imgs/googleFitOverview.png}
-  \caption[Vista geral da plataforma Google Fit]{Vista geral da plataforma Google Fit \cite{googlefit}}
+  \caption[Vista geral da plataforma \textit{Google Fit}]{Vista geral da plataforma \textit{Google Fit} \cite{googlefit}}
   
   \label{f:googleFitOverview}
 \end{figure}
 
-Como podemos perceber existe dois métodos principais de interagir com a plataforma. Através de uma aplicação para smartphones com o sistema operativo Android, desenvolvida também pela Google.  Também é possível a utilização de um website, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
+Como podemos perceber existe dois métodos principais de interagir com a plataforma. Através de uma aplicação para \textit{smartphones} com o sistema operativo \textit{Android}, desenvolvida também pela Google.  Também é possível a utilização de um \textit{website}, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
 
-A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{API} passa a ser possível a criação de aplicações para outras plataformas que não o Android, tornando o Google Fit apelativo para um maior número de utilizadores. Esta \gls{API} está protegida pelo protocolo de autorização OAuth 2.0 e utiliza para formato dos dados \gls{JSON}\cite{googlegetstarted}. 
+A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{API} passa a ser possível a criação de aplicações para outras plataformas que não o \textit{Android}, tornando o \textit{Google Fit} apelativo para um maior número de utilizadores. Esta \gls{API} está protegida pelo protocolo de autorização OAuth 2.0 e utiliza para formato dos dados \gls{JSON}\cite{googlegetstarted}. 
 
 
 
 \subsubsection{Análise Comparativa}
-Foi ainda feito um breve estudo em relação a outros três possíveis backends, entre eles temos o Health Vault \footnote{https://international.healthvault.com}, Apple Research Kit \footnote{https://www.apple.com/pt/researchkit/} e o Research Stack \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}. Os pontos requisitos analisados relativamente a cada possível backend foram: 
+Foi ainda feito um breve estudo em relação a outros três possíveis \textit{backends}, entre eles temos o \textit{Health Vault} \footnote{https://international.healthvault.com}, \textit{Apple Research Kit} \footnote{https://www.apple.com/pt/researchkit/} e o \textit{Research Stack} \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}. Os requisitos analisados relativamente a cada possível \textit{backend} foram: 
 \begin{itemize}
   \item Possibilidade de guardar dados demográficos dos utentes
-  \item Análise do grau de complexidade  do backend para adaptação e implementação de novas funcionalidades
+  \item Análise do grau de complexidade  do \textit{backend} para adaptação e implementação de novas funcionalidades
   \item Estruturas de dados normalizadas
   \item Possibilidade de adicionar novas estruturas de dados 
-  \item Possibilidade de importar/exportar dados de outros backends
+  \item Possibilidade de importar/exportar dados de outros \textit{backends}
   \item Questões relativas a Segurança e Privacidade sobre os dados recolhidos e demográficos
   \item Capacidade de ser integrado em ambientes diferentes, como android, ios ou web
 \end{itemize}
@@ -309,7 +309,7 @@ Foi ainda feito um breve estudo em relação a outros três possíveis backends,
 \label{tabelaComparativa}
 \begin{tabular}{|>{\columncolor[HTML]{C0C0C0}}c |c|c|c|c|c|c|}
 \hline
-\textbf{\backslashbox{Requisito}{Plataforma}}                                                                        & \cellcolor[HTML]{C0C0C0}\textbf{OMH} & \cellcolor[HTML]{C0C0C0}\textbf{FHIR} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Google\\ Fit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Health\\ Vault\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}Apple\\ Research\\ Kit\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}} Research\\ Stack\end{tabular}}  \\ \hline
+\textbf{\backslashbox{Requisito}{Plataforma}}                                                                        & \cellcolor[HTML]{C0C0C0}\textbf{OMH} & \cellcolor[HTML]{C0C0C0}\textbf{FHIR} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Google}\\ \textit{Fit}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Health}\\ \textit{Vault}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Apple}\\ \textit{Research}\\ \textit{Kit}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}} \textit{Research}\\ \textit{Stack}\end{tabular}}  \\ \hline
 
 \textbf{Dados do Paciente} & - & X & - & X & X & X \\ \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & X & - & X & - & - & - \\ \hline
@@ -319,17 +319,17 @@ Foi ainda feito um breve estudo em relação a outros três possíveis backends,
 \textbf{Segurança e Privacidade} & X & X & X & X & X & X \\ \hline
 \textbf{MultiPlataforma} & X & X & X & X & - & - \\ \hline
 \end{tabular}
-\caption{Comparação dos diferentes backends}
+\caption{Comparação dos diferentes \textit{backends}}
 \label{t:analisecomparativa}
 \end{table}
 
-Depois de analisados seis serviços de backend para dar suporte a uma aplicação móvel na área de saúde, faz-se aqui uma breve análise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
+Depois de analisados seis serviços de \textit{backend} para dar suporte a uma aplicação móvel na área de saúde, faz-se aqui uma breve análise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
 \par 
-A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um backend bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro, pois estes não estão contemplados.
+A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um \textit{backend} bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro, pois estes não estão contemplados.
 \par 
-Em relação ao Google Fit tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente a extensibilidade do modelo de dados é possível. O modelo de dados é extensível mas existe uma limitação quanto ao modelo de dados, apenas podem ser utilizados como tipo de dados o int e o float, ou seja, não existe o tipo objeto e array.
+Em relação ao \textit{Google Fit} tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente e o \gls{ECG} a extensibilidade do modelo de dados é possível. O modelo de dados é extensível mas existe uma limitação relativamente ao tipo de dados que podem ser utilizados, entre eles temos o \textit{int} e o \textit{float}, ou seja, não existe o tipo objeto e vetor.
 \par 
-O \gls{OMH} tem uma \gls{API} \gls{REST}, também como o Google Fit não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} Schemas definidos que podem ser utilizados para validar a entrada dos dados no backend. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} schemas podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
+O \gls{OMH} tem uma \gls{API} \gls{REST}, assim como o \textit{Google Fit} não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} \textit{schemas} definidos que podem ser utilizados para validar a entrada dos dados no \textit{backend}. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} \textit{schemas} podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
 
 
 \cleardoublepage
