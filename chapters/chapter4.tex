@@ -16,7 +16,7 @@ O cenário escolhido para esta avaliação exploratória foi o simples ato de re
 
 A escolha de um \textit{backend} para a solução era um ponto importante. Das várias plataformas disponíveis para um possível \textit{backend} foram selecionadas três para ser desenvolvido o cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e \textit{Google Fit}. \par
 
-Para utilizar cada uma destas plataformas, foi desenvolvida uma aplicação móvel, bastante simples, a aplicação móvel tinha várias funcionalidades. Entre elas temos várias funcionalidades-chave:
+Para utilizar cada uma destas plataformas, foi desenvolvida uma aplicação móvel, bastante simples. A aplicação móvel tinha várias funcionalidades-chave, entre elas:
 \begin{itemize}
   \item Selecionar o dispositivo com os sensores
   \item Efetuar \textit{Login} na respetiva plataforma
@@ -34,7 +34,7 @@ Tendo em conta que a mesma aplicação conseguia utilizar os três \textit{backe
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
 Relativamente a este \textit{backend} para solução do problema proposto, tínhamos disponível um serviço denominado de \textit{\gls{DSU}} que disponibiliza um servidor de dados fornecendo por uma \gls{API} \gls{REST} denominada de \textit{dataPoint API}. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de \textit{tokens} de acesso. \cite{omhstorage} \par
 Com a introdução desta plataforma no caso de estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}. \par
-Foi então utilizado desta plataforma o servidor de dados (e alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
+Foi então utilizado desta plataforma o servidor de dados (alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
 
 \begin{figure}[H]
   \centering
@@ -48,7 +48,7 @@ Foi então utilizado desta plataforma o servidor de dados (e alguns tipos de dad
 \label{additionalImpl-omh}
 Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
 No processo de criação de um novo \textit{dataPoint} foi adicionada uma validação, para que fosse garantido que o \textit{body} estava corretamente formatado com o tipo de dados definido no cabeçalho.
-Apesar dos \textit{dataschemas} especificarem um formato de dados, esta validação não estava a ser efetuada. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
+Apesar dos \textit{data schemas} especificarem um formato de dados, esta validação não estava a ser efetuada. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
 \par 
 
 
@@ -95,7 +95,7 @@ As dificuldades encontradas não foram muitas, pois a plataforma estava bastante
 O \gls{FHIR} ao contrário do \textit{Open mHealth} é apenas uma definição de uma \gls{API} para armazenamento de informação e troca de dados clínicos entre hospitais e clínicas. Esta \gls{API} pode ser desenvolvida de diferentes maneiras. \par 
 Existe uma implementação de um projeto de código aberto com o nome \textit{Hapi-FHIR} . Este projeto suporta todos os dados definidos pelo \gls{FHIR} e grande parte das operações sobre eles, como por exemplo criar, editar, eliminar, etc.
 \par 
-O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor \gls{FHIR}, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de \textit{endpoints} \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados na backend. \par
+O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor \gls{FHIR}, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de \textit{endpoints} \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados no backend. \par
 
 \subsection{Implementação adicional}
 O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do \textit{Open mHealth}).
@@ -134,8 +134,8 @@ Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de
 
 \textbf{\textit{Google Fit}}
 \par
-Esta plataforma tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google e o factos dos dados ficarem armazenados na nuvem.\par 
-O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema. No caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, tinha que ser feitos 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser da Google, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
+Esta plataforma tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google e o facto dos dados ficarem armazenados na nuvem.\par 
+O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema, no caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, tinha que ser feito 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser da Google, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
 \par
 \textbf{\textit{Open mHealth}}
 \par
