@@ -65,19 +65,19 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
  & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
  & Serviço DELETE, utilizado para efetuar a eliminação de um  \textit{dataPoint} \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
  & Serviço GET, utilizado para efetuar a consulta de um  \textit{dataPoint} \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
  & Serviço GET, utilizado para efetuar a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY} \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
  & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado esquema de dados \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version} \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de recursos}
@@ -89,7 +89,7 @@ Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-avail
 \subsection{Comunicação com módulos externos}
 No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} pode verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
-O projeto é então composto por dois verticles em que num dois verticles cria um \textit{endPoint} \gls{REST} e permite publicar os mesmo \textit{Eventbus} assim que os recebe.
+O projeto é então composto por dois \textit{verticles} em que um dos \textit{verticles} cria um \textit{endPoint} \gls{REST} e permite publicar os mesmo \textit{Eventbus} assim que os recebe.
 
 \begin{figure}[H]
   \centering
@@ -101,7 +101,7 @@ O projeto é então composto por dois verticles em que num dois verticles cria u
 
 \subsection{Como instalar este \textit{backend}}
 Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \cite{omh-code} e é um ''fork'' do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado \cite{omh-runnatively}.
-O código relativo à extensibilidade com módulos externos também está no github\cite{restpubsub} este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
+O código relativo à extensibilidade com módulos externos também está no github\cite{restpubsub}, este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
 \begin{itemize}
     \item vertx run SimpleREST.java -cluster
     \item vertx run Receiver.java -cluster
@@ -164,7 +164,7 @@ Os dados estão a ser recolhidos através do \textit{VitalJacket} que é um disp
 
 \subsection{Componentes da aplicação}
 
-Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado as \textit{Async Tasks}\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a \textit{thread} da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
+Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado as \textit{Async Tasks}\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a \textit{thread} da atividade em execução. Para a atividade relativa aos dados de uma determinada sessão e para a atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
 
 
 
@@ -249,17 +249,17 @@ Depois do participante ter entrado na aplicação com a sua conta pode visualiza
 A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
 
 \subsection{Componentes da aplicação}
-Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML} \textit{Java Script} e \gls{CSS}. \par 
-Foi utilizada a plataforma Bootstrap \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações web para desenvolvimento responsivo adaptável a plataformas móveis. \par
-Para a comunicação com a \gls{API} \gls{REST} foi utilizado o jQuery \cite{jquery}.
-Relativamente à visualização dos dados para cada sessão foi utilizado a biblioteca HighCharts \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de \textit{Open mHealth Web Visualizations} \cite{omhwebvisualizations}.
+Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML}, \textit{Java Script} e \textit{\gls{CSS}}. \par 
+Foi utilizada a plataforma \textit{Bootstrap} \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações \textit{web} para desenvolvimento responsivo adaptável a plataformas móveis. \par
+Para a comunicação com a \gls{API} \gls{REST} foi utilizado o \textit{jQuery} \cite{jquery}.
+Relativamente à visualização dos dados para cada sessão foi utilizado a biblioteca \textit{HighCharts} \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de \textit{Open mHealth Web Visualizations} \cite{omhwebvisualizations}.
 
 \subsection{Interações suportadas }
 
 
 Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar a revisão dos dados inseridos pelos participantes. É então possível adicionar vários participantes e verificar as várias sessões de medições de dados.
 \subsubsection{Página Principal}
-A página principal tem uma secção de boas vindas e ainda permite a criação e a entrada na aplicação (Figura \ref{f:web-home}).
+A página principal tem uma secção de boas vindas e ainda permite o registo e a entrada na aplicação (Figura \ref{f:web-home}).
 
 \begin{figure}[H]
 \centering
@@ -279,7 +279,7 @@ O revisor pode ainda não ter uma conta criada, por isso antes de entrar na apli
 \end{figure}
 
 \subsubsection{Página para efetuar o \textit{Login}}
-Esta página permite (Figura \ref{f:web-login}) pode ser chamada de duas maneiras diferentes. Ao clicar nos participantes da secção de boas vindas é detetado que o \textit{login} ainda não foi efetuado e é feito o redirecionamento para esta página, ou então ao clicar no botão Entrar na página principal. Depois de efetuar o \textit{login} pode visualizar os seus participantes.
+Esta página (Figura \ref{f:web-login}) pode ser chamada de duas maneiras diferentes. Ao clicar nos participantes da secção de boas vindas é detetado que o \textit{login} ainda não foi efetuado e é feito o redirecionamento para esta página, ou então ao clicar no botão Entrar na página principal. Depois de efetuar o \textit{login} pode visualizar os seus participantes.
 
 \begin{figure}[H]
 \centering
@@ -327,7 +327,7 @@ Podemos então visualizar os dados em gráficos relativos a cada tipo de dados r
 \caption[Dados fisiológicos do participante numa determinada sessão]{Dados fisiológicos do participante numa determinada sessão}
 \label{f:leiturasdados}
 \end{figure}
- Relativamente a cada tipo de dados pode ser efetuado o zoom para em cada um dos gráficos, e ainda no caso do acelerómetro escolher os dados a apresentar, neste caso escolhi apenas a aceleração (Figura \ref{f:withzoom}).
+ Relativamente a cada tipo de dados pode ser efetuado o \textit{zoom} para em cada um dos gráficos, e ainda no caso do acelerómetro escolher os dados a apresentar, neste caso escolhi apenas a aceleração (Figura \ref{f:withzoom}).
  
  \begin{figure}[H]
 \centering
@@ -341,33 +341,32 @@ Podemos então visualizar os dados em gráficos relativos a cada tipo de dados r
 
 \subsection{Criar um novo tipo de dados}
 
-A criação de um novo tipo de dados pode ser feita com a ajuda do repositório ''schemas'' \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de algumas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do VitalJacket.
+A criação de um novo tipo de dados pode ser feita com a ajuda do repositório \textit{schemas} \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de algumas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do \textit{VitalJacket}.
 
 \begin{enumerate}
-  \item Clonar o repositório correspondente para um diretório à sua escolha com o comando \par
-  ''git clone https://github.com/openmhealth/schemas'' 
+  \item Clonar o repositório correspondente para um diretório à sua escolha 
   De seguida vamos fazer duas coisas principais: uma delas é criar o ficheiro que define o novo tipo de dados; a outra é criar um ficheiro com uma amostra do novo tipo de dados.
-  \item Criar um ficheiro que define o tipo de dados em \gls{JSON} schema, para isso, adicione um novo ficheiro no diretório schema/omh. O nome deste ficheiro tem que ser composto pelo nome que quer dar ao tipo de dados e a versão correspondente, tem que terminar com a extensão .json. No meu caso criei com o nome accelerometer-1.0.json  \par A versão escolhida aqui é a 1.0 mas podia ser qualquer outra. Pode reparar que no diretório schema/omh tem acesso a todos os ficheiros que definem todos os tipos de dados.
-  \item Adicionar uma nova pasta ao diretório testdata/omh como o nome respetivo ao ficheiro criado anteriormente. Neste caso criar uma pasta com o nome accelerometer.
-  \item Vai agora criar uma pasta correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e uma outra pasta dentro da criada anteriormente com o nome shouldPass.
-  \item Dentro do diretório shouldPass vai ter que criar um ou vários ficheiros para ser utilizados como amostras do tipo de dados. O objetivo deste diretório é ter várias amostras válidas testando-as com o tipo de dados criado no ponto 2. Para este tutorial criei o ficheiro example.json. \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão .json
-  Como criou o diretório shouldPass, pode também criar o diretório shouldFail criando também vários ficheiros para testar o tipo de dados criado. \par 
+  \item Criar um ficheiro que define o tipo de dados em \gls{JSON} \textit{schema}, para isso, adicione um novo ficheiro no diretório \textit{schema/omh}. O nome deste ficheiro tem que ser composto pelo nome que quer dar ao tipo de dados e a versão correspondente, tem que terminar com a extensão \textit{.json}. No meu caso criei com o nome \textit{accelerometer-1.0.json}  \par A versão escolhida aqui é a 1.0 mas podia ser qualquer outra. Pode reparar que no diretório \textit{schema/omh} tem acesso a todos os ficheiros que definem todos os tipos de dados.
+  \item Adicionar uma nova pasta ao diretório \textit{testdata/omh} como o nome respetivo ao ficheiro criado anteriormente. Neste caso criar uma pasta com o nome \textit{accelerometer}.
+  \item Vai agora criar uma pasta correspondente à versão introduzida no ponto 2. Neste caso é 1.0 e uma outra pasta dentro da criada anteriormente com o nome \textit{shouldPass}.
+  \item Dentro do diretório \textit{shouldPass} vai ter que criar um ou vários ficheiros para ser utilizados como amostras do tipo de dados. O objetivo deste diretório é ter várias amostras válidas testando-as com o tipo de dados criado no ponto 2. Para este tutorial criei o ficheiro \textit{example.json}. \par Neste ponto o nome do ficheiro é opcional só tem que acabar com a extensão \textit{.json}\par
+  Como criou o diretório \textit{shouldPass}, pode também criar o diretório \textit{shouldFail} criando também vários ficheiros para testar o tipo de dados criado. \par 
   Neste ponto tem tudo preparado para começar a criar o novo tipo de dados e validar a amostra com a nova definição do novo tipo de dados criados.
   
   \begin{figure}[!ht]
   \centering
   \includegraphics[width=0.5\textwidth]{imgs/newsampledata.png}
-  \caption[Esquema de diretório para o novo sample]{Esquema de diretório para o exemplo do novo tipo de dados}
+  \caption[Esquema de diretório para o exemplo do novo tipo de dados]{Esquema de diretório para o exemplo do novo tipo de dados}
   
   \label{f:directorynewsample}
 \end{figure}
   
-\item Vamos agora preencher o ficheiro com a definição do novo tipo de dados, aquele que criou no ponto 2. O ficheiro vai ser criado no formato de \gls{JSON} schema. Para suportar a criação deste ficheiro pode reutilizar schemas existentes \cite{schema-library} e referênciá-los, deste modo estará a criar um modelo com tipos de dados normalizados. No meu caso vou reutilizar um schema para definir a data/hora e um outro para definir o tipo de atividade que está a efetuar no momento da leitura. Os restantes dados estão relacionados com o acelerómetro em si, a sessão e a leitura respetiva.
+\item Vamos agora preencher o ficheiro com a definição do novo tipo de dados, aquele que criou no ponto 2. O ficheiro vai ser criado no formato de \gls{JSON} \textit{schema}. Para suportar a criação deste ficheiro pode reutilizar \textit{schemas} existentes \cite{schema-library} e referênciá-los, deste modo estará a criar um modelo com tipos de dados normalizados. No meu caso vou reutilizar um \textit{schema} para definir a data/hora e um outro para definir o tipo de atividade que está a efetuar no momento da leitura. Os restantes dados estão relacionados com o acelerómetro em si, a sessão e a leitura respetiva.
 O ficheiro fica do seguinte modo: 
 
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/accelerometer-1.0.json}
-\caption[\gls{JSON} schema para o novo tipo de dados de acelerómetro]{\gls{JSON} schema para o novo tipo de dados de acelerómetro}
+\caption[\gls{JSON} \textit{schema} para o novo tipo de dados de acelerómetro]{\gls{JSON} \textit{schema} para o novo tipo de dados de acelerómetro}
 \label{f:accelerometer-json-schema}
 \end{figure}
 
@@ -379,7 +378,7 @@ O ficheiro fica do seguinte modo:
 \label{f:accelerometer-json-data}
 \end{figure}
 
-\item Para compilar e executar o validador tem que executar o comando ''./gradlew test-data-validator:bootRun'' no diretório principal ''schemas'' ou então execute o comando ''./gradlew bootRun'' no diretório ''schemas/test-data-validator''. 
+\item Para compilar e executar o validador tem que executar o comando \textit{./gradlew test-data-validator:bootRun} no diretório principal ''schemas'' ou então execute o comando \textit{./gradlew bootRun} no diretório \textit{schemas/test-data-validator}. 
 
 \subsection{Como utilizar o novo tipo de dados criado}
 
