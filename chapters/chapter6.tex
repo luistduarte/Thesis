@@ -1,12 +1,11 @@
 \chapter{Implementação do sistema}
-%no capítulo de implementação é para mostrar como se fez. devem aparecer visualizações relacionas com o desenvolvimento, tais como classes ou diagramas da bd. Não é para usar o estilo documental de um relatório técnico, mas sim mais para enumerar as escolhas e dar algum enquadramento porque é que foi essa a escolha.
 
-\section{Implementação e adaptação do backend}
-% podem ser outras as subsecções; estas são ilustrativas. A idei é discutir as opções concretas tomadas para a implementação e os artifacts criados
+\section{Implementação e adaptação do \textit{backend}}
+
 \subsection{Servidor de Autorização e Autenticação}
-O servidor de autenticação e autorização disponibiliza uma \gls{API} para criação de novos utilizadores e solicitação de tokens de acesso relativamente a várias aplicações. Este serviço utiliza a framework Spring, mais concretamente a Spring Security \cite{spring-framework}. \par 
-No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os tokens de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. 
-Relativamente à base de dados não relacional os utilizadores finais são guardados numa coleção do Mongo, a coleção é denominada por ''endUser''. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}
+O servidor de autenticação e autorização disponibiliza uma \gls{API} para criação de novos utilizadores e solicitação de \textit{tokens} de acesso relativamente a várias aplicações. Este serviço utiliza a plataforma \textit{Spring}, mais concretamente a \textit{Spring Security} \cite{spring-framework}. \par 
+No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os \textit{tokens} de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. 
+Relativamente à base de dados não relacional para os utilizadores finais são guardados numa coleção do \textit{MongoDB}\cite{mongodb}, a coleção é denominada por \textit{endUser}. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}.
 
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/endUser.json}
@@ -14,39 +13,39 @@ Relativamente à base de dados não relacional os utilizadores finais são guard
 \label{f:endUserCode}
 \end{figure}
 
-Para a base de dados relacional a escolha podia por exemplo ser efetuada entre o MySQL \cite{mysql} e PostgreSQL \cite{postgresql}, neste caso foi utilizado o PostgreSQL, o modelo de dados relacional está representado na Figura \ref{f:auth-diagram}. \par 
-Na tabela ''oauth\_client\_details'' estão guardadas todas as informações relativas à aplicação como por exemplo a sua identificação, a chave secreta, os tipos de autorização, etc. Relativamente à tabela ''oauth\_access\_token'' estão guardados os tokens de acesso por utilizador, relativamente a uma aplicação. Cada token de acesso tem relacionado a ele  um refresh token que está guardado numa tabela diferente, na tabela ''oauth\_refresh\_token''.
+Para a base de dados relacional a escolha podia por exemplo ser efetuada entre o  \textit{MySQL} \cite{mysql} e  \textit{PostgreSQL} \cite{postgresql}, neste caso foi utilizado o  \textit{PostgreSQL}, o modelo de dados relacional está representado na Figura \ref{f:auth-diagram}. \par 
+Na tabela  \textit{oauth\_client\_details} estão guardadas todas as informações relativas à aplicação como por exemplo a sua identificação, a chave secreta, os tipos de autorização, etc. Relativamente à tabela  \textit{oauth\_access\_token} estão guardados os  \textit{tokens} de acesso por utilizador, relativamente a uma aplicação. Cada  \textit{token} de acesso tem relacionado a ele  um  \textit{refresh token} que está guardado numa tabela diferente, na tabela  \textit{oauth\_refresh\_token}.
 
  \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{imgs/auth-diagram.png}
-  \caption[Diagrama do modelo de dados para guardar as credenciais dos clientes e os tokens de acesso]{Diagrama do modelo de dados para guardar as credenciais dos clientes e os tokens de acesso}
+  \caption[Diagrama do modelo de dados para guardar as credenciais dos clientes e os  \textit{tokens} de acesso]{Diagrama do modelo de dados para guardar as credenciais dos clientes e os  \textit{tokens} de acesso}
   
   \label{f:auth-diagram}
 \end{figure}
 
 \subsubsection{API REST}
 \label{l:restapiAUTH}
-Na tabela seguinte temos disponível os métodos disponíveis do servidor de autorização e autenticação.
+Na tabela seguinte temos os métodos disponíveis do servidor de autorização e autenticação.
 \begin{table}[H]
 \label{t:apirest-auth}
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/users}}  \\ \hline 
  & Serviço POST, para criação de novos utilizadores \\
- & Recebe um JSON composto por dois campos um ''username'' e ''password'' \\ \hline
+ & Recebe um JSON composto por dois campos um  \textit{username} e  \textit{password} \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/oauth/token}} \\ \hline
- & Serviço POST, utilizado para efetuar o pedido de um novo token de acesso \\
- & Recebe por parâmetros o ''username'', ''password'' e o ''grant\_type'' \\ \hline
+ & Serviço POST, utilizado para efetuar o pedido de um novo  \textit{token} de acesso \\
+ & Recebe por parâmetros o  \textit{username},  \textit{password} e o  \textit{grant\_type} \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de autorização e autenticação}
 \end{table}
 
-\subsection{Servidor de recursos (dataPoint REST API) }
-O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de dataPoints. Estes dataPoints estão a ser guardados numa base de dados Mongo numa coleção com o nome dataPoint. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser extendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
-Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes dataPoints são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados (dataschema) associado e definido no cabeçalho do dataPoint. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do dataPoint está de acordo com o dataschema definido no cabeçalho do mesmo. \par
-Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes dataschemas foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
-\subsubsection{dataschema ECG}
+\subsection{Servidor de recursos ( \textit{dataPoint} REST API) }
+O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de  \textit{dataPoints}. Estes  \textit{dataPoints} estão a ser guardados numa base de dados  \textit{MongoDB} numa coleção com o nome  \textit{dataPoint}. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser estendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
+Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes  \textit{dataPoints} são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados ( \textit{data schema}) associado e definido no cabeçalho do  \textit{dataPoint}. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do  \textit{dataPoint} está de acordo com o  \textit{data schema} definido no cabeçalho do mesmo. \par
+Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes  \textit{data schemas} foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
+\subsubsection{ \textit{data schema} ECG}
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/ecg.json}
 \caption[Novo esquema de dados relativo ao ECG]{Novo esquema de dados relativo ao ECG}
@@ -61,36 +60,36 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}}  \\ \hline 
- & Serviço POST, para criação de novos dataPoints \\
- & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Serviço POST, para criação de novos  \textit{dataPoints} \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço DELETE, utilizado para efetuar a eliminação de um dataPoint \\
- & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
- & O id do dataPoint tem que ser referido no url \\ \hline
+ & Serviço DELETE, utilizado para efetuar a eliminação de um  \textit{dataPoint} \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço GET, utilizado para efetuar a consulta de um dataPoint \\
- & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
- & O id do dataPoint tem que ser referido no url \\ \hline
+ & Serviço GET, utilizado para efetuar a consulta de um  \textit{dataPoint} \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
- & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado tipo de um utilizador em específico \\
- & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
- & Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'', ''schema\_version'', ''user\_id'' e o ''CAREGIVER\_KEY'' \\ \hline
+ & Serviço GET, utilizado para efetuar a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY} \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
  & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado esquema de dados \\
- & No header recebe o access\_token para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
- & Recebe por parâmetros o ''schema\_namespace'', ''schema\_name'' e o ''schema\_version'' \\ \hline
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização para lhe dar acesso ao pedido efetuado \\
+ & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version} \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de recursos}
 \end{table}
 
 
-Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os dataPoints inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do Mongo.
+Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os  \textit{dataPoints} inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do  \textit{MongoDB}.
 
 \subsection{Comunicação com módulos externos}
-No processo de inserção de novos dataPoints, depois de validados eles são reencaminhados para um endpoint \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo "heart-rate" e um corpo do dataPoint inserido. Este documento é então inserido no ''EventBus'' do Vert.x, neste momento os módulos que subscreberam o esquema de dados ''heart-rate'' pode verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
+No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} pode verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
-O projeto é então composto por dois verticles em que num dois verticles cria um endpoint \gls{REST} e permite publicar os mesmo Eventbus assim que os recebe.
+O projeto é então composto por dois verticles em que num dois verticles cria um \textit{endPoint} \gls{REST} e permite publicar os mesmo \textit{Eventbus} assim que os recebe.
 
 \begin{figure}[H]
   \centering
@@ -100,7 +99,7 @@ O projeto é então composto por dois verticles em que num dois verticles cria u
   \label{f:toExtSeqDiagram}
 \end{figure}
 
-\subsection{Como instalar este backend}
+\subsection{Como instalar este \textit{backend}}
 Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \cite{omh-code} e é um ''fork'' do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado \cite{omh-runnatively}.
 O código relativo à extensibilidade com módulos externos também está no github\cite{restpubsub} este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
 \begin{itemize}
@@ -111,7 +110,7 @@ O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvo
 
 \section{Implementação da aplicação móvel}
 \subsection{Versões alvo e dependências}
-Esta aplicação móvel foi desenvolvida com o intuito de conseguir abranger grande maioria dos utilizadores, suporta da versão 16 à versão 25, ou seja,  desde o Android 4.1 (Jelly Bean) até ao Android 7.1. De acordo com as informações disponíveis na plataforma de desenvolvimento do Android atinge mais de 98\% dos utilizadores \cite{android-versions}.
+Esta aplicação móvel foi desenvolvida com o intuito de conseguir abranger grande maioria dos utilizadores, suporta da versão 16 à versão 25, ou seja,  desde o \textit{Android} 4.1 (\textit{Jelly Bean}) até ao \textit{Android} 7.1. De acordo com as informações disponíveis na plataforma de desenvolvimento do \textit{Android} atinge mais de 98\% dos utilizadores \cite{android-versions}.
 
 O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde é efetuada a configuração relativa às versões alvo e às dependências existentes, um excerto deste ficheiro de configuração pode ser visualizado na tabela \ref{t:defaultconfigversions} e na tabela \ref{t:defaultconfigdependency} .
 
@@ -157,15 +156,15 @@ Relativamente às dependências temos que ter em atenção que existe duas depen
 
 
 \subsection{Tecnologias integradas e fontes de dados}
-A aplicação móvel está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, login e acesso aos dados. O serviço de recursos é utilizado para guardar todas as medições efetuadas e também para as consultar posteriormente.\par 
-Os dados estão a ser recolhidos através do VitalJacket que é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como o \gls{ECG}, frequência cardíaca e o acelerómetro. A comunicação entre o dispositivo móvel e o sensor é efetuada utilizando o \gls{SDK} para android da biblioteca da BioLib utilizando o perfil de bluetooth \gls{SPP}.
+A aplicação móvel está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para guardar todas as medições efetuadas e também para as consultar posteriormente.\par 
+Os dados estão a ser recolhidos através do \textit{VitalJacket} que é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como o \gls{ECG}, frequência cardíaca e o acelerómetro. A comunicação entre o dispositivo móvel e o sensor é efetuada utilizando o \gls{SDK} para \textit{android} da biblioteca da BioLib utilizando o perfil de bluetooth \gls{SPP}.
 
 
 
 
 \subsection{Componentes da aplicação}
 
-Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado as Async Tasks\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a thread da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
+Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado as \textit{Async Tasks}\cite{android-asynctasks} para efetuar a comunicação a fim de não bloquear a \textit{thread} da atividade em execução. Para a Atividade relativa aos dados de uma determinada sessão e à atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
 
 
 
@@ -174,7 +173,7 @@ Esta aplicação móvel foi desenvolvida com o objetivo principal de efetuar dif
 
 
 \subsubsection{Menu Lateral de Navegação}
-Com este Menu o participante pode efetuar o registo e efetuar o Login na aplicação (Figura \ref{f:leftpannel}).
+Com este Menu o participante pode efetuar o registo e efetuar o \textit{Login} na aplicação (Figura \ref{f:leftpannel}).
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/left.png}
@@ -183,19 +182,19 @@ Com este Menu o participante pode efetuar o registo e efetuar o Login na aplica�
 \end{figure}
 
 \subsubsection{Atividade Principal}
-O participante antes de efetuar Login tem a atividade Principal praticamente vazia. Pode aceder ao menu lateral (Figura \ref{f:leftpannel}), ou às configurações (Figura \ref{f:seesettings}).
+O participante antes de efetuar \textit{Login} tem a atividade Principal praticamente vazia. Pode aceder ao menu lateral (Figura \ref{f:leftpannel}), ou às configurações (Figura \ref{f:seesettings}).
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/seesettings.png}
 \caption[Opção na atividade principal para abrir as configurações]{Opção na atividade principal para abrir as configurações}
 \label{f:seesettings}
 \end{figure}
-Quando o participante efetua o Login na aplicação as suas sessões são carregadas e são listadas para que se possa verificar as medições efetuadas correspondentemente a cada uma. Na Figura \ref{f:afterlogin} podemos ver do lado esquerdo a situação em que o participante ainda não tem sessões de medições efetuadas e do lado direito quando já efetuou duas sessões de medições.
+Quando o participante efetua o \textit{Login} na aplicação as suas sessões são carregadas e são listadas para que se possa verificar as medições efetuadas correspondentemente a cada uma. Na Figura \ref{f:afterlogin} podemos ver do lado esquerdo a situação em que o participante ainda não tem sessões de medições efetuadas e do lado direito quando já efetuou duas sessões de medições.
 
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.4\textwidth]{imgs/afterlogin.png}
-\caption[Atividade Principal depois do Login Efetuado]{Atividade Principal depois do Login Efetuado}
+\caption[Atividade Principal depois do \textit{Login} Efetuado]{Atividade Principal depois do \textit{Login} Efetuado}
 \label{f:afterlogin}
 \end{figure}
 
@@ -209,7 +208,7 @@ Na atividade de configurações (Figura \ref{f:settings}) temos a possibilidade 
 \end{figure}
 
 \subsubsection{Atividade de Registo}
-O participante pode ainda não ter uma conta criada, mas a possibilidade de criar uma conta existe na aplicação e está disponível através do menu lateral. No processo de criação de uma nova conta o participante tem que escolher um utilizador que ainda não tenha sido utilizado e escolher uma password para essa conta de utilizador(Figura \ref{f:createaccount}).
+O participante pode ainda não ter uma conta criada, mas a possibilidade de criar uma conta existe na aplicação e está disponível através do menu lateral. No processo de criação de uma nova conta o participante tem que escolher um utilizador que ainda não tenha sido utilizado e escolher uma \textit{password} para essa conta de utilizador(Figura \ref{f:createaccount}).
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/signup_app.png}
@@ -217,17 +216,17 @@ O participante pode ainda não ter uma conta criada, mas a possibilidade de cria
 \label{f:createaccount}
 \end{figure}
 
-\subsubsection{Atividade para efetuar o Login}
-Esta atividade (Figura \ref{f:loginaccount}) pode ser chamada de duas duas maneiras diferentes: ao iniciar uma nova sessão de medições(é verificado que não tem login efetuado); escolhendo a opção para efetuar Login no menu lateral. É neste momento que o servidor de autorização e autenticação devolve um token de acesso.
+\subsubsection{Atividade para efetuar o \textit{Login}}
+Esta atividade (Figura \ref{f:loginaccount}) pode ser chamada de duas duas maneiras diferentes: ao iniciar uma nova sessão de medições(é verificado que não tem \textit{login} efetuado); escolhendo a opção para efetuar \textit{Login} no menu lateral. É neste momento que o servidor de autorização e autenticação devolve um \textit{token} de acesso.
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/before_login.png}
-\caption[Atividade para efetuar o Login]{Atividade para efetuar o Login}
+\caption[Atividade para efetuar o \textit{Login}]{Atividade para efetuar o \textit{Login}}
 \label{f:loginaccount}
 \end{figure}
 
 \subsubsection{Atividade associada a uma nova sessão de leitura}
-Depois de efetuar o login o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
+Depois de efetuar o \textit{login} o participante pode então criar novas sessões de medições (Figura \ref{f:onNewSession}), pode parar quando quiser e irá voltar a visualizar a sua lista de medições com o acréscimo da última sessão efetuada. 
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.3\textwidth]{imgs/reading.png}
@@ -247,13 +246,13 @@ Depois do participante ter entrado na aplicação com a sua conta pode visualiza
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas e fontes de dados}
 
-A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, login e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
+A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
 
 \subsection{Componentes da aplicação}
-Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML} Java Script e \gls{CSS}. \par 
-Foi utilizada a framework Bootstrap \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações web para desenvolvimento responsivo adaptável a plataformas móveis. \par
+Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML} \textit{Java Script} e \gls{CSS}. \par 
+Foi utilizada a plataforma Bootstrap \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações web para desenvolvimento responsivo adaptável a plataformas móveis. \par
 Para a comunicação com a \gls{API} \gls{REST} foi utilizado o jQuery \cite{jquery}.
-Relativamente à visualização dos dados para cada sessão foi utilizado a bilbioteca HighCharts \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de Open mHealth Web Visualizations \cite{omhwebvisualizations}.
+Relativamente à visualização dos dados para cada sessão foi utilizado a biblioteca HighCharts \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de \textit{Open mHealth Web Visualizations} \cite{omhwebvisualizations}.
 
 \subsection{Interações suportadas }
 
@@ -279,13 +278,13 @@ O revisor pode ainda não ter uma conta criada, por isso antes de entrar na apli
 \label{f:web-registo}
 \end{figure}
 
-\subsubsection{Página para efetuar o Login}
-Esta página permite (Figura \ref{f:web-login}) pode ser chamada de duas maneiras diferentes. Ao clicar nos participantes da secção de boas vindas é detetado que o login ainda não foi efetuado e é feito o redirecionamento para esta página, ou então ao clicar no botão Entrar na página principal. Depois de efetuar o login pode visualizar os seus participantes.
+\subsubsection{Página para efetuar o \textit{Login}}
+Esta página permite (Figura \ref{f:web-login}) pode ser chamada de duas maneiras diferentes. Ao clicar nos participantes da secção de boas vindas é detetado que o \textit{login} ainda não foi efetuado e é feito o redirecionamento para esta página, ou então ao clicar no botão Entrar na página principal. Depois de efetuar o \textit{login} pode visualizar os seus participantes.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{imgs/login_web.png}
-\caption[Página de login na aplicação de revisão]{Página de login na aplicação de revisão}
+\caption[Página de \textit{login} na aplicação de revisão]{Página de \textit{login} na aplicação de revisão}
 \label{f:web-login}
 \end{figure}
 
@@ -301,7 +300,7 @@ Esta página é composta por uma grelha onde pode visualizar todos os seus parti
 
 
 \subsubsection{Página para adicionar novo participante}
-Nesta página (Figura \ref{f:web-newparticipante}) pode adicionar um novo participante, para isso tem que identificar o username do participante e todos os dados demográficos disponíveis deste participante. Depois de adicionar vai ser redirecionado para a página relativa a todos os participantes. 
+Nesta página (Figura \ref{f:web-newparticipante}) pode adicionar um novo participante, para isso tem que identificar o \textit{username} do participante e todos os dados demográficos disponíveis deste participante. Depois de adicionar vai ser redirecionado para a página relativa a todos os participantes. 
 
 \begin{figure}[H]
 \centering
@@ -311,7 +310,7 @@ Nesta página (Figura \ref{f:web-newparticipante}) pode adicionar um novo partic
 \end{figure}
 \newpage
 \subsubsection{Página com leituras do participante}
-Nesta página pode visualizar todos os dados demográficos e fisiológicos do participante. Os dados demográficos podem ser atualizados e os dados fisiológicos que podem ser consultados são todos aqueles inseridos pelo participante. Para isso terá que escolher um intervalo de datas para procurar por sessões de leitura nesse intervalo, depois disso as várias sessões compõem um dropdow menu (Figura \ref{f:webleiturassessoes}) onde pode escolher a sessão que pretende rever. 
+Nesta página pode visualizar todos os dados demográficos e fisiológicos do participante. Os dados demográficos podem ser atualizados e os dados fisiológicos que podem ser consultados são todos aqueles inseridos pelo participante. Para isso terá que escolher um intervalo de datas para procurar por sessões de leitura nesse intervalo, depois disso as várias sessões compõem um \textit{dropdow menu} (Figura \ref{f:webleiturassessoes}) onde pode escolher a sessão que pretende rever. 
 
 \begin{figure}[H]
 \centering
