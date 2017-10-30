@@ -32,10 +32,10 @@ Na tabela seguinte temos os métodos disponíveis do servidor de autorização e
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/users}}  \\ \hline 
- & Serviço POST, para criação de novos utilizadores \\
+ & Serviço POST, permite a criação de novos utilizadores \\
  & Recebe um JSON composto por dois campos um  \textit{username} e  \textit{password} \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/oauth/token}} \\ \hline
- & Serviço POST, utilizado para efetuar o pedido de um novo  \textit{token} de acesso \\
+ & Serviço POST, permite o pedido de um novo  \textit{token} de acesso \\
  & Recebe por parâmetros o  \textit{username},  \textit{password} e o  \textit{grant\_type} \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de autorização e autenticação}
@@ -64,19 +64,19 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço DELETE, utilizado para efetuar a eliminação de um  \textit{dataPoint} \\
+ & Serviço DELETE, permite a eliminação de um  \textit{dataPoint} \\
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço GET, utilizado para efetuar a consulta de um  \textit{dataPoint} \\
+ & Serviço GET, permite a consulta de um  \textit{dataPoint} \\
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
- & Serviço GET, utilizado para efetuar a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
+ & Serviço GET, permite a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY} \\ \hline
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
- & Serviço GET, utilizado para efetuar a consulta dos vários dataPoints de um determinado esquema de dados \\
+ & Serviço GET, permite a consulta dos vários dataPoints de um determinado esquema de dados \\
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version} \\ \hline
 \end{tabularx}

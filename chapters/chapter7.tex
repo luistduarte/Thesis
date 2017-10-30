@@ -1,14 +1,18 @@
 \chapter{Resultados}
 \section{Protótipo integrado}
-// todo
 %recapitular o que se pode fazer com o protótipo que foi construído e como é que ele está apto para suportar experiências de I&D
 
+O protótipo que foi construído tem a capacidade de suportar experiências de \gls{ID} pois, tem a capacidade de gerir contas de utilizadores participantes e revisores que estejam envolvidos num projeto de \gls{ID}, fornece a possibilidade de criação (inserção) de novas medições e a consulta das mesmas, pelo participante as dele próprio e pelo revisor as de todos os participantes envolvidos no seu estudo.\par
+O servidor de recursos suporta extensibilidade dos dados sem que se tenha de alterar o esquema da base de dados o que é uma grande vantagem. Este servidor utiliza ainda o servidor de autorização e autenticação para permitir o acesso aos pedidos recebidos. \par
+Este protótipo tem então todas as características de uma plataforma \textit{mHealth}, ou seja, permite que exista um participante a recolher dados e que estes estejam a ser monitorizados pelo revisor do estudo sem que eles estejam próximos um do outro, dado que todos os dados recolhidos são guardados no servidor.
+
 \section{Adequação das plataformas estudadas}
-// todo
-% discutir de forma crítica o estado de protidão ou falta dela, das plataformas existentes para criar aplicações de mHealth como a que foi desenvolvida
+
+% discutir de forma crítica o estado de prontidão ou falta dela, das plataformas existentes para criar aplicações de mHealth como a que foi desenvolvida
+Na fase exploratória conseguimos encontrar duas plataformas que serviam para ser utilizado como backend do nosso protótipo, para além do \gls{OMH} que foi a plataforma utilizada conseguimos também concluir que o \gls{FHIR} servia para as necessidades existentes. O problema é que nenhuma delas se encontrava pronta para utilização sem qualquer adaptação. O \gls{FHIR} por um lado não suportava gestão de identidades e não controlava o acesso aos pedidos recebidos. falta coisas
 
 \section{Recomendações para o desenvolvimento de aplicações de mHealth}
-// todo
+
 % ace ao trabalho desenvolvido, que recomendações práticas podem ser apresentadas para o desenvolvimento de aplicações de mHealth, especialmente tendo em conta o backend e a utilizaçãod e soluções padronizadas?
 
 \cleardoublepage
