@@ -74,9 +74,12 @@
   %\GRID  % for debugging ONLY
   \HEADER{\BAR\FIG{}}
          {\ThesisYear}
-  \TITLE{Lu\'is Tiago Marques \newline Duarte}
-        {Como escrever uma tese bonita e cheia de resultados importantes}
-        
+      \TITLE{Lu\'is Tiago Marques \newline Duarte}{Comparação e implementação de plataformas de backend para soluções mHealth}
+      \TITLE{}{}
+      \TITLE{}{}
+  \TITLE{}
+        {Assessment and implementation of backend frameworks for mHealth applications}
+
 \EndTitlePage
 \titlepage\ \endtitlepage % empty page
 
@@ -111,17 +114,12 @@ Dedico este trabalho à minha família e amigos.
   \TEXT{\textbf{o j\'uri~/~the jury\newline}}
        {}
   \TEXT{presidente~/~president}
-       {\textbf{ABC}\newline {\small
-        Professor Catedr\'atico da Universidade de Aveiro (por delega\c c\~ao da Reitora da
-        Universidade de Aveiro)}}
+       {\textbf{(A definir)}\newline {\small
+        (A definir)}}
   \vspace*{5mm}
   \TEXT{vogais~/~examiners committee}
        {\textbf{DEF}\newline {\small
         Professor Catedr\'atico da Universidade de Aveiro (orientador)}}
-  \vspace*{5mm}
-  \TEXT{}
-       {\textbf{GHI}\newline {\small
-        Professor associado da Universidade J (co-orientador)}}
   \vspace*{5mm}
   \TEXT{}
        {\textbf{KLM}\newline {\small
@@ -140,21 +138,24 @@ Dedico este trabalho à minha família e amigos.
         tarefas mundanas do dia-a-dia, \ldots}
 \EndTitlePage
 \titlepage\ \endtitlepage % empty page
+%A disponibilidade de dispositivos móveis e a pressão nos sistemas de saúde levaram a uma explosão do número de aplicações móveis para a saúde (\textit{mHealth}). Estas aplicações são cada vez mais relevantes para monitorização e acompanhamento de doentes, especialmente com doenças crónicas, mas, quando se trata de escolher arquiteturas de sistema para o seu desenvolvimento, não há respostas óbvias. Neste trabalho, estudamos algumas plataformas de \textit{backend} que podem ser utilizados por uma aplicação \textit{mHealth} e as respetivas implicações na arquitetura de sistema. 
 
+%Como resultado, demonstramos o desenvolvimento de um sistema para um projeto de Investigação e Desenvolvimento que gere a informação fisiológica de pessoas através de uma aplicação móvel. Estas pessoas são então participantes de um estudo, podendo estas ser monitorizadas remotamente por revisores através de uma aplicação web. Para guardar todos os dados adaptamos uma plataforma já desenvolvida para suportar aplicações de \textit{mHealth} que foi uma das exploradas no fase de estudo e exploração desta dissertação.
 \TitlePage
   \vspace*{55mm}
   \TEXT{\textbf{Resumo}}
-       {A disponibilidade de dispositivos móveis e a pressão nos sistemas de saúde levaram a uma explosão do número de aplicações móveis para a saúde (\textit{mHealth}). Estas aplicações são cada vez mais relevantes para monitorização e acompanhamento de doentes, especialmente com doenças crónicas, mas, quando se trata de escolher arquiteturas de sistema para o seu desenvolvimento, não há respostas óbvias. Neste trabalho, estudamos algumas plataformas de \textit{backend} que podem ser utilizados por uma aplicação \textit{mHealth} e as respetivas implicações na arquitetura de sistema. }
+       {Os dispositivos móveis são cada vez mais utilizados na recolha de dados fisiológicos, quer para uso pessoal ou quer para suporte à prestação de cuidados de saúde. Esta área é mais conhecida como \textit{mHealth}. O programador de aplicações \textit{mHealth} precisa desenvolver o front-end móvel, para os utilizadores finais e o backend, para a integração de sistemas e persistência dos dados recolhidos. Existe várias possibilidades de escolha relativamente à arquitetura a utilizar para o backend, que vão desde tecnologias de nível empresarial até tecnologias específicas de determinados domínios da àrea de saúde. Neste trabalho, estudamos os como candidatos selecionados para o backend das aplicações mHealth (Open mHealth, HL7 FHIR, Google Fit). Foram realizadas implementações exploratórias e lições foram aprendidas.}
     \TEXT{}
-       {   
-       Como resultado, demonstramos o desenvolvimento de um sistema para um projeto de Investigação e Desenvolvimento que gere a informação fisiológica de pessoas através de uma aplicação móvel. Estas pessoas são então participantes de um estudo, podendo estas ser monitorizadas remotamente por revisores através de uma aplicação web. Para guardar todos os dados adaptamos uma plataforma já desenvolvida para suportar aplicações de \textit{mHealth} que foi uma das exploradas no fase de estudo e exploração desta dissertação.}
+       {Mostramos a utilização da plataforma Open mHealth numa aplicação mais abrangente, cobrindo casos típicos da utilização de mHealth num cenário de investigação: criação e gestão de estudos, monitorização ambulatória de participantes e análise dos dados recolhidos por especialistas em saúde. A arquitetura proposta foi implementada num protótipo funcional, permitindo a monitorização de frequência cardíaca, eletrocardiograma e acelerómetro através de smartphones Android e a revisão dos casos por especialistas numa aplicação web dedicada.   
+       }
 \EndTitlePage
 \titlepage\ \endtitlepage % empty page
 
 \TitlePage
   \vspace*{55mm}
   \TEXT{\textbf{Abstract}}
-       { Resumo em inglês }
+       { Mobile devices are increasingly being used in the collection of physiological data, for personal use or health care support. This field of application is known as mHealth. The developer of mHealth applications need to address the mobile front-end, for the final users, and the backend, for systems integration and long-term persistence. Several architectural choices can be adopted for the backend, ranging from general purpose enterprise-level technologies, to health-domain specific frameworks. In this work, we study selected candidate frameworks for the backend of mHealth applications (Open mHealth, HL7 FHIR, Google Fit). Exploratory implementations were conducted and lessons learned.}
+   \TEXT{}{We then show the use of the Open mHealth framework in a more comprehensive application, covering typical mHealth use cases in a research scenario: studies creation and management, ambulatory monitoring of participants and data analysis by health experts. The proposed architecture was implemented in a functional prototype, allowing for heart rate, electrocardiogram, accelerometer and activity monitoring with Android smartphones, and cases review by experts in a dedicated web application. }
 \EndTitlePage
 \titlepage\ \endtitlepage % empty page
 
