@@ -382,7 +382,7 @@ A criação de um novo tipo de dados pode ser feita com a ajuda do repositório 
   \label{f:directorynewsample}
 \end{figure}
   
-\item Vamos agora preencher o ficheiro com a definição do novo tipo de dados, aquele que criou no ponto 2. O ficheiro vai ser criado no formato de \gls{JSON} \textit{schema}. Para suportar a criação deste ficheiro pode reutilizar \textit{schemas} existentes \cite{schema-library} e referênciá-los, deste modo estará a criar um modelo com tipos de dados normalizados. No meu caso vou reutilizar um \textit{schema} para definir a data/hora e um outro para definir o tipo de atividade que está a efetuar no momento da leitura. Os restantes dados estão relacionados com o acelerómetro em si, a sessão e a leitura respetiva.
+\item Vamos agora preencher o ficheiro com a definição do novo tipo de dados, aquele que criou no ponto 2. O ficheiro vai ser criado no formato de \gls{JSON} \textit{schema}. Para suportar a criação deste ficheiro pode reutilizar \textit{schemas} existentes \cite{schema-library} e referênciá-los, deste modo estará a criar um modelo com tipos de dados normalizados. No meu caso vou reutilizar um \textit{schema} para definir a data/hora e um outro para definir a relação temporal relativa à atividade física no momento da leitura. Os restantes dados estão relacionados com o acelerómetro em si, a sessão e a leitura respetiva.
 O ficheiro fica do seguinte modo: 
 
 \begin{figure}[H]
@@ -404,7 +404,7 @@ O ficheiro fica do seguinte modo:
 \subsection{Como utilizar o novo tipo de dados criado}
 
 Para adicionar o novo tipo de dados criado, tem que o integrar com os restantes tipos de dados existentes. \par Tendo em conta que já tem o repositório omh-dsu-ri clonado através do comando ''git clone https://github.com/luistduarte/omh-dsu-ri', terá que copiar o seu novo tipo de dados para o diretório ''omh-dsu-ri/resource-server/src/main/resources/schema/omh'' que é onde se encontram os restantes tipos de dados válidos.
-
+A partir deste momento a inserção de novos dados compatíveis com o \textit{data schema} criado já é possível, para isso na criação e inserção de \textit{datapoints} é necessário especificar no cabeçalho o tipo de dados que está a ser inserido, para este ser validado e corretamente criado.
 \end{enumerate}
 
 \cleardoublepage
