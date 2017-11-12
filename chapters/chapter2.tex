@@ -3,7 +3,7 @@
 
 
 \section{\textit{eHealth}: tecnologias de informação ao serviço da saúde}
-Nos dias que correm toda a sociedade tem dispon\'ivel muito facilmente a possibilidade de trocar informa\c c\~ao entre si, podendo permanecer numa constante troca de informa\c c\~ao.  Com esta realidade tem surgido novas tecnologias, ferramentas e aparelhos que facilitam, tendo em conta a sua implementa\c c\~ao e uso, o fortalecimento da informa\c c\~ao. 
+Nos dias que correm toda a sociedade tem dispon\'ivel muito facilmente a possibilidade de trocar informa\c c\~ao entre si, podendo permanecer numa constante troca e partilha de informa\c c\~ao.  Com esta realidade tem surgido novas tecnologias, ferramentas e aparelhos que facilitam, tendo em conta a sua implementa\c c\~ao e uso, o fortalecimento da informa\c c\~ao. 
 \par
 A \'area da sa\'ude cada vez mais est\'a identificada com esta realidade, as tecnologias da informa\c c\~ao e da comunica\c c\~ao t\^em sido um aliado para aumentar a efici\^encia e melhorar a qualidade da presta\c c\~ao de servi\c cos na \`area da sa\'ude, ajudando a popula\c c\~ao com o seu bem-estar. 
 \par
@@ -63,7 +63,7 @@ A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de m
 \section{Padrões de arquitetura em aplicações móveis}
 Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''leve'' onde a camada de negócio e a camada de dados está guardada num servidor. 
 \par
-No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e mais difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
+No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
 Na figura \ref{f:mobileapparch} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
 
 \begin{figure}[H]
@@ -81,8 +81,8 @@ No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fat
 Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
 
 
-\subsubsection{Protocolo de autorização OAuth}
-O \textit{Open Authorization Protocol} - OAuth é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades \cite{leiba_oauth}.
+\subsubsection{Protocolo de autorização \textit{OAuth}}
+O \textit{Open Authorization Protocol} - \textit{OAuth} é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades \cite{leiba_oauth}.
  A primeira versão é a 1.0 e foi lançada em 2007, e sua última revisão foi publicada em 2010, sendo especificada no \textit{\gls{RFC}} 5849 \cite{oauth10}. Em 2012, a versão 2.0 do protocolo, OAuth 2.0, foi lançada com objetivo de resolver problemas encontrados
 na versão 1.0, entre esses problemas tínhamos escalabilidade e complexidade \cite{oauth20}.
 \par
