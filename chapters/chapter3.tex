@@ -6,13 +6,13 @@ O produto proposto é um sistema que permite a recolha de dados fisiológicos de
 \par 
 O sistema irá ser composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação \textit{Web} para visualizar esses dados recolhidos. O dispositivo com sensores utilizado poderá ser o \textit{VitalJacket} e os dados fisiológicos recolhidos poderão ser a frequência cardíaca, \gls{ECG} e acelerómetro. Poderá ser utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permite recolher os tipos de dados que pretendemos. O sistema irá contemplar então dois atores distintos:
 \begin{itemize}
-  \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores
-  \item Participante(alvo de estudo) que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador
+  \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores.
+  \item Participante(alvo de estudo) que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador.
 \end{itemize}
 \newpage
 \section{Casos de Utilização na Colheita de Dados}
 
-Na figura \ref{f:usecaseandroidapp} podemos visualizar um diagrama com os casos de utilização (cenários-objetivo) da aplicação móvel. O principal ator desta aplicação é o participante que tem que recolher várias sessões de leitura para serem posteriormente analisadas e visualizadas por Investigadores/Revisores.  Uma breve descrição de cada caso de utilização é apresentada na tabela \ref{t:and-usecase}.
+Na figura \ref{f:usecaseandroidapp} podemos visualizar um diagrama com os casos de utilização (cenários-objetivo) da aplicação móvel. O principal ator desta aplicação é o participante que tem que recolher várias sessões de leitura para serem posteriormente analisadas e visualizadas por Investigadores/Revisores.  Uma breve descrição de cada caso de utilização é apresentada na tabela \ref{t:android-usecase}.
 \par
 O ator é um participante de um estudo e pode ter sido selecionado pelos responsáveis de duas maneiras diferentes, eventualmente como voluntário ou como doente. 
 
@@ -29,7 +29,7 @@ O ator é um participante de um estudo e pode ter sido selecionado pelos respons
 
 \begin{table}[H]
 \centering
-\label{t:and-usecase}
+
 \begin{tabularx}{1\textwidth}{|p{4cm}|p{10.7cm}|}
 \rowcolor[HTML]{FFCE93} \hline
 \textbf{Caso de utilização} &  \textbf{Propósito do caso de utilização}  \\
@@ -38,7 +38,7 @@ Efetuar \textit{Login}  & O Participante deve conseguir entrar com a sua conta n
 
 Registar & O Participante que vai participar no estudo pode criar uma nova  conta. \\ \hline
 
-Escolher o tipo de atividade física & Consoante o tipo de atividade física que estiver a efetuar, o participante pode escolher a mais adequada.\\ \hline
+Escolher o tipo de atividade física & Consoante o tipo de atividade física que estiver a efetuar, o participante a sua relação temporal relativamente à atividade física.\\ \hline
 
 Escolher o tipo de dados a recolher & Tem que existir a possibilidade de filtrar o tipo de dados que são para ser recolhidos numa determinada colheita. Pode ocorrer a situação de recolher todos ao mesmo tempo. \\ \hline
 
@@ -46,12 +46,14 @@ Selecionar o dispositivo  & Para se conseguir efetuar a colheita dos dados um di
 
 Iniciar uma sessão de colheita de dados & Pode iniciar uma nova colheita de dados. \\ \hline
 
-Visualizar todas as sessões existentes & O Participante pode visualizar todas as sessões em que recolheu dados. \\ \hline
+Visualizar todas as sessões existentes & O Participante pode visualizar todas as sessões de recolha dados. \\ \hline
 
 Visualizar colheita de uma determinada sessão & O Participante ao escolher uma colheita das várias apresentadas pode visualizar ao detalhe todos os dados recolhidos numa determinada sessão. \\ \hline    
 
 \end{tabularx}
+
 \caption{Breve descrição dos casos de utilização da aplicação de colheita de dados}
+\label{t:android-usecase}
 \end{table}
 
 \section{Casos de Utilização na Revisão de Dados}
@@ -70,7 +72,7 @@ Na figura \ref{f:usecasewebapp} podemos visualizar todos os casos de uso (cenár
 
 \begin{table}[H]
 \centering
-\label{t:web-usecase}
+
 \begin{tabularx}{1\textwidth}{|p{4cm}|p{10.7cm}|}
 \rowcolor[HTML]{FFCE93} \hline
 {\color[HTML]{000000} \textbf{Caso de utilização}} & {\color[HTML]{000000} \textbf{Propósito do caso de utilização}}  \\
@@ -91,7 +93,9 @@ Procurar por sessões de colheita & Relativamente a um participante deve ser pos
 
 Visualizar dados de uma determinada sessão de colheita & O Revisor depois de pesquisar as sessões para um determinado intervalo, deve poder ver os dados recolhidos para cada uma das sessões. \\ \hline                        
 \end{tabularx}
+
 \caption{Breve descrição dos casos de utilização da aplicação de Revisão}
+\label{t:web-usecase}
 \end{table}
 
 \cleardoublepage

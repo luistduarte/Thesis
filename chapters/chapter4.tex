@@ -25,6 +25,7 @@ Para utilizar cada uma destas plataformas, foi desenvolvida uma aplicação móv
 \end{itemize}
 
 Tendo em conta que a mesma aplicação conseguia utilizar os três \textit{backends} distintos, esta seleção era feita tendo em conta o tipo de \textit{login} efetuado. De seguida apresentamos as experiências exploratórias com cada plataforma.
+A frequência cardíaca foi o tipo de dado fisiológico escolhido, pois era aquele tipo de dado que estava disponível por defeito em todos os \textit{backends} escolhidos para esta fase exploratória. 
 \newpage
 
 \section{Implementação exploratória: \textit{Open mHealth}}
@@ -32,7 +33,7 @@ Tendo em conta que a mesma aplicação conseguia utilizar os três \textit{backe
 %http://www.openmhealth.org/documentation/#/store-data/storage-overview
 %http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
-Relativamente a este \textit{backend} para solução do problema proposto, tínhamos disponível um serviço denominado de \textit{\gls{DSU}} que disponibiliza um servidor de dados fornecendo por uma \gls{API} \gls{REST} denominada de \textit{dataPoint API}. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de \textit{tokens} de acesso. \cite{omhstorage} \par
+Relativamente a este \textit{backend} para solução do problema proposto, tínhamos disponível um serviço denominado de \textit{\gls{DSU}} que disponibiliza um servidor de dados que fornece uma \gls{API} \gls{REST} denominada de \textit{dataPoint API}. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de \textit{tokens} de acesso. \cite{omhstorage} \par
 Com a introdução desta plataforma no caso de estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}. \par
 Foi então utilizado desta plataforma o servidor de dados (alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
 
@@ -154,6 +155,6 @@ Um dos pontos fortes é saber que esta definição da \gls{API} é bastante util
 Tendo em conta que o produto proposto tinha como um dos objetivos guardar dados relativos ao \gls{ECG}, o \textit{Google Fit} é limitado relativamente ao tipo de dados, ou seja, não suporta vetores para guardar os dados, ficando logo praticamente excluído como possível escolha para o \textit{backend}.
 Ficamos agora então com o \textit{Open mHealth} e o \gls{FHIR}, nenhum deles está apto na totalidade para ser utilizado sem qualquer alteração. Por um lado temos falhas nas duas plataformas que não contemplam todos os tipos de dados que precisam de ser guardados, como por exemplo o acelerómetro e o \gls{ECG}, apesar do \gls{FHIR} estar mais completo neste assunto.
 Para além disto o \gls{FHIR} não contém nenhum serviço de autenticação e autorização sendo necessário utilizar um serviço externo.
-Não podemos dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o \textit{Open mHealth} é um projeto que foi desenvolvido com o objetivo de uniformizar os \textit{backends} na área das aplicações móveis na área de saúde, vamos optar pela utilização desta plataforma.
+Não podemos dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o \textit{Open mHealth} é um projeto que foi desenvolvido com o objetivo de uniformizar os \textit{backends} na área das aplicações móveis na área de saúde, vamos optar pela utilização desta plataforma, dando uma oportunidade a um projeto inovador, com o intuito também de perceber se mais tarde, pode ou não vir a ser utilizado em diferentes projetos como \textit{backend} de aplicações móveis na área da saúde, ou até em projetos de \gls{ID}.
 
 \cleardoublepage
