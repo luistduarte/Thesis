@@ -34,34 +34,36 @@ As \'areas abrangidas podem ser mesmo bastantes, basta haver aplica\c c\~oes des
 \par
 Tomando por exemplo a diabetes, uma doença crónica, há a necessidade de se monitorizar a concentra\c c\~ao de glicose no sangue de doentes com regularidade. Vamos agora analisar um estudo feito nesta área listando algumas aplica\c c\~oes para esta finalidade \cite{mhealth}.
 
-\begin{itemize}
-  \item \textit{Daily Carb - Carbohydrate, Glucose, Medication, Blood Pressure and Exercise Tracker} \cite{mhealth_app1}
-  \begin{itemize}
-    \item Uma aplica\c c\~ao que possibilita uma monitoriza\c c\~ao di\'aria dos nutrientes ingeridos, hidratos de carbono, gorduras e \'agua, assim como leituras da glicose, press\~ao arterial, frequ\^encia card\'iaca, peso, exerc\'icio feito, medica\c c\~ao e insulina ingerida.
-  \end{itemize}
-  \item \textit{Glucose Buddy - Diabetes Logbook Manager w/syncing, Blood Pressure, Weight Tracking} \cite{mhealth_app2}
-   \begin{itemize}
-    \item Esta aplica\c c\~ao possibilita aos utilizadores a inser\c c\~ao manual de valores da glicose, hidratos de carbono e insulina ingerida, assim como outras atividades.
-  \end{itemize}
-  \item \textit{GoMeals} \cite{mhealth_app3}
-     \begin{itemize}
-    \item Esta aplica\c c\~ao foi desenvolvida para ajudar o utilizador na escolha de alimentos, atividade e monitoriza\c c\~ao da glicose  para um  estilo de vida saud\'avel.
-  \end{itemize}
-\end{itemize}
+\begin{table}[H]
+\centering
+
+\begin{tabularx}{1\textwidth}{|p{3cm}|p{6.1cm}|p{2.7cm}|p{2cm}|}
+\rowcolor[HTML]{FFCE93} \hline
+\textbf{Aplicação} &  \textbf{Descrição} &  \textbf{Monitorização de parâmetros}  &  \textbf{Leitura Autónoma}  \\
+\hline
+Daily Carb \cite{mhealth_app1} & Uma aplica\c c\~ao que possibilita uma monitoriza\c c\~ao di\'aria dos nutrientes ingeridos, hidratos de carbono, gorduras e \'agua, assim como leituras da glicose, press\~ao arterial, frequ\^encia card\'iaca, peso, exerc\'icio feito, medica\c c\~ao e insulina ingerida. & Sim & Não \\ \hline
+
+Glucose Buddy \cite{mhealth_app2} & Esta aplica\c c\~ao possibilita aos utilizadores a inser\c c\~ao manual de valores da glicose, hidratos de carbono e insulina ingerida, assim como outras atividades. & Sim & Não \\ \hline
+GoMeals \cite{mhealth_app3} & Esta aplica\c c\~ao foi desenvolvida para ajudar o utilizador na escolha de alimentos, atividade e monitoriza\c c\~ao da glicose  para um  estilo de vida saud\'avel. & Sim & Não \\ \hline
+\end{tabularx}
+
+\caption{Conjunto de aplicações \textit{mHealth} para ajudar a monitorizar a diabetes}
+\label{t:aplications-glicose}
+\end{table}
+
 A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, \textit{tablet} ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
+Dentro dos dados de saúde mais comuns temos a frequência cardíaca, o \gls{ECG} e o SpO2(Oxímetro de pulso) \cite{wearable-trends}. Estes tipos de dados são os mais comuns, pois são os utilizados quando os doentes estão internados e em avaliação e supervisão contínua.
+Dentro destes tipos de dados, considerando agora no caso das aplicações \textit{mHealth} podemos afirmar que o tipo de dados mais comum poderá ser a frequência cardíaca, pois a percentagem de dispositivos eletrónicos que tem este sensor é mesmo enorme. Uma leitura contínua de um \gls{ECG} será também bastante importante para exemplo para a deteção de arritmia.
 
 
 
-
-
-
-
+\newpage
 \section{Padrões de arquitetura em aplicações móveis}
 Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''leve'' onde a camada de negócio e a camada de dados está guardada num servidor. 
 \par
 No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
-Na figura \ref{f:mobileapparch} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
+Na figura \ref{f:mobileapparch} \footnote{imagem retirada do livro \textit{Mobile Apllications: Architecture, Design, and Development}} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
 
 \begin{figure}[H]
   \centering
@@ -71,17 +73,15 @@ Na figura \ref{f:mobileapparch} podemos ver uma arquitetura comum de uma aplica�
   \label{f:mobileapparch}
 \end{figure}
 
-No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer smartphone. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação, Acesso de dados, Gestão de Exceções. \cite{mobileappbook}
+No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer smartphone. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação e Acesso de dados \cite{mobileappbook}. Cada um destes fatores será analisado com mais detalhe de seguida.
 
 
 \subsection{Autenticação e Autorização}
-Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
+Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth \cite{oauth20} que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
 
 
 \subsubsection{Protocolo de autorização \textit{OAuth}}
 O \textit{Open Authorization Protocol} - \textit{OAuth} é um protocolo de autorização que foi desenvolvido com o objetivo de solucionar os problemas relacionados com a gestão de identidades \cite{leiba_oauth}.
- A primeira versão é a 1.0 e foi lançada em 2007, e sua última revisão foi publicada em 2010, sendo especificada no \textit{\gls{RFC}} 5849 \cite{oauth10}. Em 2012, a versão 2.0 do protocolo, OAuth 2.0, foi lançada com objetivo de resolver problemas encontrados
-na versão 1.0, entre esses problemas tínhamos escalabilidade e complexidade \cite{oauth20}.
 \par
 Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessários para a compreensão do fluxo de execução deste protocolo, são eles: \textit{Resource Owner} - O proprietário do recurso, que é a entidade que tem o poder de conceder a permissão de acesso, aos seus recursos; \textit{Resource Server} - O servidor de recursos, que é o responsável por guardar e responder às solicitações de acesso aos recursos protegidos, utilizando \textit{tokens} de acesso; \textit{Client} - Cliente, que é uma aplicação, que realiza solicitações de acesso aos recursos protegidos, ao servidor de recursos, em nome do proprietário, dono do recurso, após a obtenção de sua autorização; \textit{Authorization Server} - O servidor de autorização, que é responsável por emitir \textit{tokens} de acesso aos clientes, após autenticar e obter autorização do proprietário dos recursos \cite{oauth20}. Na figura \ref{f:oauth2flow} é apresentado o fluxo do protocolo OAuth 2.0 mostrando a interação entre estes quatro pontos de contacto.
 
