@@ -1,14 +1,17 @@
 \chapter{Requisitos}
-
-\section{Visão geral do sistema}
+Neste trabalho, procuramos identificar um \textit{backend} conveniente para o desenvolvimento de aplicações \textit{mHealth}. Para isso, vamos definir um sistema-alvo, que requer uma arquitetura tipica de uma solução de \textit{mHealth}. O objetivo é partir de um cenário concreto para extrair requisitos que possam validar a arquitetura escolhida.
+\section{Visão geral do sistema a desenvolver}
 % nesta secção, apresentar o PRODUTO proposto: um sistema para apoiar projetos de I&D que incluem recolha de dados fisiológicos, que podem ocorrer em laboratório, como em ambulatório Identificar os atores envolvidos e as suas motivações 
-O produto proposto é um sistema que permite a recolha de dados fisiológicos de pessoas e a respetiva revisão dos dados recolhidos por parte dos profissionais, responsáveis pelo estudo. A recolha pode ocorrer em laboratório ou em ambulatório, isto é, os participantes podem recolher estes dados presencialmente ou remotamente. Um dos objetivos deste sistema é apoiar projetos de \gls{ID} que são cada vez mais importantes para reduzir a incerteza na utilização de determinadas tecnologias e ideias.
+O produto proposto é um sistema que permite a recolha de dados fisiológicos de pessoas e a respetiva revisão dos dados recolhidos por parte dos profissionais, responsáveis pelo estudo. A recolha pode ocorrer em laboratório ou em ambulatório, isto é, os participantes podem recolher estes dados presencialmente ou remotamente. Um dos objetivos deste sistema é apoiar projetos de \gls{ID} que incluem componentes de análise da fisiologia humana.
 \par 
-O sistema irá ser composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação \textit{Web} para visualizar esses dados recolhidos. O dispositivo com sensores utilizado poderá ser o \textit{VitalJacket} e os dados fisiológicos recolhidos poderão ser a frequência cardíaca, \gls{ECG} e acelerómetro. Poderá ser utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permite recolher os tipos de dados que pretendemos. O sistema irá contemplar então dois atores distintos:
+O sistema irá ser composto por uma aplicação móvel que tem como objetivo principal recolher dados dos sensores, e uma aplicação \textit{web} para visualizar esses dados recolhidos. O sistema irá contemplar então dois atores distintos:
 \begin{itemize}
-  \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes utilizadores.
+  \item Revisor/Investigador que tem como objetivo rever dados inseridos pelos diferentes participantes num estudo.
   \item Participante(alvo de estudo) que tem como função recolher dados vitais e acelerómetro para posteriormente serem revistos pelo revisor/investigador.
 \end{itemize}
+
+O dispositivo com sensores utilizado poderá ser o \textit{VitalJacket} \cite{vj} e os dados fisiológicos recolhidos poderão ser a frequência cardíaca, \gls{ECG} e acelerómetro. Poderá ser utilizado este dispositivo pois como já fez parte de outros estudos, é um equipamento válido e permite recolher os tipos de dados que pretendemos. \par 
+A acelerómetro está integrado no \textit{VitalJacket} e a sua integração deve-se à facilidade com que este sensor aparece hoje dia em \textit{smartphones}, \textit{smartwatchs} e \textit{bracelets}. É uma variável adicional, típica das aplicações móveis, mas ausente dos sistemas de dados clínicos clássicos.  
 \newpage
 \section{Casos de Utilização na Colheita de Dados}
 
@@ -18,7 +21,7 @@ O ator é um participante de um estudo e pode ter sido selecionado pelos respons
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{imgs/app-and-usecase.png}
+  \includegraphics[width=0.9\textwidth]{imgs/app-and-usecase.png}
   \caption[Diagrama de casos de uso da aplicação móvel para recolha de dados]{Diagrama de casos de uso da aplicação móvel para recolha de dados}
   
   \label{f:usecaseandroidapp}
@@ -38,17 +41,17 @@ Efetuar \textit{Login}  & O Participante deve conseguir entrar com a sua conta n
 
 Registar & O Participante que vai participar no estudo pode criar uma nova  conta. \\ \hline
 
-Escolher o tipo de atividade física & Consoante o tipo de atividade física que estiver a efetuar, o participante a sua relação temporal relativamente à atividade física.\\ \hline
+Escolher o tipo de atividade física & Consoante o tipo de atividade física que estiver a efetuar, o participante a sua relação temporal relativamente à atividade física. Tendo como exemplo a corrida, a relação temporal poderá ser entre as disponíveis: antes, depois, durante, em descanso\\ \hline
 
 Escolher o tipo de dados a recolher & Tem que existir a possibilidade de filtrar o tipo de dados que são para ser recolhidos numa determinada colheita. Pode ocorrer a situação de recolher todos ao mesmo tempo. \\ \hline
 
 Selecionar o dispositivo  & Para se conseguir efetuar a colheita dos dados um dispositivo válido tem que ser selecionado. \\ \hline
 
-Iniciar uma sessão de colheita de dados & Pode iniciar uma nova colheita de dados. \\ \hline
+Iniciar uma sessão de colheita de dados & Pode iniciar uma nova colheita de dados. Esta nova colheita pode ser durante vários segundos, minutos e até horas. Apenas os dados escolhidos poderão ser guardados para posterior consulta. A colheita pode ser interrompida quando o participante quiser. \\ \hline
 
 Visualizar todas as sessões existentes & O Participante pode visualizar todas as sessões de recolha dados. \\ \hline
 
-Visualizar colheita de uma determinada sessão & O Participante ao escolher uma colheita das várias apresentadas pode visualizar ao detalhe todos os dados recolhidos numa determinada sessão. \\ \hline    
+Visualizar colheita de uma determinada sessão & O Participante ao escolher uma colheita das várias apresentadas e pode visualizar ao detalhe todos os dados recolhidos numa determinada sessão. \\ \hline    
 
 \end{tabularx}
 
@@ -59,10 +62,10 @@ Visualizar colheita de uma determinada sessão & O Participante ao escolher uma 
 \section{Casos de Utilização na Revisão de Dados}
 
 Na figura \ref{f:usecasewebapp} podemos visualizar todos os casos de uso (cenários-objetivo) da aplicação \textit{web}. O principal ator desta aplicação é o revisor/investigador que pode fazer uma revisão das várias sessões de recolha efetuadas pelos participantes. Uma breve descrição de cada caso de utilização é apresentada na tabela \ref{t:web-usecase}
-
+\newpage
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{imgs/app-web-usecase.png}
+  \includegraphics[width=0.9\textwidth]{imgs/app-web-usecase.png}
   \caption[Diagrama de casos de uso da aplicação \textit{web}]{Diagrama de casos de uso da aplicação \textit{web}}
   
   \label{f:usecasewebapp}
