@@ -10,9 +10,9 @@
   \label{f:product-arch}
 \end{figure}
 
-A arquitetura proposta para o sistema está dividida em três partes. Uma delas é a parte das aplicações desenvolvidas, ou seja, a interface com o utilizador, tanto \textit{web} como móvel. Estas duas aplicações comunicarão por pedidos \gls{HTTP} com o \gls{DSU} da plataforma do \textit{Open mHealth}. A aplicação móvel ainda terá a responsabilidade de recolher os dados fisiológicos dos participantes como por exemplo o \gls{ECG}, a frequência cardíaca e o acelerómetro. O sensor utilizado para recolher os dados foi o \textit{VitalJacket} \footnote{http://www.sdk.vitaljacket.com/?pageid=13} utilizando o perfil de \textit{bluetooth} \gls{SPP}.
+A arquitetura proposta para o sistema está dividida em três partes. Uma delas é a parte das aplicações desenvolvidas, ou seja, a interface com o utilizador, tanto \textit{web} como móvel. Estas duas aplicações comunicarão por pedidos \gls{HTTP} com o \gls{DSU} da plataforma do \textit{Open mHealth}. A aplicação móvel ainda terá a responsabilidade de recolher os dados fisiológicos dos participantes como por exemplo o \gls{ECG}, a frequência cardíaca e o acelerómetro. O sensor utilizado para recolher os dados é o \textit{VitalJacket} \footnote{http://www.sdk.vitaljacket.com/?pageid=13} utilizando o perfil de \textit{bluetooth} \gls{SPP}.
 \par 
-Uma outra parte do sistema já referida é o \textit{backend} do \textit{Open mHealth}. Este \textit{backend} tem um componente principal (\gls{DSU}) que disponibilizará duas \gls{REST} \gls{API} para inserção e fornecimento dos dados e ainda para autenticação e autorização. Ainda terá um componente para processar os dados recebidos. Estes dados passarão por um validador e podem ser reencaminhados para uma plataforma para posterior publicação das mensagens num \textit{EventBus}.
+Uma outra parte do sistema já referida é o \textit{backend} do \textit{Open mHealth}. Este \textit{backend} tem um componente principal (\gls{DSU}) que disponibilizará duas \gls{REST} \gls{API} para inserção e fornecimento dos dados e ainda para autenticação e autorização. Ainda terá um componente para processar os dados recebidos. Estes dados passarão por um validador e será adicionada a possibilidade para ser reencaminhados para uma plataforma para posterior publicação das mensagens num \textit{EventBus}, permitindo a extensão com novos módulos interessados em analisar os dados. 
 \par
 A terceira e última parte será composta uma plataforma que irá disponibilizar um \textit{endpoint} para receber os dados e então publicar os mesmos no \textit{EventBus}.
 
@@ -25,11 +25,11 @@ A terceira e última parte será composta uma plataforma que irá disponibilizar
 \section{Módulos do sistema}
 \subsection{Fundações do \textit{backend}}
 Para o \textit{backend} do sistema será utilizado o \textit{Open mHealth} adaptando-o no necessário e complementado-o. O \textit{backend} deverá ser capaz de fornecer um serviço de autenticação e autorização seguindo o protocolo OAuth 2.0. \par 
-Deverá disponibilizar uma \gls{API} para ser efetuado a inserção de dados fisiológicos dos participantes. Esta inserção será apoiada por um validador que irá validar esses dados, para perceber se podem ser inseridos com sucesso.
+Deverá disponibilizar uma \gls{REST} \gls{API} para ser efetuado a inserção de dados fisiológicos dos participantes. Esta inserção será apoiada por um validador que irá validar esses dados, para perceber se podem ser inseridos com sucesso.
 
 
 \subsection{Extensão para suportar \textit{pipelines} de processamento}
-O \textit{backend} do \gls{OMH} não suporta uma \textit{pipeline} de processamento dos dados, para este suporte ser possível incluímos uma forma de os dados serem enviados para módulos interessados no seu processamento. A solução proposta passa pela publicação destes dados num \textit{event bus}, permitindo a extensibilidade do sistema com facilidade e um tratamento específico por cada um desses módulos.
+O \textit{backend} do \gls{OMH} não suporta uma \textit{pipeline} de processamento dos dados, para este suporte ser possível incluímos uma forma de os dados serem enviados para módulos interessados no seu processamento. A solução proposta passa pela publicação destes dados num \textit{bus} partilhado, permitindo a extensibilidade do sistema com facilidade e um tratamento específico por cada um desses módulos.
 
 
 \subsection{Integração das Aplicações}
@@ -40,7 +40,7 @@ As aplicações que forem desenvolvidas utilizando esta arquitetura proposta pod
 
 
 \section{Modelo do domínio}
-Será necessário guardar dados demográficos do participante e os dados fisiológicos como dados do acelerómetro, frequência cardíaca e \gls{ECG}. Para isso vou de seguida mostrar um diagrama de classes que podia ser a solução para o desenvolvimento de uma base de dados, tendo em conta os dados que precisamos de guardar.
+Será necessário guardar dados demográficos do participante e os dados fisiológicos como: dados do acelerómetro, frequência cardíaca e \gls{ECG}. Para isso vou de seguida mostrar um modelo de alto nível da informação do domínio, tendo em conta os dados que precisamos de guardar.
 
 \begin{figure}[H]
   \centering
@@ -50,7 +50,7 @@ Será necessário guardar dados demográficos do participante e os dados fisiol�
   \label{f:class-diagram}
 \end{figure}
 
-Com este diagrama conseguimos guardar a criação de novas pessoas, que podem ser um participante normal ou um investigador/revisor. Conseguimos adicionar participantes a Revisores, e criar sessões relacionadas com um determinado participante definido a hora de início. Podem ser associadas a estas sessões novas leituras diferentes que irão ter um tipo de leitura associado e uma atividade física atual.
+Com este diagrama conseguimos representar pessoas, que podem ser um participante normal ou um investigador/revisor. Conseguimos adicionar participantes a Revisores, e criar sessões relacionadas com um determinado participante definido a hora de início. Podem ser associadas a estas sessões novas leituras diferentes que irão ter um tipo de leitura associado e uma atividade física atual.
 \par 
 Existe ainda a possibilidade de utilizar uma base de dados não relacional, como por exemplo, orientada a documentos. Este tipo de bases de dados não depende de um esquema em específico e como tal suporta dados não estruturados. Este modelo tem uma grande simplicidade permitindo assim aos programadores compreender facilmente o documento e obter os documentos sob a forma de vetores associativos \cite{nosql}. Uma das grandes vantagens que pode haver ao utilizar um base de dados orientada a documentos, é que a adição de novos esquemas de dados não vai implicar alterações ao esquema da base de dados, mesmo que os dados inseridos não estejam relacionados com os já existentes.
 
