@@ -54,7 +54,7 @@ GoMeals \cite{mhealth_app3} & Esta aplica\c c\~ao foi desenvolvida para ajudar o
 A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, \textit{tablet} ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
 Dentro dos dados de saúde mais comuns temos a frequência cardíaca, o \gls{ECG} e o SpO2(Oxímetro de pulso) \cite{wearable-trends}. Estes tipos de dados são os mais comuns, pois são os utilizados quando os doentes estão internados e em avaliação e supervisão contínua.
-Dentro destes tipos de dados, considerando agora no caso das aplicações \textit{mHealth} podemos afirmar que o tipo de dados mais comum poderá ser a frequência cardíaca, pois a percentagem de dispositivos eletrónicos que tem este sensor é mesmo enorme. Uma leitura contínua de um \gls{ECG} será também bastante importante para exemplo para a deteção de arritmia.
+Dentro destes tipos de dados, considerando agora no caso das aplicações \textit{mHealth} podemos afirmar que o tipo de dados mais comum poderá ser a frequência cardíaca, pois a percentagem de dispositivos eletrónicos que tem este sensor é mesmo enorme. Uma leitura contínua de um \gls{ECG} será também bastante importante para por exemplo a deteção de arritmia.
 
 
 
@@ -63,7 +63,7 @@ Dentro destes tipos de dados, considerando agora no caso das aplicações \texti
 Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''leve'' onde a camada de negócio e a camada de dados está guardada num servidor. 
 \par
 No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
-Na figura \ref{f:mobileapparch} \footnote{imagem retirada do livro \textit{Mobile Apllications: Architecture, Design, and Development}} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
+Na figura \ref{f:mobileapparch} \footnote{Imagem retirada do livro \textit{Mobile Apllications: Architecture, Design, and Development}} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
 
 \begin{figure}[H]
   \centering
@@ -175,19 +175,18 @@ O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado 
 
 
 \subsection{O \textit{backend} no desenvolvimento de uma aplica\c c\~ao \textit{mHealth}}
-As solu\c c\~oes de \textit{mHealth} que abrangem estes pr\'oximos seis princ\'ipios a seguir apresentados t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}.
+As solu\c c\~oes de \textit{mHealth} que abrangem estes seis princ\'ipios t\^em uma maior probabilidade de sucesso: Interoperabilidade, Integra\c c\~ao, Intelig\^encia, Socializa\c c\~ao, Resultados e Compromisso \cite{mhealthinsights}. Seguindo estes princípios as aplicações desenvolvidas terão a capacidade de ser interoperáveis com diferentes dispositivos móveis e terão a capacidade de importar e exportar registos de saúde eletrónicos com e para outras aplicações. Terá também a capacidade de ser integrada em algumas atividades físicas dos pacientes e de analisar os dados fornecendo uma monitorização em tempo real. Será também importante a partilha dos dados em redes sociais e em plataformas de saúde para receber apoio e algumas recomendações. A aplicação terá também que ter a capacidade de se adaptar à utilização dos pacientes tendo em conta os dados recolhidos pelos utentes para posteriormente preparar a aplicação para um melhor apoio e monitorização\cite{mhealthinsights}.
 \par
-Apesar das aplica\c c\~oes \textit{mHealth} estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido, para contrariar esta realidade foi gerada uma discuss\~ao para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao \textit{mHealth}.
+Apesar das aplica\c c\~oes \textit{mHealth} estarem numa crescente popularidade nos \'ultimos anos, muitas delas s\~ao rejeitadas ou n\~ao utilizadas pelo p\'ublico alvo pretendido. Para analisar esta realidade foi feito um estudo para se saber os requisitos e as considera\c c\~oes a ter durante e antes do desenvolvimento de uma aplica\c c\~ao \textit{mHealth}\cite{mhealth-pipeline}.
 \par
-Depois deste estudo e discuss\~ao chegaram \`a conclus\~ao que o desenvolvimento de uma aplica\c c\~ao deve estar dividida em 4 partes distintas criando uma pipeline de desenvolvimento, entre elas temos:  Prepara\c c\~ao, Desenvolvimento do \textit{Back-End}, Desenvolvimento do \textit{Front-End} e Lan\c camento da Aplica\c c\~ao\cite{mhealth-pipeline}.
-
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.9\textwidth]{imgs/mhealthDevPipeline.png}
-  \caption[Esquema proposto para o desenvolvimento de uma aplica\c c\~ao \textit{mHealth}]{Esquema proposto para o desevolvimento de uma aplica\c c\~ao \textit{mHealth}. \cite{mhealth-pipeline}}
-  
-  \label{f:mhealthpipeline}
-\end{figure}
+Depois deste estudo e discuss\~ao chegaram \`a conclus\~ao que o desenvolvimento de uma aplica\c c\~ao deve estar dividida em 4 partes distintas criando uma pipeline de desenvolvimento, entre elas temos:  Prepara\c c\~ao, Desenvolvimento do \textit{Back-End}, Desenvolvimento do \textit{Front-End} e Lan\c camento da Aplica\c c\~ao\cite{mhealth-pipeline}. \par 
+A secção de Preparação descreve as etapas que estão envolvidas na preparação da aplicação, identificando o problema que vai ser resolvido, uma proposta de solução e o público alvo. É constituída por várias subsecções, entre elas temos: Propósito, Tipo de aplicação e Ética/ Regulamentos \cite{mhealth-pipeline}. 
+\par 
+Relativamente ao Desenvolvimento do \textit{Back-End} tem que se ter em consideração que vamos estar a lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve se ter em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados \cite{mhealth-pipeline}.
+\par 
+A secção Desenvolvimento do \textit{Front-End} serve para se decidir o desenvolvimento da aplicação. Para isso deverá-se ter em conta o público alvo, desenvolvendo um ambiente com uma boa experiência de utilização satisfazendo ao máximo, os especialistas e os utentes envolvidos. Um dos requisitos da interface de utilizador deverá ser direcionada para as necessidades do utente e do especialista. Existe também cuidados a ter em conta, mas isso depende da aplicação tendo em conta a sua finalidade e considerações. Nestas considerações podemos incluir que a aplicação pode vir a ser utilizada por pessoas  cegas, surdas, pessoas com mobilidade limitada ou dificuldades de aprendizagem, contexto social, contexto cultural e idade \cite{mhealth-pipeline}.
+\par 
+A secção do Lançamento da aplicação descreve o processo de conclusão e lançamento da aplicação. Daqui para a frente pode ser necessário consultar ajuda externa de pessoas especialistas em \textit{marketing} \cite{mhealth-pipeline}. 
 
 
 
@@ -203,28 +202,28 @@ A \textit{\gls{OMH}} foi fundada em 2011 e descreve-se a si própria como "uma \
 Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o \gls{OMH} todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor para guardar os dados.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.9\textwidth]{imgs/openmharch.png}
-  \caption[Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}]{Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}. \cite{omharticle}}
+  \includegraphics[width=0.8\textwidth]{imgs/openmharch.png}
+  \caption[Arquitetura mHealth: Própria vs \textit{Open}]{Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}. \cite{omharticle} A utilização de uma plataforma aberta reduz o esforço e o desenvolvimento nas tarefas de gestão dos dados}
   
   \label{f:omharch}
 \end{figure}
 
 Através desta arquitetura podem ser partilhados diversos recursos entre as aplicações móveis na área da saúde, entre eles o mais importante é o modo e o local onde os dados são guardados, respeitando um padrão para o formato dos dados, ou seja, se duas aplicações diferentes forem guardar dados de um determinado tipo, como por exemplo frequência cardíaca, esses dados têm que respeitar um determinado formato, sendo estes guardados da mesma maneira independentemente da aplicação que o esteja a fazer.
 \par 
-A \gls{OMH} tem definido um conjunto de \textit{data schemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes \textit{data schemas} estão desenvolvidos em \gls{JSON} \textit{schema} que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os dados inseridos e criados sejam  compatíveis com o \gls{JSON} \textit{schema} associado. Na figura \ref{f:exemplo} podemos ver um exemplo de dados que é compatível com o \gls{JSON} \textit{schema} da figura \ref{f:hrjsonschema} associado que é a frequência cardíaca\cite{omhheartrate}.
-
-\begin{figure}[H]
-\inputminted[fontsize=\scriptsize]{json}{code/heart-rate.json}
-\caption[Exemplo de um \gls{JSON} compatível associado à frequência cardíaca]{Exemplo de um \gls{JSON} compatível associado à frequência cardíaca \cite{omhheartrate}}
-\label{f:exemplo}
-\end{figure}
+A \gls{OMH} tem definido um conjunto de \textit{data schemas} que é um conjunto de esquemas de dados (\textit{schemas}) criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Estes \textit{data schemas} estão desenvolvidos em \gls{JSON} \textit{schema} que serve para descrever um formato de dados, e os programadores têm que ter o cuidado de os dados inseridos e criados sejam  compatíveis com o \gls{JSON} \textit{schema} associado. Na figura \ref{f:exemplo} podemos ver um exemplo de dados que é compatível com o \gls{JSON} \textit{schema} da figura \ref{f:hrjsonschema} associado que é a frequência cardíaca\cite{omhheartrate}.
 \newpage
+
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/hr-jsonschema.json}
 \caption[\gls{JSON} \textit{schema} que define o tipo de dados para a frequência cardíaca]{\gls{JSON} \textit{schema} que define o tipo de dados para a frequência cardíaca \cite{omhheartrate}}
 \label{f:hrjsonschema}
 \end{figure}
 
+\begin{figure}[H]
+\inputminted[fontsize=\scriptsize]{json}{code/heart-rate.json}
+\caption[Exemplo de um \gls{JSON} compatível associado à frequência cardíaca]{Exemplo de um \gls{JSON} compatível associado à frequência cardíaca \cite{omhheartrate}}
+\label{f:exemplo}
+\end{figure}
 Existe uma implementação de uma \textit{\gls{REST}full \gls{API}} denominada por \textit{dataPoint API} que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
 
 
@@ -232,7 +231,7 @@ Existe uma implementação de uma \textit{\gls{REST}full \gls{API}} denominada p
 \subsubsection{FHIR}
 Como vimos anteriormente para que os sistemas de serviços hospitalares comuniquem e partilhem  informação entre si, e com as plataformas online, é imperativo que compreendam o que está a ser comunicado.
 \par 
-Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \textit{\gls{HL7}} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade como uma norma flexível na troca de informação clínica estruturada.
+Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \textit{\gls{HL7}} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade na troca de informação clínica estruturada.
 A organização que definiu o \gls{HL7} desenvolveu a sua própria \gls{API} e formatos de dados denominada de \textit{\gls{FHIR}} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizados com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações móveis ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
 
 \textbf{HL7}
@@ -240,10 +239,10 @@ A organização que definiu o \gls{HL7} desenvolveu a sua própria \gls{API} e f
 A norma HL7 é utilizada para troca, integração, partilha e requisição de  registos clínicos em formato eletrónico\cite{hl7}.
 O HL7 encontra-se atualmente na sua versão 3\cite{corepointhealth}, mas a versão 2 do \gls{HL7} ainda é bastante utilizada, especialmente em sistemas antigos. 
 \par
-O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. Como esta versão 2 não possui um modelo explícito de informação, mas definições vagas para muitos campos de dados e também campos opcionais. Estas características conferem-lhe uma maior flexibilidade, mas tornam necessários acordos bilaterais detalhados, de forma, a permitir a interoperabilidade entre os sistemas envolvidos. Quando estes acordos não são efetuados, se formos desenvolver uma aplicação que comunica com vários sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
+O problema que existia na versão 2 do \gls{HL7} é que cada sistema hospitalar ou clínica podia adaptar a norma à sua medida. Como esta versão 2 não possui um modelo explícito de informação(mas definições vagas para muitos campos de dados) e também campos opcionais. Estas características conferem-lhe uma maior flexibilidade, mas tornam necessários acordos bilaterais detalhados de forma a permitir a interoperabilidade entre os sistemas envolvidos. Quando estes acordos não são efetuados, se formos desenvolver uma aplicação que comunica com vários sistemas hospitalares ou clínicos, é necessário implementar uma interface especifica para cada um deles.
 \par
-Para resolver este problema saiu a versão 3, mas a sua adoção é cara e irá demorar bastante tempo \cite{corepointhealth}.
-A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado a objetos, denominado por \textit{\gls{RIM}}. Este é constituído por 4 classes principais, tendo como objetivo garantir a interoperabilidade semântica que não existia nas versões anteriores. Estas quatro classes principais são: Entidade, Papel/Cargo, Participação e Ato\cite{hl7-rim}.
+Para resolver este problema saiu a versão 3, mas a sua adoção não é ainda generalizada \cite{corepointhealth}.
+A versão 3 do HL7 foi desenvolvida com base num modelo de dados orientado a objetos, denominado por \textit{Reference Information Model (\gls{RIM})}. Este é constituído por 4 classes principais, tendo como objetivo garantir a interoperabilidade semântica que não existia nas versões anteriores. Estas quatro classes principais são: Entidade, Papel/Cargo, Participação e Ato\cite{hl7-rim}.
 \par 
 O modelo \gls{RIM} é construído à volta de 5 conceitos principais:
 \begin{itemize}
@@ -271,7 +270,7 @@ Na figura \ref{f:rimclass} podemos visualizar a class \gls{RIM} da versão 3 do 
 O \textit{Google Fit} é uma \gls{API} \gls{REST} desenvolvido pela Google, na área do \textit{fitness}. Permite aos utilizadores armazenar e aceder a informação relativa à sua condição física. Apesar de não ter sido desenvolvido com o objetivo de controlar os dados de saúde dos pacientes, pode ser visto como uma plataforma que cumpre alguns desses objetivos.
 \par 
 O \textit{Google Fit} é mais utilizado com o objetivo de monitorizar a condição física dos seus utilizadores, mas a Google permite o acesso aos dados recolhidos, através de \gls{API}’s criadas para esse efeito. Isto permite a criação de aplicações de saúde, visto que também é um dos objetivos da Google a integração de qualquer aparelho sensor. Resumindo, são dadas todas as ferramentas necessárias ao programador para aumentar o alcance da plataforma, permitindo-a ser utilizada com finalidades que a Google neste momento não cobre. 
-De seguida mostro uma vista geral da plataforma \textit{Google Fit}.
+Na figura \ref{f:googleFitOverview} mostramos uma vista geral da plataforma \textit{Google Fit}.
 
 \begin{figure}[!ht]
   \centering
@@ -281,22 +280,22 @@ De seguida mostro uma vista geral da plataforma \textit{Google Fit}.
   \label{f:googleFitOverview}
 \end{figure}
 
-Como podemos perceber existe duas possibilidades diferentes de interagir com a plataforma. Através de uma aplicação para \textit{smartphones} com o sistema operativo \textit{Android}, desenvolvida também pela Google.  Também é possível a utilização de um \textit{website}, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
+Como podemos perceber, existem duas possibilidades diferentes de interagir com a plataforma. Através de uma aplicação para \textit{smartphones} com o sistema operativo \textit{Android}, desenvolvida também pela Google.  Também é possível a utilização de um \textit{website}, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
 
 A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{API} passa a ser possível a criação de aplicações para outras plataformas que não o \textit{Android}, tornando o \textit{Google Fit} apelativo para um maior número de utilizadores. Esta \gls{API} está protegida pelo protocolo de autorização OAuth 2.0 e utiliza para formato dos dados \gls{JSON}\cite{googlegetstarted}. 
 
 
 
 \subsubsection{Análise Comparativa}
-Foi ainda feito um breve estudo em relação a outros três possíveis \textit{backends}, entre eles temos o \textit{Health Vault} \footnote{https://international.healthvault.com}, \textit{Apple Research Kit} \footnote{https://www.apple.com/pt/researchkit/} e o \textit{Research Stack} \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa}. Os requisitos analisados relativamente a cada possível \textit{backend} foram: 
+Foi ainda feito um breve estudo em relação a outros três possíveis \textit{backends}, entre eles temos o \textit{Health Vault} \footnote{https://international.healthvault.com}, \textit{Apple Research Kit} \footnote{https://www.apple.com/pt/researchkit/} e o \textit{Research Stack} \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa} \footnote{ - - nenhum suporte; - suporte fraco; + suporte suficiente; ++ muito bem suportado; n/a não aplicável}. Os requisitos analisados relativamente a cada possível \textit{backend} foram: 
 \begin{itemize}
-  \item Possibilidade de guardar dados demográficos dos utentes
-  \item Análise do grau de complexidade  do \textit{backend} para adaptação e implementação de novas funcionalidades
-  \item Estruturas de dados normalizadas
-  \item Possibilidade de adicionar novas estruturas de dados 
-  \item Possibilidade de importar/exportar dados de outros \textit{backends}
-  \item Questões relativas a Segurança e Privacidade sobre os dados recolhidos e demográficos
-  \item Capacidade de ser integrado em ambientes diferentes, como android, ios ou web
+  \item Possibilidade de guardar dados demográficos dos utentes.
+  \item Análise do grau de complexidade  do \textit{backend} para adaptação e implementação de novas funcionalidades.
+  \item Estruturas de dados normalizadas para uma possível importação/exportação dados de/para outros \textit{backends}.
+  \item Possibilidade de adicionar novas estruturas de dados .
+  \item Questões relativas a Segurança e Privacidade sobre os dados recolhidos e demográficos.
+  \item Capacidade de ser integrado em ambientes diferentes, como android, ios ou web.
+  \item Código Aberto quanto à própria implementação do \textit{backend}.
 \end{itemize}
 
 \begin{table}[H]
@@ -307,13 +306,20 @@ Foi ainda feito um breve estudo em relação a outros três possíveis \textit{b
 \hline
 \textbf{\backslashbox{Requisito}{Plataforma}}                                                                        & \cellcolor[HTML]{C0C0C0}\textbf{OMH} & \cellcolor[HTML]{C0C0C0}\textbf{FHIR} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Google}\\ \textit{Fit}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Health}\\ \textit{Vault}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}\textit{Apple}\\ \textit{Research}\\ \textit{Kit}\end{tabular}} & \cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}} \textit{Research}\\ \textit{Stack}\end{tabular}}  \\ \hline
 
-\textbf{Dados do Paciente} & - & X & - & X & X & X \\ \hline
-\textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & X & - & X & - & - & - \\ \hline
-\textbf{\begin{tabular}[c]{@{}c@{}}Modelo de Dados \\ Normalizado\end{tabular}} & X & X & - & - & - & - \\ \hline
-\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & X & X & X & X & - & - \\ \hline
-\textbf{Interoperável} & X & X & - & - & - & - \\ \hline
-\textbf{Segurança e Privacidade} & X & X & X & X & X & X \\ \hline
-\textbf{MultiPlataforma} & X & X & X & X & - & - \\ \hline
+\textbf{Dados do Paciente} & - & + + & - & + + & + + & + + \\ \hline
+
+\textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & + + & + & + + & - & n/a & n/a \\ \hline
+
+\textbf{\begin{tabular}[c]{@{}c@{}}Modelo de Dados \\ Normalizado\end{tabular}} & + & + + & - - & - - & n/a & n/a \\ \hline
+
+\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & + + & + & + & + & n/a & n/a \\ \hline
+
+\textbf{Segurança e Privacidade} & + + & + + & + + & + + & + + & + + \\ \hline
+
+\textbf{MultiPlataforma} & + + & + + & + + & + + & n/a & n/a \\ \hline
+
+\textbf{Código Aberto} & + + & + & - & - & n/a & n/a \\ \hline
+
 \end{tabular}
 \caption{Comparação dos diferentes \textit{backends}}
 \label{t:analisecomparativa}
@@ -321,11 +327,11 @@ Foi ainda feito um breve estudo em relação a outros três possíveis \textit{b
 
 Depois de analisados seis serviços de \textit{backend} para dar suporte a uma aplicação móvel na área de saúde, faz-se aqui uma breve análise comparativa das suas características. Cada um apresenta vantagens nuns aspetos e desvantagens noutros.
 \par 
-A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um \textit{backend} bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro, pois estes não estão contemplados.
+A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um \textit{backend} bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro \footnote{Estes dados fazem parte do conjunto de dados a ser guardado no sistema mais à frente, neste momento serve também para avaliar a capacidade da cada plataforma para os suportar/integrar}, pois estes não estão contemplados.
 \par 
 Em relação ao \textit{Google Fit} tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente e o \gls{ECG}. A extensibilidade do modelo de dados é possível mas existe uma limitação relativamente ao tipo de dados que pode ser utilizados, entre eles temos o \textit{int} e o \textit{float}, ou seja, não existe o tipo objeto e vetor.
 \par 
-O \gls{OMH} tem uma \gls{API} \gls{REST}, assim como o \textit{Google Fit} não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é também extensível. A grande vantagem que tem é um conjunto de \gls{JSON} \textit{schemas} definidos que podem ser utilizados para validar a entrada dos dados no \textit{backend}. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} \textit{schemas} podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
+O \gls{OMH} tem uma \gls{API} \gls{REST}, assim como o \textit{Google Fit}, e não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é extensível. A grande vantagem que tem é um conjunto de \gls{JSON} \textit{schemas} definidos prontos a usar para validar a entrada dos dados no \textit{backend}. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} \textit{schemas} podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
 
 
 \cleardoublepage
