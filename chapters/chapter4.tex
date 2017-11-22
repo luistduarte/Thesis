@@ -3,7 +3,7 @@
 \section{Cenário-tipo selecionado}
 
 %explicar qual foi o cenário selecionado para experimentar em cada plataforma (deve ser uma parte dos requisitos gerais do capítulo 3)
-Antes de avançar com o desenvolvimento do sistema foi necessário escolher um \textit{backend} para dar suporte tanto à aplicação móvel, como à aplicação \textit{web}. Para isso foi desenvolvido um cenário idêntico com os diferentes \textit{backends} em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos entre eles. \par 
+Antes de avançar com o desenvolvimento do sistema foi necessário escolher um \textit{backend} para dar suporte tanto à aplicação móvel, como à aplicação \textit{web}. Para isso foi desenvolvido um cenário idêntico com os diferentes \textit{backends} em que pudéssemos fazer uma análise comparativa dos pontos fortes e ou fracos entre eles, usando um âmbito mais simples, mas relacionado com o sistema a desenvolver. \par 
 O cenário escolhido para esta avaliação exploratória foi o simples ato de recolher a frequência cardíaca do sensor do \textit{VitalJacket} e guardar no \textit{backend} em estudo, para posteriormente ser possível a visualização de um histórico dos dados inseridos. Na figura \ref{f:study-overview} temos uma simples visão das várias partes envolvidas nesta avaliação exploratória.
 
 \begin{figure}[H]
@@ -14,18 +14,18 @@ O cenário escolhido para esta avaliação exploratória foi o simples ato de re
   \label{f:study-overview}
 \end{figure}
 
-A escolha de um \textit{backend} para a solução era um ponto importante. Das várias plataformas disponíveis para um possível \textit{backend} foram selecionadas três para ser desenvolvido o cenário com o objetivo de concluir se seria uma boa hipótese para a solução, entre elas estão: \gls{OMH}, \gls{FHIR} e \textit{Google Fit}. \par
+Das várias plataformas disponíveis para um possível \textit{backend} foram selecionadas três para ser desenvolvido o cenário de avaliação com o objetivo de concluir se seria uma boa hipótese para a solução: \gls{OMH}, \gls{FHIR} e \textit{Google Fit}. \par
 
 Para utilizar cada uma destas plataformas, foi desenvolvida uma aplicação móvel, bastante simples. A aplicação móvel tinha várias funcionalidades-chave, entre elas:
 \begin{itemize}
   \item Selecionar o dispositivo com os sensores
   \item Efetuar \textit{Login} na respetiva plataforma
-  \item Guardar leituras de frequência cardíaca num determinado segundo
+  \item Guardar leituras de frequência cardíaca
   \item Visualizar as leituras inseridas
 \end{itemize}
 
 Tendo em conta que a mesma aplicação conseguia utilizar os três \textit{backends} distintos, esta seleção era feita tendo em conta o tipo de \textit{login} efetuado. De seguida apresentamos as experiências exploratórias com cada plataforma.
-A frequência cardíaca foi o tipo de dado fisiológico escolhido, pois era aquele tipo de dado que estava disponível por defeito em todos os \textit{backends} escolhidos para esta fase exploratória. 
+A frequência cardíaca foi o tipo de dado fisiológico escolhido, pois era aquele tipo de dado que estava disponível por omissão em todos os \textit{backends} escolhidos para esta fase exploratória. 
 \newpage
 
 \section{Implementação exploratória: \textit{Open mHealth}}
@@ -47,7 +47,7 @@ Foi então utilizado desta plataforma o servidor de dados (alguns tipos de dados
 
 \subsection{Implementação adicional}
 \label{additionalImpl-omh}
-Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
+No \gls{OMH}, um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
 No processo de criação de um novo \textit{dataPoint} foi adicionada uma validação, para que fosse garantido que o \textit{body} estava corretamente formatado com o tipo de dados definido no cabeçalho.
 Apesar dos \textit{data schemas} especificarem um formato de dados, esta validação não estava a ser efetuada. Esta validação é importante para posteriores consultas e tratamentos dos dados de maneira igual para cada tipo.
 \par 
@@ -89,18 +89,18 @@ Glicose no sangue & \textit{blood-glucose-2.0.json} \\
 
 \subsection{Dificuldades e Adaptações}
 
-As dificuldades encontradas não foram muitas, pois a plataforma estava bastante bem estruturada e o grau de complexidade era aceitável. As possíveis falhas desta plataforma era a falta de esquemas de dados para o acelerómetro, \gls{ECG} e para dados demográficos dos utilizadores da plataforma.
+As dificuldades encontradas não foram muitas, pois a plataforma estava bastante bem estruturada e o grau de complexidade era aceitável. As possíveis falhas desta plataforma prenderam-se com a falta de esquemas de dados para o acelerómetro, \gls{ECG} e para dados demográficos dos utilizadores da plataforma.
 
 \section{Implementação exploratória: FHIR}
 %http://hapifhir.io/doc_jpa.html
 O \gls{FHIR} ao contrário do \textit{Open mHealth} é apenas uma definição de uma \gls{API} para armazenamento de informação e troca de dados clínicos entre hospitais e clínicas. Esta \gls{API} pode ser desenvolvida de diferentes maneiras. \par 
-Existe uma implementação de um projeto de código aberto com o nome \textit{Hapi-FHIR} . Este projeto suporta todos os dados definidos pelo \gls{FHIR} e grande parte das operações sobre eles, como por exemplo criar, editar, eliminar, etc.
+Existe uma implementação de um projeto de código aberto com o nome \textit{Hapi-FHIR} \cite{hapi-index}. Este projeto suporta todos os dados definidos pelo \gls{FHIR} e grande parte das operações sobre eles, como por exemplo criar, editar, eliminar, etc.
 \par 
 O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor \gls{FHIR}, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de \textit{endpoints} \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados no backend. \par
 
 \subsection{Implementação adicional}
 O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do \textit{Open mHealth}).
-No \textit{JPAServer} foi então desenvolvido um Intercetor que o que fazia, era verificar se o pedido efetuado era acompanhado por um \textit{token} de acesso, caso isso acontecesse a validade do \textit{token} era verificada pelo servidor de autorização e então em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
+No \textit{JPAServer} foi então desenvolvido um Intercetor que o que fazia era verificar se o pedido efetuado era acompanhado por um \textit{token} de acesso; caso isso acontecesse a validade do \textit{token} era verificada pelo servidor de autorização e em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/fhir-arch-exp.png}
@@ -110,7 +110,7 @@ No \textit{JPAServer} foi então desenvolvido um Intercetor que o que fazia, era
 \end{figure}
 
 \subsection{Dificuldades e Adaptações}
-As dificuldades encontradas ainda foram algumas, neste caso temos uma definição de uma \gls{API} em vez de uma plataforma em si, ou seja, foram encontradas várias supostas resoluções, e no caso do \textit{Hapi-FHIR} estava dividida por vários módulos, que por um lado até se pode tornar mais vantajoso porque acabamos por utilizar só aquilo que é necessário. As possíveis falhas desta \gls{API} era a falta de tipos de recursos para o acelerómetro e \gls{ECG}. Ainda temos a falta de um servidor de gestão de identidades e a concessão de autorização ao pedidos efetuados.
+As dificuldades encontradas ainda foram algumas, neste caso temos uma definição de uma \gls{API} em vez de uma plataforma em si, ou seja, foram encontradas várias supostas resoluções, e no caso do \textit{Hapi-FHIR} estava dividida por vários módulos, que por um lado até se pode tornar mais vantajoso porque acabamos por utilizar só aquilo que é necessário. As possíveis falhas desta \gls{API} estavam relacionadas com a falta de tipos de recursos para o acelerómetro e \gls{ECG}. Ainda se pode apontar a falta de um servidor de gestão de identidades e a concessão de autorização ao pedidos efetuados.
 
 \section{Implementação exploratória: \textit{Google Fit}}
 %https://developers.google.com/fit/rest/
@@ -136,25 +136,25 @@ Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de
 \textbf{\textit{Google Fit}}
 \par
 Esta plataforma tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google e o facto dos dados ficarem armazenados na nuvem.\par 
-O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema, no caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, tinha que ser feito 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser da Google, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
+O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema, no caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, teriam que ser feitos 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser proprietária, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
 \par
 \textbf{\textit{Open mHealth}}
 \par
 Como o \gls{OMH} é um projeto de código aberto um grande ponto forte é a possibilidade da implementação de novas funcionalidades poder ser efetuada com mais facilidade, como por exemplo a adição da validação dos dados inseridos. Tendo em conta que o projeto foi desenvolvido com o intuito de diminuir a ocorrência de formatos de dados próprios por cada aplicação móvel no âmbito da saúde, esta pode muito bem ser uma solução para o \textit{backend} do produto proposto, dado que a possibilidade da extensibilidade dos dados também é possível através da criação de novos \textit{data schemas} que são posteriormente utilizados para ser efetuada a validação dos dados inseridos.
 \par
-O conjunto de esquemas de dados criados para dar suporte à plataforma da \gls{OMH} foi criado utilizando referências de dados normalizados no ambiente hospitalar e clínico, uma dessas referências utilizada foi a \gls{API} do \gls{FHIR}.
+O conjunto de esquemas de dados criados pela \gls{OMH} para dar suporte à plataforma foi criado utilizando referências de dados normalizados no ambiente hospitalar e clínico, uma dessas referências utilizada foi a \gls{API} do \gls{FHIR}. Aqueles que foram adicionados posteriormente por nós foram também criados utilizando como referência a \gls{API} do \gls{FHIR}.
 \par
 \textbf{FHIR}
 \par
-Um dos pontos fracos do FHIR neste caso em concreto do \textit{Hapi-FHIR} é a falta de serviço de autenticação e autorização. Um outro ponto fraco é a inexistência de um projeto de código aberto ''oficial'', ou seja, existe bastantes possibilidades diferentes e descobrir qual poderia utilizar e da melhor maneira não foi uma coisa fácil.
+Um dos pontos fracos do FHIR neste caso em concreto do \textit{Hapi-FHIR} é a falta de serviço de autenticação e autorização. Um outro ponto fraco é a inexistência de um projeto de código aberto ''oficial'', ou seja, existe bastantes possibilidades diferentes e descobrir qual poderia utilizar e da melhor maneira não foi imediato.
 \par
 Um dos pontos fortes é saber que esta definição da \gls{API} é bastante utilizada por hospitais e clínicas.
 \par
 \textbf{Análise Comparativa}
 \par
-Tendo em conta que o produto proposto tinha como um dos objetivos guardar dados relativos ao \gls{ECG}, o \textit{Google Fit} é limitado relativamente ao tipo de dados, ou seja, não suporta vetores para guardar os dados, ficando logo praticamente excluído como possível escolha para o \textit{backend}.
+Tendo em conta que o produto proposto tem como um dos objetivos guardar dados relativos ao \gls{ECG}, o \textit{Google Fit} é limitado relativamente ao tipo de dados, ou seja, não suporta vetores para guardar os dados, ficando logo praticamente excluído como possível escolha para o \textit{backend}.
 Ficamos agora então com o \textit{Open mHealth} e o \gls{FHIR}, nenhum deles está apto na totalidade para ser utilizado sem qualquer alteração. Por um lado temos falhas nas duas plataformas que não contemplam todos os tipos de dados que precisam de ser guardados, como por exemplo o acelerómetro e o \gls{ECG}, apesar do \gls{FHIR} estar mais completo neste assunto.
 Para além disto o \gls{FHIR} não contém nenhum serviço de autenticação e autorização sendo necessário utilizar um serviço externo.
-Não podemos dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o \textit{Open mHealth} é um projeto que foi desenvolvido com o objetivo de uniformizar os \textit{backends} na área das aplicações móveis na área de saúde, vamos optar pela utilização desta plataforma, dando uma oportunidade a um projeto inovador, com o intuito também de perceber se mais tarde, pode ou não vir a ser utilizado em diferentes projetos como \textit{backend} de aplicações móveis na área da saúde, ou até em projetos de \gls{ID}.
+Não podemos dizer que o \gls{FHIR} não servia como solução, mas tendo em conta que nenhum deles é perfeito, e que o \textit{Open mHealth} é um projeto que foi desenvolvido com o objetivo de uniformizar os \textit{backends} na área das aplicações móveis na área de saúde, vamos optar pela utilização desta plataforma, dando uma oportunidade a um projeto de código aberto, com o intuito também de perceber se mais tarde, pode ou não vir a ser utilizado em diferentes projetos como \textit{backend} de aplicações móveis na área da saúde, ou até em projetos de \gls{ID}.
 
 \cleardoublepage
