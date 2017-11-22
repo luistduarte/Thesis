@@ -103,27 +103,25 @@ Na versão 2.0 do protocolo são definidos quatro pontos de contacto necessário
 
 
 \subsection{Armazenamento em \textit{Cache}}
-A utilização da \textit{cache} do dispositivo pode ser muito importante para aumentar o desempenho e a capacidade de resposta de uma aplicação. Quando não existe ligação à internet, a aplicação deve suportar a execução das operações principais, isto é, se uma aplicação tem como objetivo obter a frequência cardíaca de um paciente, é suposto se conseguir obter estes dados dos sensores mesmo sem estes poderem ser guardados no servidor, ou seja, podem ser guardados em \textit{cache} até que se tenha possibilidade de fazer o envio para o servidor.
+A utilização da \textit{cache} do dispositivo pode ser muito importante para aumentar o desempenho e a capacidade de resposta de uma aplicação. Quando não existe ligação à internet, a aplicação deve suportar a execução das operações principais, isto é, se uma aplicação tem como objetivo obter a frequência cardíaca de um paciente, é suposto se conseguir obter estes dados dos sensores mesmo sem estes poderem ser guardados no servidor, ou seja, podem ser guardados em \textit{cache} até que se tenha possibilidade de fazer o envio para o servidor.\par
+Recentemente a Google fez recomendações para a utilização de uma componente da arquitetura do Android denominada por Biblioteca de Persistência \cite{cache-android} que é utilizada para a criação de repositórios locais no sentido de \textit{cache}, tornando as aplicações mais resilientes à variabilidade da qualidade do serviço de uma rede.
 
 
-\subsection{Comunicação do dispositivo}
-A comunicação do dispositivo inclui a comunicação com e sem fios. Na comunicação sem fios temos a comunicação do dispositivo móvel entre servidores e sensores, Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. Para comunicação entre dispositivos móveis e sensores temos a tecnologia \textit{bluetooth}.
+\subsection{Comunicações}
+Os dispositivos móveis comunicam essencialmente com tecnologia sem fios. A comunicação com servidores decorre habitualmente sobre IP. Na transmissão entre servidores temos que ter em conta que temos que proteger os dados que estarão a ser transportados contra roubo ou adulteração. Para comunicação entre dispositivos móveis é utilizada a tecnologia \textit{bluetooth}.
 
 
 \subsubsection{\textit{Bluetooth}}
-Tal como nós pessoas comunicamos entre nós, os dispositivos móveis e os sensores também têm formas de se comunicar. %como foco desta dissertação é receber dados de sensores para os guardar num backend capaz de agrupar estes dados corretamente, a tecnologia responsável por esta função será o Bluetooth.
-O \textit{bluetooth} é uma tecnologia que foi criada em 1994 e foi concebida como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para conectar os dispositivos à distância, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
+O \textit{bluetooth} é uma tecnologia que foi criada em 1994, como uma alternativa sem fios para cabos de dados através da utilização de transmissões de rádio para ligar os dispositivos relativamente próximos, e transferir dados entre eles. Esta tecnologia foi criada como um padrão aberto para permitir a conectividade e a colaboração entre diferentes produtos e indústrias \cite{bluetooth}.
 Esta tecnologia está presente em grande percentagem de dispositivos eletrónicos vendidos atualmente, e quase todos os \textit{smartphones} têm esta tecnologia.
 \par 
 Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor \textit{bluetooth} tem um conjunto de perfis \textit{bluetooth} a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
-Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o \textit{bluetooth} de uma maneira normalizada. 
-\par 
-Foi criado um consórcio \textit{bluetooth} denominado por \textit{ \gls{SIG} } composto por empresas como Nokia, Ericsson, Intel, IBM e Toshiba, com o objetivo de desenvolver padrões que garantissem o uso e a interoperabilidade da tecnologia nos mais variados dispositivos.
+Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o \textit{bluetooth} de uma maneira normalizada. \cite{bluetooth-article}
 \par
-A \textit{bluetooth} \gls{SIG} lançou um perfil denominado de \textit{\gls{HDP}}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia \textit{bluetooth}. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \textit{\gls{SPP}} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
+Um dos perfis é denominado de \textit{\gls{HDP}}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia \textit{bluetooth}. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \textit{\gls{SPP}} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
 
-
-
+\subsection{Tecnologias para a implementação de serviços}
+Vamos agora rever tecnologias com interesse direto para a implementação e adaptação da plataforma que vai ser apresentada mais à frente.
 \subsubsection{\textit{Web Services}}
 Os \textit{Web Services} ou serviços \textit{web} permitem que duas máquinas diferentes comuniquem entre si, ou que dois pedaços de código comuniquem entre eles. Para isto funcionar tem que existir um servidor que disponibilize uma \textit{\gls{API}} que é um conjunto de métodos, e então os clientes podem chamar esses métodos e comunicar com o servidor pela Internet por serviços \textit{web}. Uma vantagem da utilização dos serviços \textit{web} é que atualmente é uma tecnologia padrão, ou seja, é uma tecnologia que não é especifica de nenhuma linguagem de programação. Podem estar os serviços \textit{web} desenvolvidos em Java, e os pedidos podem ser efetuados através de um cliente que está a correr em Python. O único formato de dados utilizado por um serviço \textit{web} era o \textit{\gls{XML}}, e só apenas mais tarde começou a poder ser utilizado o \textit{\gls{HTML}} e o \gls{JSON} depois do aparecimento do \textit{\gls{REST}} \cite{wsjakob}.
 
@@ -136,7 +134,8 @@ O \gls{REST} é um estilo de arquitetura que utiliza o \textit{\gls{HTTP}} para 
 
 
 \subsubsection{Vert.x}
-Vert.x é uma \textit{framework} poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \textit{\gls{JVM}}. É uma \textit{framework} orientada a eventos e assíncrona, que permite a criação de aplicações facilmente escaláveis de uma forma simples. Pode ser utilizada por pequenas aplicações, por aplicações \textit{Web} sofisticadas e modernas e ainda para o desenvolvimento de micro serviços \gls{HTTP}/\gls{REST}\cite{vertx-io}.
+É uma \textit{framework} orientada a eventos e assíncrona, que permite a criação de aplicações facilmente escaláveis de uma forma simples, pode ser utilizada por pequenas aplicações, por aplicações \textit{web} sofisticadas e modernas e ainda para o desenvolvimento de micro serviços \gls{HTTP}/\gls{REST}\cite{vertx-io}.
+O Vert.x é uma \textit{framework} poliglota, ou seja, tem suporte para várias linguagens de programação, orientada a eventos, construída segundo o padrão reativo e assente na \textit{\gls{JVM}}. 
 O Vert.x é composto por um conjunto de componentes que são importantes para o desenvolvimento de aplicações. Entre eles temos: 
 \begin{itemize}
   \item \textit{Verticle}: Um \textit{verticle} é definido por ter uma função principal (\textit{main}), que corre um \textit{script} específico. Um \textit{verticle} pode ser escrito em múltiplas linguagens (Java, Javacript, Ruby, Groovy, Ceylon, Scala e Kotlin). Vários \textit{verticles} podem ser executados na mesma instância do Vert.x.
@@ -155,15 +154,15 @@ Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x
 
 
 \subsubsection{JSON}
-O \gls{JSON} é um formato de dados baseado em texto, é leve e utilizado para troca de informação independentemente da linguagem a ser utilizada. O \gls{JSON} é baseado em pares atributo-valor e a sua sintaxe é composta por quatro tipos de dados primitivos (\textit{strings}, inteiros, \textit{booleans} e \textit{null}) e dois tipos estruturados (objetos e vetores) \cite{json}. 
+O \gls{JSON} é um formato de dados baseado em texto, é compacto e utilizado para troca de informação independentemente da linguagem a ser utilizada. O \gls{JSON} é baseado em pares atributo-valor e a sua sintaxe é composta por quatro tipos de dados primitivos (\textit{strings}, inteiros, \textit{booleans} e \textit{null}) e dois tipos estruturados (objetos e vetores) \cite{json}. 
 \par
-É um formato de dados  fácil de gerar, compreender e interpretar. Analisando código em \gls{JSON} é intuitivo associar a sua aparência, estrutura e sintaxe a muitas linguagens de programação existentes, razão pela qual foi facilmente adotada como uma alternativa ao \gls{XML} por parte de diversos programadores que viram no novo formato um modo mais natural e simples de definir dados.
+É um formato de dados  fácil de gerar, compreender e interpretar. Analisando um documento \gls{JSON} é intuitivo associar a sua aparência, estrutura e sintaxe a muitas linguagens de programação existentes, razão pela qual foi facilmente adotada como uma alternativa ao \gls{XML} por parte de diversos programadores que viram no novo formato um modo mais natural e simples de definir dados.
 
 
 
 \newpage
 \section{O \textit{backend} nas aplicações de \textit{mHealth}}
-O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e serviços \textit{web} para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de um serviço \textit{web}. Do lado do servidor podemos ter sistemas de monitorização remotos que podem entrar em contacto com o utente ou médico em estado de emergência.
+O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e serviços \textit{web} para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de um serviço \textit{web}. Do lado do servidor podemos ter sistemas de monitorização remotos que podem entrar em contacto com o utente ou médico em situações de emergência.
 
 \begin{figure}[H]
   \centering
