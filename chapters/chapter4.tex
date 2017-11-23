@@ -33,9 +33,10 @@ A frequência cardíaca foi o tipo de dado fisiológico escolhido, pois era aque
 %http://www.openmhealth.org/documentation/#/store-data/storage-overview
 %http://projects.spring.io/spring-security-oauth/docs/oauth2.html
 %explicar a implementação que foi feita para esta tecnologia, dificuldades, adaptações, "gaps"
-Relativamente a este \textit{backend} para solução do problema proposto, tínhamos disponível um serviço denominado de \textit{\gls{DSU}} que disponibiliza um servidor de dados que fornece uma \gls{API} \gls{REST} denominada de \textit{dataPoint API}. A \gls{API} suporta a criação, consulta e eliminação de dados. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de \textit{tokens} de acesso. \cite{omhstorage} \par
+Relativamente a este \textit{backend} para solução do problema proposto, tínhamos disponível um serviço denominado de \textit{\gls{DSU}} que disponibiliza um servidor de dados que fornece uma \gls{API} \gls{REST} denominada de \textit{dataPoint API}. \par
+A \gls{API} suporta a criação, consulta e eliminação de dados. Permite a autorização utilizando o protocolo de autorização OAuth 2.0. Em suma este serviço é composto por um servidor de dados e um servidor de autorização e autenticação. O servidor de autorização gere a concessão de \textit{tokens} de acesso. \cite{omhstorage} \par
 Com a introdução desta plataforma no caso de estudo exploratório ficamos com uma arquitetura que está representada na figura \ref{f:exp-omh-arch}. \par
-Foi então utilizado desta plataforma o servidor de dados (alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
+Desta plataforma foi utilizado o servidor de dados (alguns tipos de dados existentes) e o servidor de autenticação e autorização, toda a implementação adicional é referida em \ref{additionalImpl-omh}.
 
 \begin{figure}[H]
   \centering
@@ -53,7 +54,7 @@ Apesar dos \textit{data schemas} especificarem um formato de dados, esta valida�
 \par 
 
 
-A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso e foi uma coisa que saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
+A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso, saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
 \newpage
 
 \begin{table}[H]
@@ -73,7 +74,7 @@ Período de tempo & \textit{time-frame-1.0.json} \\
 & Este esquema de dados permite que um período de tempo específico seja definido, como uma hora exata ou um intervalo de tempo. \\ \hline
 
 Pressão arterial & \textit{blood-pressure-2.0.json} \\ 
-& Este esquema de dados representa a pressão arterial de uma pessoa como uma combinação da pressão arterial sistólica com a pressão arterial diastólica. Permite indicar se o paciente estava deitado, sentado ou parado quando a medição foi obtida. Este esquema pode ser usado para uma medição única da pressão arterial, podendo ser efetuada várias medições. \\ \hline
+& Este esquema de dados representa a pressão arterial de uma pessoa como uma combinação da pressão arterial sistólica com a pressão arterial diastólica. Permite indicar se o paciente estava deitado, sentado ou parado quando a medição foi obtida. Este esquema pode ser usado para uma medição única da pressão arterial, podendo ser efetuadas várias medições. \\ \hline
 
 Temperatura do corpo & \textit{body-temperature-2.0.json} \\
 & Este esquema de dados representa a temperatura corporal e o local do corpo onde foi efetuada a medição. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições. \\ \hline
@@ -89,7 +90,7 @@ Glicose no sangue & \textit{blood-glucose-2.0.json} \\
 
 \subsection{Dificuldades e Adaptações}
 
-As dificuldades encontradas não foram muitas, pois a plataforma estava bastante bem estruturada e o grau de complexidade era aceitável. As possíveis falhas desta plataforma prenderam-se com a falta de esquemas de dados para o acelerómetro, \gls{ECG} e para dados demográficos dos utilizadores da plataforma.
+As dificuldades encontradas não foram muitas, pois a plataforma estava bastante bem estruturada e o grau de complexidade era aceitável. As possíveis falhas desta plataforma prendiam-se com a falta de esquemas de dados para o acelerómetro, \gls{ECG} e para dados demográficos dos utilizadores da plataforma.
 
 \section{Implementação exploratória: FHIR}
 %http://hapifhir.io/doc_jpa.html
@@ -100,7 +101,7 @@ O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite
 
 \subsection{Implementação adicional}
 O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do \textit{Open mHealth}).
-No \textit{JPAServer} foi então desenvolvido um Intercetor que o que fazia era verificar se o pedido efetuado era acompanhado por um \textit{token} de acesso; caso isso acontecesse a validade do \textit{token} era verificada pelo servidor de autorização e em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
+No \textit{JPAServer} foi então desenvolvido um Intercetor, cuja função era verificar se o pedido efetuado era acompanhado por um \textit{token} de acesso; caso isso acontecesse a validade do \textit{token} era verificada pelo servidor de autorização e em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/fhir-arch-exp.png}
@@ -128,7 +129,7 @@ O cenário objetivo foi desenvolvido com sucesso e na figura \ref{f:exp-googlefi
 
 \subsection{Dificuldades e Adaptações}
 
-Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de dados poder ser extensível, apenas era aceite dados do tipo inteiro e \textit{float}, ou seja, não são suportados propriedades do tipo objeto ou vetor. Esta \gls{API} não tinha suporte para dados do tipo \gls{ECG}, acelerómetro e dados demográficos.
+Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de dados poder ser extensível, apenas serem aceites dados do tipo inteiro e \textit{float}, ou seja, não são suportados propriedades do tipo objeto ou vetor. Esta \gls{API} não tinha suporte para dados do tipo \gls{ECG}, acelerómetro e dados demográficos.
 
 \section{Resultados e lições aprendidas}
 %ico: sistematizar aquilo que foi possível concluir das implementações exploratórias discutir pontos forte / fracos observados
