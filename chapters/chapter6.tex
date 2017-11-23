@@ -4,7 +4,7 @@
 
 \subsection{Servidor de Autorização e Autenticação}
 O servidor de autenticação e autorização disponibiliza uma \gls{API} para criação de novos utilizadores e solicitação de \textit{tokens} de acesso relativamente a várias aplicações. Este serviço utiliza a plataforma \textit{Spring}, mais concretamente a \textit{Spring Security} \cite{spring-framework}. \par 
-No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os \textit{tokens} de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a proteção de dados referida anteriormente em \ref{cap6:protecaodados}. 
+No nosso caso vamos apenas ter uma aplicação cliente configurada para posteriormente gerir os \textit{tokens} de acesso para esta aplicação. As credenciais das aplicações cliente vão estar guardadas num base de dados relacional e os utilizadores finais numa base de dados não relacional. Esta opção está relacionada com a segurança de dados referida anteriormente em \ref{cap6:protecaodados}. 
 Relativamente à base de dados não relacional para os utilizadores finais são guardados numa coleção do \textit{MongoDB}\cite{mongodb}, a coleção é denominada por \textit{endUser}. Este coleção é então composta por vários documentos, em que cada documento corresponde a um utilizador final. Os documentos são formatados como na Figura \ref{f:endUserCode}.
 
 \begin{figure}[H]
