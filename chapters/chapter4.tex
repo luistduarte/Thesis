@@ -102,6 +102,7 @@ O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite
 \subsection{Implementação adicional}
 O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do \textit{Open mHealth}).
 No \textit{JPAServer} foi então desenvolvido um Intercetor, cuja função era verificar se o pedido efetuado era acompanhado por um \textit{token} de acesso; caso isso acontecesse a validade do \textit{token} era verificada pelo servidor de autorização e em caso de sucesso era fornecido o acesso ao pedido solicitado. Na figura \ref{f:exp-fhir-arch} temos então a arquitetura final deste caso exploratório.
+\newpage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/fhir-arch-exp.png}

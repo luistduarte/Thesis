@@ -58,13 +58,13 @@ Dentro destes tipos de dados, considerando agora no caso das aplicações \texti
 
 
 
-\newpage
+
 \section{Padrões de arquitetura em aplicações móveis}
 Uma aplicação móvel comum é constituída por três camadas principais, entre elas a camada de apresentação que é a camada que compõe a interface com o utilizador da aplicação, a camada de negócio e a camada correspondente aos dados utilizados e guardados pela aplicação. Existe duas perspetivas diferentes ao desenvolver uma aplicação móvel, umas delas é o desenvolvimento de uma aplicação ''rica'' onde a camada de negócio e a camada de dados estão guardadas no próprio dispositivo. A outra perspetiva é o desenvolvimento de uma aplicação ''leve'' onde a camada de negócio e a camada de dados está guardada num servidor. 
 \par
 No caso de uma aplicação necessitar apenas de um processamento local num cenário ocasional, considera-se desenvolver uma aplicação ''rica'', ou seja, uma aplicação que não tem dependências de qualquer tipo de servidor. Quando uma aplicação tem dependências de servidores considera-se uma aplicação ''leve''. Uma aplicação ''rica'' será uma aplicação mais complexa e difícil de manter pois todas as alterações terão que ser efetuadas ao nível da aplicação.
 Na figura \ref{f:mobileapparch} \footnote{Imagem retirada do livro \textit{Mobile Apllications: Architecture, Design, and Development}} podemos ver uma arquitetura comum de uma aplicação móvel. \cite{mobileappbook}
-
+\newpage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{imgs/mobileapparch.png}
@@ -144,7 +144,7 @@ O Vert.x é composto por um conjunto de componentes que são importantes para o 
   \item \textit{EventBus}: Esta é uma característica do Vert.x bastante importante que permite a comunicação entre vários \textit{verticles}. Para além disso, é possível haver uma comunicação não só entre \textit{verticles} mas entre entidades que registem \textit{handlers} num servidor (ex. clientes). Desta forma é possível a entrega das mensagens a todos os \textit{handlers} que estiverem registados num determinado endereço. Esta característica é um padrão na troca de mensagens conhecido por \textit{publish–subscribe}.
 \end{itemize}
 Na figura \ref{f:vertxarch} podemos visualizar uma arquitetura simples do Vert.x. \cite{vertx-study}
-
+\newpage
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{imgs/vertx_arch.png}
