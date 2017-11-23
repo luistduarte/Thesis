@@ -26,9 +26,9 @@ Na tabela  \textit{oauth\_client\_details} estão guardadas todas as informaçõ
 
 \subsubsection{API REST}
 \label{l:restapiAUTH}
-Na tabela seguinte temos os métodos disponíveis do servidor de autorização e autenticação.
+Na tabela \ref{t:apirest-auth} temos os métodos disponíveis do servidor de autorização e autenticação.
 \begin{table}[H]
-\label{t:apirest-auth}
+
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/users}}  \\ \hline 
@@ -39,12 +39,13 @@ Na tabela seguinte temos os métodos disponíveis do servidor de autorização e
  & Recebe por parâmetros o  \textit{username},  \textit{password} e o  \textit{grant\_type} \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de autorização e autenticação}
+\label{t:apirest-auth}
 \end{table}
 
 \subsection{Servidor de recursos ( \textit{dataPoint} REST API) }
 O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de  \textit{dataPoints}. Estes  \textit{dataPoints} estão a ser guardados numa base de dados  \textit{MongoDB} numa coleção com o nome  \textit{dataPoint}. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser estendidos à vontade que não é necessário efetuar nenhuma alteração ao esquema da BD. \par 
 Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes  \textit{dataPoints} são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados ( \textit{data schema}) associado e definido no cabeçalho do  \textit{dataPoint}. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do  \textit{dataPoint} está de acordo com o  \textit{data schema} definido no cabeçalho do mesmo. \par
-Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes  \textit{data schemas} foram criados com base da informação retirada da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
+Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os dados que precisávamos de inserir, assim como: \gls{ECG}, dados demográficos e acelerómetro. Estes  \textit{data schemas} foram criados aproveitando as estruturas da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
 \subsubsection{ \textit{data schema} ECG}
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/ecg.json}
@@ -53,38 +54,44 @@ Estava então em falta alguns esquemas de dados para conseguirmos abranger todos
 \end{figure}
 
 \subsubsection{API REST}
+Na tabela \ref{t:apirest-data} temos os métodos disponíveis do servidor de recursos.
 \label{l:restapiRESOURCES}
 
 \begin{table}[H]
-\label{t:apirest-data}
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}}  \\ \hline 
  & Serviço POST, para criação de novos  \textit{dataPoints} \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
+ & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado. Todos os pedidos efetuados a esta \gls{API} tem que fornecer o \textit{token} de acesso.  \\
  & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
+ 
+ 
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
  & Serviço DELETE, permite a eliminação de um  \textit{dataPoint} \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
+ 
+ 
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
  & Serviço GET, permite a consulta de um  \textit{dataPoint} \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
+ 
+ 
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
  & Serviço GET, permite a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY} \\ \hline
+ 
+ 
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
  & Serviço GET, permite a consulta dos vários dataPoints de um determinado esquema de dados \\
- & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado \\
  & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version} \\ \hline
 \end{tabularx}
+
 \caption{Tabela com a API REST do servidor de recursos}
+\label{t:apirest-data}
 \end{table}
 
 
-Todos os esquemas de dados disponíveis estão no diretório \cite{schemas-available} e estes são os tipos de dados que são utilizados para validar os  \textit{dataPoints} inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do  \textit{MongoDB}.
+Todos os esquemas de dados disponíveis estão no repositório associado à adaptação deste \textit{backend}\footnote{ Diretório com os Esquemas de dados disponíveis(composto também pelos novos esquemas de dados criados) - https://github.com/luistduarte/omh-dsu-ri/tree/master/resource-server/src/main/resources/schema/omh} e estes são os tipos de dados que são utilizados para validar os  \textit{dataPoints} inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do  \textit{MongoDB}.
 
 \subsection{Comunicação com módulos externos}
 No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} pode verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
@@ -99,9 +106,9 @@ O projeto é então composto por dois \textit{verticles} em que um dos \textit{v
   \label{f:toExtSeqDiagram}
 \end{figure}
 
-\subsection{Como instalar este \textit{backend}}
-Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \cite{omh-code} e é um ''fork'' do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado \cite{omh-runnatively}.
-O código relativo à extensibilidade com módulos externos também está no github\cite{restpubsub}, este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
+\subsection{Como usar o \textit{backend} desenvolvido num projeto}
+Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \footnote{https://github.com/luistduarte/omh-dsu-ri} e é um \textit{fork} do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado\footnote{https://github.com/luistduarte/omh-dsu-ri/blob/master/README.md\#option-2-building-from-source-and-running-nativel}.
+O código relativo à extensibilidade com módulos externos também está no github\footnote{https://github.com/luistduarte/rest.pub.sub}, este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
 \begin{itemize}
     \item vertx run SimpleREST.java -cluster
     \item vertx run Receiver.java -cluster
@@ -202,7 +209,7 @@ Quando o participante efetua o \textit{Login} na aplicação as suas sessões s�
 Na atividade de configurações (Figura \ref{f:settings}) temos a possibilidade de: escolher o dispositivo que vai ser utilizado e ao qual se irá conectar; escolher tanto os tipos de dados que são para recolher como a sua relação temporal em relação à atividade física na altura que a medição está a ser efetuada.
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.6\textwidth]{imgs/settings.png}
+\includegraphics[height=0.3\textwidth]{imgs/settings.png}
 \caption[Menu de Configurações e as respetivas opções de configuração]{Menu de Configurações e as respetivas opções de configuração}
 \label{f:settings}
 \end{figure}

@@ -50,7 +50,7 @@ Será necessário guardar dados demográficos do participante e os dados fisiol�
   \label{f:class-diagram}
 \end{figure}
 
-Com este diagrama conseguimos representar pessoas, que podem ser um participante normal ou um investigador/revisor. Conseguimos adicionar participantes a Revisores, e criar sessões relacionadas com um determinado participante definido a hora de início. Podem ser associadas a estas sessões novas leituras diferentes que irão ter um tipo de leitura associado e uma atividade física atual.
+Com este diagrama conseguimos representar pessoas, que podem ser um participante ou um investigador/revisor. Conseguimos adicionar participantes a Revisores, e criar sessões relacionadas com um determinado participante definido a hora de início. Podem ser associadas a estas sessões várias \textit{streams} de dados de um determinado tipo. Cada \textit{stream} de dados tem definida uma relação temporal com a atividade física que esteve a praticar.
 \par 
 Existe ainda a possibilidade de utilizar uma base de dados não relacional, como por exemplo, orientada a documentos. Este tipo de bases de dados não depende de um esquema em específico e como tal suporta dados não estruturados. Este modelo tem uma grande simplicidade permitindo assim aos programadores compreender facilmente o documento e obter os documentos sob a forma de vetores associativos \cite{nosql}. Uma das grandes vantagens que pode haver ao utilizar um base de dados orientada a documentos, é que a adição de novos esquemas de dados não vai implicar alterações ao esquema da base de dados, mesmo que os dados inseridos não estejam relacionados com os já existentes.
 
@@ -58,8 +58,9 @@ Existe ainda a possibilidade de utilizar uma base de dados não relacional, como
 
 
 
-\section{Proteção de dados}
+\section{Segurança de dados}
 \label{cap6:protecaodados}
-Relativamente à privacidade e aos dados armazenados, pode ser visto como uma questão de controlo de acesso, em que é assegurado que os dados estarão acessíveis apenas para pessoas e processos autorizados. Os serviços \gls{REST} deverão verificar se o pedido efetuado é ou não autorizado, para isso o participante deverá efetuar a autenticação e utilizar o \textit{token} de acesso fornecido. O \textit{backend} deverá utilizar duas bases de dados diferentes, em que numa delas guarda os dados relativos às aplicações cliente e os \textit{tokens} de acesso, e na outra deverá guardar os dados inseridos e os dados relacionados com as contas de utilizador, protegendo assim dados fisiológicos e sensíveis dos participantes, da base de dados onde estão os \textit{tokens}, deste modo conseguimos ter uma segregação de responsabilidade.
+Relativamente à segurança dos dados armazenados, pode ser visto como uma questão de controlo de acesso, em que é assegurado que os dados estarão acessíveis apenas para pessoas e processos autorizados. Os serviços \gls{REST} deverão verificar se o pedido efetuado é ou não autorizado, para isso o participante deverá efetuar a autenticação e utilizar o \textit{token} de acesso fornecido. O \textit{backend} deverá utilizar duas bases de dados diferentes, em que numa delas guarda os dados relativos às aplicações cliente e os \textit{tokens} de acesso, e na outra deverá guardar os dados inseridos e os dados relacionados com as contas de utilizador, protegendo assim dados fisiológicos e sensíveis dos participantes, da base de dados onde estão os \textit{tokens}, deste modo conseguimos ter uma segregação de responsabilidade. \par
+A solução devia evoluir para separar a identidade dos participantes do repositório de dados clínicos, guardando por exemplo os dados dos participantes numa base de dados na \textit{cloud}. Tendo em conta que o sistema é uma prova de conceito consideramos algumas simplificações.
 
 \cleardoublepage
