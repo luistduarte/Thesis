@@ -107,6 +107,7 @@ O projeto é então composto por dois \textit{verticles} em que um dos \textit{v
 \end{figure}
 
 \subsection{Como usar o \textit{backend} desenvolvido num projeto}
+O sistema foi desenvolvido para ser fácil de utilizar em outros projetos. Tem a capacidade de estar a ser utilizado por diferentes aplicações \textit{mHealth} ao mesmo tempo. Tudo está pronto a utilizar e pode ficar ainda mais completo, pois podem por exemplo ser adicionados novos esquemas de dados. \par 
 Relativamente ao servidor de autorização/autenticação e ao servidor de recursos o código está no github \footnote{https://github.com/luistduarte/omh-dsu-ri} e é um \textit{fork} do projeto desenvolvido pela \gls{OMH}, está documentado como pode ser instalado e executado\footnote{https://github.com/luistduarte/omh-dsu-ri/blob/master/README.md\#option-2-building-from-source-and-running-nativel}.
 O código relativo à extensibilidade com módulos externos também está no github\footnote{https://github.com/luistduarte/rest.pub.sub}, este projeto é composto apenas por dois verticles para os correr pode ser também por terminal e basta correr os comandos:
 \begin{itemize}
@@ -119,7 +120,7 @@ O Receiver.java pode ser substituído ou adicionado por um outro módulo desenvo
 \subsection{Versões alvo e dependências}
 Esta aplicação móvel foi desenvolvida com o intuito de conseguir abranger grande maioria dos utilizadores, suporta da versão 16 à versão 25, ou seja,  desde o \textit{Android} 4.1 (\textit{Jelly Bean}) até ao \textit{Android} 7.1. De acordo com as informações disponíveis na plataforma de desenvolvimento do \textit{Android} atinge mais de 98\% dos utilizadores \cite{android-versions}.
 
-O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde é efetuada a configuração relativa às versões alvo e às dependências existentes, um excerto deste ficheiro de configuração pode ser visualizado na tabela \ref{t:defaultconfigversions} e na tabela \ref{t:defaultconfigdependency} .
+O projeto tem um ficheiro por defeito designado por "build.gradle", que é o local onde é efetuada a configuração relativa às versões alvo e às dependências existentes, excertos deste ficheiro de configuração podem ser visualizados nas tabelas \ref{t:defaultconfigversions} e \ref{t:defaultconfigdependency} .
 
 
 \begin{table}[H]
@@ -165,13 +166,6 @@ Relativamente às dependências temos que ter em atenção que existe duas depen
 \subsection{Tecnologias integradas e fontes de dados}
 A aplicação móvel está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para guardar todas as medições efetuadas e também para as consultar posteriormente.\par 
 Os dados estão a ser recolhidos através do \textit{VitalJacket} que é um dispositivo médico que conjuga a tecnologia têxtil com soluções avançadas de engenharia biomédica. O dispositivo permite a configuração para adquirir diferentes sinais vitais tais como o \gls{ECG}, frequência cardíaca e o acelerómetro. A comunicação entre o dispositivo móvel e o sensor é efetuada utilizando o \gls{SDK} para \textit{android} da biblioteca da BioLib utilizando o perfil de bluetooth \gls{SPP}.
-
-
-
-
-\subsection{Componentes da aplicação}
-
-Relativamente às componentes utilizadas, para comunicação com as \gls{REST} \gls{API} foi utilizado  \textit{Async Tasks}\cite{android-asynctasks} com o objetivo de não bloquear a \textit{thread} da atividade em execução. Para a atividade relativa aos dados de uma determinada sessão e para a atividade relativa às configurações foi utilizado fragmentos\cite{android-fragments} para construir um contexto de utilizador fácil de navegar e rápido.
 
 
 
@@ -264,8 +258,7 @@ Depois do participante ter entrado na aplicação com a sua conta pode visualiza
 A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
 
 \subsection{Componentes da aplicação}
-Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML}, \textit{Java Script} e \textit{\gls{CSS}}. \par 
-Foi utilizada a plataforma \textit{Bootstrap} \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações \textit{web} para desenvolvimento responsivo adaptável a plataformas móveis. \par
+Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML}, \textit{Java Script} e \textit{\gls{CSS}}. Foi utilizada a plataforma \textit{Bootstrap} \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações \textit{web} para desenvolvimento responsivo adaptável a plataformas móveis. \par
 Para a comunicação com a \gls{API} \gls{REST} foi utilizado o \textit{jQuery} \cite{jquery}.
 Relativamente à visualização dos dados para cada sessão foi utilizado a biblioteca \textit{HighCharts} \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de \textit{Open mHealth Web Visualizations} \cite{omhwebvisualizations}.
 
@@ -280,7 +273,7 @@ A página principal tem uma secção de boas vindas e ainda permite o registo e 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{imgs/home.png}
+\includegraphics[width=0.9\textwidth]{imgs/home.png}
 \caption[Página principal da aplicação de revisão]{Página principal da aplicação de revisão}
 \label{f:web-home}
 \end{figure}
@@ -292,7 +285,7 @@ O revisor pode ainda não ter uma conta criada, por isso antes de entrar na apli
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{imgs/signup_web.png}
+\includegraphics[width=0.95\textwidth]{imgs/signup_web.png}
 \caption[Página de registo na aplicação de revisão]{Página de registo na aplicação de revisão}
 \label{f:web-registo}
 \end{figure}
@@ -304,7 +297,7 @@ Esta página (Figura \ref{f:web-login}) pode ser chamada de duas maneiras difere
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{imgs/login_web.png}
+\includegraphics[width=0.8\textwidth]{imgs/login_web.png}
 \caption[Página de \textit{login} na aplicação de revisão]{Página de \textit{login} na aplicação de revisão}
 \label{f:web-login}
 \end{figure}
@@ -316,7 +309,7 @@ Esta página é composta por uma grelha onde pode visualizar todos os seus parti
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{imgs/list_after_add_web.png}
+\includegraphics[width=0.8\textwidth]{imgs/list_after_add_web.png}
 \caption[Página com grelha de participantes]{Página com grelha de participantes}
 \label{f:gridParticipante}
 \end{figure}
@@ -369,7 +362,7 @@ Podemos então visualizar os dados em gráficos relativos a cada tipo de dados r
 
 \subsection{Criar um novo tipo de dados}
 
-A criação de um novo tipo de dados pode ser feita com a ajuda do repositório \textit{schemas} \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto vai necessitar de algumas ferramentas entre elas: o git \cite{git-install} para puxar o repositório; o Java 8 \cite{java-overview} para executar o validador; um editor de texto como por exemplo o atom \cite{atom-install}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do \textit{VitalJacket}.
+A criação de um novo tipo de dados pode ser feita com a ajuda do repositório \textit{schemas} \cite{schemas-rep} que foi criado pela organização da \gls{OMH}. Para isto, o desenvolvimento do novo esquema de dados deve ser feito em \gls{JSON} \textit{schema}. Vou descrever agora a lista de tarefas para conseguir efetuar a criação de um novo tipo de dados. Para este tutorial vou criar o tipo de dados acelerómetro. É um dos tipos de dados que são obtidos através do \textit{VitalJacket}.
 
 \begin{enumerate}
   \item Clonar o repositório correspondente para um diretório à sua escolha 
