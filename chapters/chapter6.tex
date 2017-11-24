@@ -32,11 +32,11 @@ Na tabela \ref{t:apirest-auth} temos os métodos disponíveis do servidor de aut
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/users}}  \\ \hline 
- & Serviço POST, permite a criação de novos utilizadores \\
- & Recebe um JSON composto por dois campos um  \textit{username} e  \textit{password} \\ \hline
+ & Serviço POST, permite a criação de novos utilizadores. \\
+ & Recebe um JSON composto por dois campos um  \textit{username} e  \textit{password}. \\ \hline
 \multicolumn{2}{l}{\textbf{domain:port/oauth/token}} \\ \hline
- & Serviço POST, permite o pedido de um novo  \textit{token} de acesso \\
- & Recebe por parâmetros o  \textit{username},  \textit{password} e o  \textit{grant\_type} \\ \hline
+ & Serviço POST, permite o pedido de um novo  \textit{token} de acesso. \\
+ & Recebe por parâmetros o  \textit{username},  \textit{password} e o  \textit{grant\_type}. \\ \hline
 \end{tabularx}
 \caption{Tabela com a API REST do servidor de autorização e autenticação}
 \label{t:apirest-auth}
@@ -62,29 +62,29 @@ Na tabela \ref{t:apirest-data} temos os métodos disponíveis do servidor de rec
 \centering
 \begin{tabularx}{1\textwidth}{|p{0.3cm} p{14.4cm}|}
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}}  \\ \hline 
- & Serviço POST, para criação de novos  \textit{dataPoints} \\
+ & Serviço POST, para criação de novos  \textit{dataPoints}. \\
  & No  \textit{header} recebe o  \textit{access\_token} para o servidor de autorização lhe dar acesso ao pedido efetuado. Todos os pedidos efetuados a esta \gls{API} tem que fornecer o \textit{token} de acesso.  \\
- & Recebe um documento JSON constituído por um cabeçalho e um corpo \\ \hline
+ & Recebe um documento JSON constituído por um cabeçalho e um corpo. \\ \hline
  
  
 \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço DELETE, permite a eliminação de um  \textit{dataPoint} \\
- & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
+ & Serviço DELETE, permite a eliminação de um  \textit{dataPoint}. \\
+ & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url. \\ \hline
  
  
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/id}} \\ \hline
- & Serviço GET, permite a consulta de um  \textit{dataPoint} \\
- & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url \\ \hline
+ & Serviço GET, permite a consulta de um  \textit{dataPoint}. \\
+ & O  \textit{id} do  \textit{dataPoint} tem que ser referido no url. \\ \hline
  
  
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints/caregiver}} \\ \hline
- & Serviço GET, permite a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico \\
- & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY} \\ \hline
+ & Serviço GET, permite a consulta dos vários  \textit{dataPoints} de um determinado tipo de um participante em específico. \\
+ & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name},  \textit{schema\_version},  \textit{user\_id} e o  \textit{CAREGIVER\_KEY}. \\ \hline
  
  
  \multicolumn{2}{l}{\textbf{domain:port/v\{apiVersion\}/dataPoints}} \\ \hline
- & Serviço GET, permite a consulta dos vários dataPoints de um determinado esquema de dados \\
- & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version} \\ \hline
+ & Serviço GET, permite a consulta dos vários dataPoints de um determinado esquema de dados. \\
+ & Recebe por parâmetros o  \textit{schema\_namespace},  \textit{schema\_name} e o  \textit{schema\_version}. \\ \hline
 \end{tabularx}
 
 \caption{Tabela com a API REST do servidor de recursos}
@@ -95,8 +95,8 @@ Na tabela \ref{t:apirest-data} temos os métodos disponíveis do servidor de rec
 Todos os esquemas de dados disponíveis estão no repositório associado à adaptação deste \textit{backend}\footnote{ Diretório com os Esquemas de dados disponíveis(composto também pelos novos esquemas de dados criados) - https://github.com/luistduarte/omh-dsu-ri/tree/master/resource-server/src/main/resources/schema/omh} e estes são os tipos de dados que são utilizados para validar os  \textit{dataPoints} inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do  \textit{MongoDB}.
 
 \subsection{Comunicação com módulos externos}
-No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} podem verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
-Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de Arritmia cardíaca.
+Para a possível integração com módulos externos foi utilizada a plataforma do Vert.x. No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} podem verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
+Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de arritmia cardíaca.
 O projeto é então composto por dois \textit{verticles} em que um dos \textit{verticles} cria um \textit{endPoint} \gls{REST} e permite publicar os mesmo \textit{Eventbus} assim que os recebe.
 
 \begin{figure}[H]
@@ -256,10 +256,10 @@ Depois do participante ter entrado na aplicação com a sua conta pode visualiza
 \section{Implementação da aplicação de revisão}
 \subsection{Tecnologias integradas e fontes de dados}
 
-A aplicação web de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
+A aplicação \textit{web} de revisão está a utilizar as \gls{API}s \gls{REST} definidas anteriormente em \ref{l:restapiAUTH} e em \ref{l:restapiRESOURCES}. Utiliza o serviço de autenticação e autorização para todas as interações envolvidas com registo, \textit{login} e acesso aos dados. O serviço de recursos é utilizado para consultar todas as medições efetuadas pelos participantes em estudo e para guardar os dados demográficos de cada participante adicionado ao seu estudo.\par
 
 \subsection{Componentes da aplicação}
-Esta aplicação foi desenvolvida como aplicação web com recurso a \gls{HTML}, \textit{Java Script} e \textit{\gls{CSS}}. Foi utilizada a plataforma \textit{Bootstrap} \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações \textit{web} para desenvolvimento responsivo adaptável a plataformas móveis. \par
+Esta aplicação foi desenvolvida como aplicação \textit{web} com recurso a \gls{HTML}, \textit{Java Script} e \textit{\gls{CSS}}. Foi utilizada a plataforma \textit{Bootstrap} \cite{bootstrap} da versão 3.3.7 que fornece uma base em \gls{HTML} e \gls{CSS} muito popular no mundo das aplicações \textit{web} para desenvolvimento responsivo adaptável a plataformas móveis. \par
 Para a comunicação com a \gls{API} \gls{REST} foi utilizado o \textit{jQuery} \cite{jquery}.
 Relativamente à visualização dos dados para cada sessão foi utilizado a biblioteca \textit{HighCharts} \cite{highcharts} para a visualização dos dados relacionados com o acelerómetro e \gls{ECG}. Para a frequência cardíaca decidimos utilizar um visualizador padrão desenvolvido pela \gls{OMH} denominado de \textit{Open mHealth Web Visualizations} \cite{omhwebvisualizations}.
 
