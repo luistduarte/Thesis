@@ -30,7 +30,7 @@ Uma aplica\c c\~ao \textit{mHealth} pertence tamb\'em \`a componente de \textit{
 \par
 Depois das redes m\'oveis come\c carem a suportar 3G e 4G para transporte de dados, a comunica\c c\~ao m\'ovel tem sido a  principal atra\c c\~ao de investigadores e de comunidades empresariais. Com esta inova\c c\~ao nas redes m\'oveis a presta\c c\~ao de cuidados de sa\'ude em qualquer momento e em qualquer lugar, superando as barreiras geogr\'aficas, temporais e at\'e organizacionais deixou de ser um problema \cite{mhealth}.
 \par
-As \'areas abrangidas podem ser mesmo bastantes, basta haver aplica\c c\~oes desenvolvidas para o devido efeito e que estejam preparadas para receber dados dos respetivos dispositivos. Este \'ultimo ponto não \'e obrigat\'orio pois os dados podem ser obtidos em dispositivos isoladamente ou adicionados manualmente na aplica\c c\~ao. 
+As \'areas abrangidas podem ser mesmo bastantes, basta haver aplica\c c\~oes desenvolvidas para o devido efeito e que estejam preparadas para receber dados dos respetivos dispositivos. Este \'ultimo ponto não \'e obrigat\'orio pois os dados podem ser obtidos em dispositivos isoladamente e adicionados manualmente na aplica\c c\~ao. 
 \par
 Tomando por exemplo a diabetes, uma doença crónica, há a necessidade de se monitorizar a concentra\c c\~ao de glicose no sangue de doentes com regularidade. Vamos agora analisar um estudo feito nesta área listando algumas aplica\c c\~oes para esta finalidade \cite{mhealth}.
 
@@ -51,10 +51,10 @@ GoMeals \cite{mhealth_app3} & Esta aplica\c c\~ao foi desenvolvida para ajudar o
 \label{t:aplications-glicose}
 \end{table}
 
-A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, \textit{tablet} ou smartphone. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
+A maioria das aplica\c c\~oes \textit{mHealth} t\^em como foco a capacidade de monitoriza\c c\~ao dos utentes remotamente. Um m\'edico ou um utente pode facilmente aceder aos mesmos dados m\'edicos em qualquer momento e em qualquer lugar atrav\'es de dispositivos m\'oveis como computador, \textit{tablet} ou \textit{smartphone}. Para isto acontecer é necessário os dados estarem guardados num servidor para serem acedidos tanto pelos médicos como pelos utentes.
 
 Dentro dos dados de saúde mais comuns temos a frequência cardíaca, o \gls{ECG} e o SpO2(Oxímetro de pulso) \cite{wearable-trends}. Estes tipos de dados são os mais comuns, pois são os utilizados quando os doentes estão internados e em avaliação e supervisão contínua.
-Dentro destes tipos de dados, considerando agora no caso das aplicações \textit{mHealth}, tendo em conta que dispositivos que consigam recolher \gls{ECG} conseguem também recolher frequência cardíaca, que dispositivos que consigam recolher pressão arterial conseguem também recolher frequência cardíaca podemos afirmar que o tipo de dados mais comum poderá ser a frequência cardíaca, pois a percentagem de dispositivos eletrónicos que tem este sensor integrado é mesmo enorme. Leituras contínuas de um \gls{ECG} será também bastante importante nas aplicações de \textit{mHealth} para por exemplo a deteção de arritmia.
+Dentro destes tipos de dados, considerando agora no caso das aplicações \textit{mHealth}, podemos concluir que dispositivos que consigam recolher \gls{ECG} conseguem também recolher frequência cardíaca, ou seja, que dispositivos que consigam recolher pressão arterial conseguem também recolher frequência cardíaca podemos afirmar que o tipo de dados mais comum poderá ser a frequência cardíaca, pois a percentagem de dispositivos eletrónicos que tem este sensor integrado é mesmo enorme. Leituras contínuas de um \gls{ECG} será também bastante importante nas aplicações de \textit{mHealth} para por exemplo a deteção de arritmia.
 
 
 
@@ -73,11 +73,11 @@ Na figura \ref{f:mobileapparch} \footnote{Imagem retirada do livro \textit{Mobil
   \label{f:mobileapparch}
 \end{figure}
 
-No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer smartphone. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação e Acesso de dados \cite{mobileappbook}. Cada um destes fatores será analisado com mais detalhe de seguida.
+No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer \textit{smartphone}. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação e Acesso de dados \cite{mobileappbook}. Cada um destes fatores será analisado com mais detalhe de seguida.
 
 
 \subsection{Autenticação e Autorização}
-Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth \cite{oauth20} que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a utilidade deste.
+Uma estratégia de autenticação e autorização eficaz é importante para a segurança e fiabilidade de uma aplicação. Uma fraca autenticação pode deixar a aplicação vulnerável a uma utilização não autorizada. É necessário perceber que existe uma diferença entre autenticação e autorização. A autenticação é o processo de identificação de um utilizador com um identificador único e um elemento secreto (por exemplo uma palavra-passe). Um processo de autenticação garante, após o mesmo, que se trata de um utilizador específico. A autorização é o processo de controlo de ações sobre um serviço. Não indica um utilizador específico por si só. Para isto existe o protocolo de autorização OAuth \cite{oauth20} que é um protocolo padrão para a autorização. Nos dias de hoje grande parte das aplicações utiliza este protocolo de autorização, atualmente vai na versão 2.0 e utiliza \textit{tokens} para ser dada a permissão de acesso a um determinado recurso \cite{oauth20}. De seguida vamos perceber um pouco mais sobre este protocolo de autorização para se perceber a sua utilidade.
 
 
 \subsubsection{Protocolo de autorização \textit{OAuth}}
@@ -162,7 +162,7 @@ O \gls{JSON} é um formato de dados baseado em texto, é compacto e utilizado pa
 
 \newpage
 \section{O \textit{backend} nas aplicações de \textit{mHealth}}
-O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes mHealth utiliza a Internet e serviços \textit{web} para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de um serviço \textit{web}. Do lado do servidor podemos ter sistemas de monitorização inteligentes e autónomos remotos que podem entrar em contacto com o utente ou médico em situações de emergência.
+O termo \textit{backend} é utilizado para agrupar tudo aquilo que é executado no lado do servidor e que dá suporte a uma aplicação. Tipicamente a arquitetura das aplica\c c\~oes \textit{mHealth} utiliza a Internet e serviços \textit{web} para disponibilizar uma intera\c c\~ao entre os utentes e os m\'edicos \cite{mhealth}. Podemos ver na figura \ref{f:mhealtharch} que do lado do utente temos a aplicação móvel que permite ligar-se a sensores ou dispositivos especializados para fazer a colheita de novos dados fisiológicos e posteriormente fazer o envio para o servidor através de um serviço \textit{web}. Do lado do servidor podemos ter sistemas de monitorização inteligentes e autónomos remotos que podem entrar em contacto com o utente ou médico em situações de emergência.
 
 \begin{figure}[H]
   \centering
@@ -203,7 +203,7 @@ Um dos principais objetivos desta organização é que as aplicações na área 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{imgs/openmharch.png}
-  \caption[Arquitetura mHealth: Própria vs \textit{Open}]{Arquitetura mHealth: Própria(''afunilada'') vs \textit{Open}. \cite{omharticle} A utilização de uma plataforma aberta reduz o esforço e o desenvolvimento nas tarefas de gestão dos dados}
+  \caption[Arquitetura \textit{mHealth}: Própria vs \textit{Open}]{Arquitetura \textit{mHealth}: Própria vs \textit{Open} \cite{omharticle}. A utilização de uma plataforma aberta reduz o esforço e o desenvolvimento nas tarefas de gestão dos dados}
   
   \label{f:omharch}
 \end{figure}
@@ -232,7 +232,7 @@ Existe uma implementação de uma \textit{\gls{REST}full \gls{API}} denominada p
 Como vimos anteriormente para que os sistemas de serviços hospitalares comuniquem e partilhem  informação entre si, e com as plataformas online, é imperativo que compreendam o que está a ser comunicado.
 \par 
 Para compreenderem o que está a ser comunicado, os sistemas hospitalares e plataformas devem acordar na norma de comunicação. Existem várias normas para a troca de informação clínica. Existe uma norma que é o \textit{\gls{HL7}} que é tipicamente utilizada em sistemas hospitalares \cite{whyihe} e tem ganho popularidade na troca de informação clínica estruturada.
-A organização que definiu o \gls{HL7} desenvolveu a sua própria \gls{API} e formatos de dados denominada de \textit{\gls{FHIR}} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizados com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na web, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações móveis ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
+A organização que definiu o \gls{HL7} desenvolveu a sua própria \gls{API} e formatos de dados denominada de \textit{\gls{FHIR}} \cite{hl7fhir}. O \gls{FHIR} consiste numa definição de uma \gls{API} e conjunto de dados normalizados com o objetivo de fornecer mecanismos de interoperabilidade para o \gls{HL7}, baseados nas tecnologias existentes na \textit{web}, tais como \gls{XML}, \gls{JSON} , \gls{HTTP}, OAuth, entre outros \cite{hl7fhir}. Este suporta arquiteturas baseadas em \gls{REST} e é suficientemente flexível para ser utilizado em diversos contextos, tais como aplicações móveis ou partilha de registos clínicos eletrónicos \cite{hl7fhir}.
 
 \textbf{HL7}
 \par
@@ -269,7 +269,7 @@ Na figura \ref{f:rimclass} podemos visualizar a class \gls{RIM} da versão 3 do 
 \subsubsection{\textit{Google Fit}}
 O \textit{Google Fit} é uma \gls{API} \gls{REST} desenvolvido pela Google, na área do \textit{fitness}. Permite aos utilizadores armazenar e aceder a informação relativa à sua condição física. Apesar de não ter sido desenvolvido com o objetivo de controlar os dados de saúde dos pacientes, pode ser visto como uma plataforma que cumpre alguns desses objetivos.
 \par 
-O \textit{Google Fit} é mais utilizado com o objetivo de monitorizar a condição física dos seus utilizadores, mas a Google permite o acesso aos dados recolhidos, através de \gls{API}’s criadas para esse efeito. Isto permite a criação de aplicações de saúde, visto que também é um dos objetivos da Google a integração de qualquer aparelho sensor. Resumindo, são dadas todas as ferramentas necessárias ao programador para aumentar o alcance da plataforma, permitindo-a ser utilizada com finalidades que a Google neste momento não cobre. 
+O \textit{Google Fit} é mais utilizado com o objetivo de monitorizar a condição física dos seus utilizadores, mas a \textit{Google} permite o acesso aos dados recolhidos, através de \gls{API}’s criadas para esse efeito. Isto permite a criação de aplicações de saúde, visto que também é um dos objetivos da \textit{Google} a integração de qualquer aparelho sensor. Resumindo, são dadas todas as ferramentas necessárias ao programador para aumentar o alcance da plataforma, permitindo-a ser utilizada com finalidades que a \textit{Google} neste momento não cobre. 
 Na figura \ref{f:googleFitOverview} mostramos uma vista geral da plataforma \textit{Google Fit}.
 
 \begin{figure}[!ht]
@@ -280,7 +280,7 @@ Na figura \ref{f:googleFitOverview} mostramos uma vista geral da plataforma \tex
   \label{f:googleFitOverview}
 \end{figure}
 
-Como podemos perceber, existem duas possibilidades diferentes de interagir com a plataforma. Através de uma aplicação para \textit{smartphones} com o sistema operativo \textit{Android}, desenvolvida também pela Google.  Também é possível a utilização de um \textit{website}, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
+Como podemos perceber, existem duas possibilidades diferentes de interagir com a plataforma. Através de uma aplicação para \textit{smartphones} com o sistema operativo \textit{Android}, desenvolvida também pela \textit{Google}.  Também é possível a utilização de um \textit{website}, que será um pouco mais limitado, mas se for apenas para visualizar os dados já inseridos na plataforma é bastante viável.
 
 A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{API} passa a ser possível a criação de aplicações para outras plataformas que não o \textit{Android}, tornando o \textit{Google Fit} apelativo para um maior número de utilizadores. Esta \gls{API} está protegida pelo protocolo de autorização OAuth 2.0 e utiliza para formato dos dados \gls{JSON}\cite{googlegetstarted}. 
 
@@ -294,7 +294,7 @@ Foi ainda feito um breve estudo em relação a outros três possíveis \textit{b
   \item Estruturas de dados normalizadas para uma possível importação/exportação dados de/para outros \textit{backends}.
   \item Possibilidade de adicionar novas estruturas de dados .
   \item Questões relativas a Segurança e Privacidade sobre os dados recolhidos e demográficos.
-  \item Capacidade de ser integrado em ambientes diferentes, como android, ios ou web.
+  \item Capacidade de ser integrado em ambientes diferentes, como \textit{android}, iOS ou \textit{web}.
   \item Código Aberto quanto à própria implementação do \textit{backend}.
 \end{itemize}
 
@@ -329,7 +329,7 @@ Depois de analisados seis serviços de \textit{backend} para dar suporte a uma a
 \par 
 A grau de complexidade do \gls{FHIR} é bastante elevado devido à sua grande dimensão. É um \textit{backend} bastante completo apesar da extensibilidade dos tipos de dados não ser trivial. Relativamente aos tipos de dados a ser guardados falta contemplar o \gls{ECG} e o acelerómetro \footnote{Estes dados fazem parte do conjunto de dados a ser guardado no sistema mais à frente, neste momento serve também para avaliar a capacidade da cada plataforma para os suportar/integrar}, pois estes não estão contemplados.
 \par 
-Em relação ao \textit{Google Fit} tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente e o \gls{ECG}. A extensibilidade do modelo de dados é possível mas existe uma limitação relativamente ao tipo de dados que pode ser utilizados, entre eles temos o \textit{int} e o \textit{float}, ou seja, não existe o tipo objeto e vetor.
+Em relação ao \textit{Google Fit} tem uma boa \gls{API} \gls{REST}, apesar de não haver nenhum tipo dados onde se pudesse guardar os dados do paciente e o \gls{ECG}. A extensibilidade do modelo de dados é possível mas existe uma limitação relativamente ao tipo de dados que podem ser utilizados, entre eles temos o \textit{int} e o \textit{float}, ou seja, não existe o tipo objeto e vetor.
 \par 
 O \gls{OMH} tem uma \gls{API} \gls{REST}, assim como o \textit{Google Fit}, e não tem a possibilidade de guardar dados do Paciente, mas o modelo de dados é extensível. A grande vantagem que tem é um conjunto de \gls{JSON} \textit{schemas} definidos prontos a usar para validar a entrada dos dados no \textit{backend}. Deste modo nenhum tipo de dados vai ser inserido se não respeitar as devidas definições. Ao criarmos novos \gls{JSON} \textit{schemas} podemos reutilizar os já existentes para definir determinados atributos, o que torna tudo bastante mais fácil.
 

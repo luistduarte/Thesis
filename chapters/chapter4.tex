@@ -54,7 +54,7 @@ Apesar dos \textit{data schemas} especificarem um formato de dados, esta valida�
 \par 
 
 
-A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso, saiu um pouco fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
+A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso, saiu fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
 \newpage
 
 \begin{table}[H]
@@ -97,7 +97,7 @@ As dificuldades encontradas não foram muitas, pois a plataforma estava bastante
 O \gls{FHIR} ao contrário do \textit{Open mHealth} é apenas uma definição de uma \gls{API} para armazenamento de informação e troca de dados clínicos entre hospitais e clínicas. Esta \gls{API} pode ser desenvolvida de diferentes maneiras. \par 
 Existe uma implementação de um projeto de código aberto com o nome \textit{Hapi-FHIR} \cite{hapi-index}. Este projeto suporta todos os dados definidos pelo \gls{FHIR} e grande parte das operações sobre eles, como por exemplo criar, editar, eliminar, etc.
 \par 
-O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor \gls{FHIR}, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de \textit{endpoints} \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados no backend. \par
+O projeto \textit{Hapi-FHIR} tem um módulo denominado \textit{JPAServer}  \cite{jpa-server}. Este módulo pode ser utilizado para criar um servidor \gls{FHIR}, composto por uma \gls{API} \gls{REST} disponibilizando um conjunto de \textit{endpoints} \gls{HTTP} para que se possa efetuar os pedidos necessários para se guardar os dados no \textit{backend}. \par
 
 \subsection{Implementação adicional}
 O módulo utilizado tinha uma limitação relativa à concessão de autorização sobre os pedidos efetuados, não suportando também a gestão de identidades. Para complementar este módulo foi utilizado o servidor de autorização utilizado também na experiência anterior(o servidor de autorização do \gls{DSU} do \textit{Open mHealth}).
@@ -106,7 +106,7 @@ No \textit{JPAServer} foi então desenvolvido um Intercetor, cuja função era v
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/fhir-arch-exp.png}
-  \caption[Arquitetura do caso exploratório com o FHIR]{Arquitetura do caso exploratório com o FHIR (Adaptado de)\cite{hapi-index}}
+  \caption[Arquitetura do caso exploratório com o FHIR]{Arquitetura do caso exploratório com o FHIR (Adaptado de \cite{hapi-index})}
   
   \label{f:exp-fhir-arch}
 \end{figure}
@@ -119,7 +119,7 @@ As dificuldades encontradas ainda foram algumas, neste caso temos uma definiçã
 
 O \textit{Google Fit} disponibiliza uma \gls{API} \gls{REST} que permite o armazenamento de dados na nuvem. Esta \gls{API} permite a criação  de \textit{datasources}. Um \textit{datasource} é criado por cada utilizador e representa  um conjunto de dados de um determinado tipo. Relativamente à concessão de acesso aos serviços \gls{REST} é utilizado o serviço de autenticação e autorização da Google baseado em OAuth 2.0. 
 \par
-O cenário objetivo foi desenvolvido com sucesso e na figura \ref{f:exp-googlefit-arch} podemos ver a arquitetura final deste caso exploratório.
+O cenário-objetivo foi desenvolvido com sucesso e na figura \ref{f:exp-googlefit-arch} podemos ver a arquitetura final deste caso exploratório.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.9\textwidth]{imgs/googlefit-arch-exp.png}
@@ -137,8 +137,8 @@ Um dos problemas encontrados nesta fase de exploração é que apesar do tipo de
 
 \textbf{\textit{Google Fit}}
 \par
-Esta plataforma tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da Google e o facto dos dados ficarem armazenados na nuvem.\par 
-O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir dados do tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema, no caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, teriam que ser feitos 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser proprietária, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
+Esta plataforma tem como um ponto muito positivo utilizar o serviço de autenticação e autorização da \textit{Google} e o facto dos dados ficarem armazenados na nuvem.\par 
+O primeiro ponto negativo a apontar é relativo à extensibilidade dos dados, só permitir para definição das suas propriedades, tipo inteiro e \textit{float}. Para exemplificar como isto pode vir a ser um problema, no caso do \gls{ECG}, por segundo o sensor envia 500 valores, para que se possa formar um \gls{ECG} com alguma precisão, como esta plataforma não suporta vetores, teriam que ser feitos 500 pedidos ao servidor por segundo para conseguir guardar e posteriormente visualizar um \gls{ECG} fidedigno. Um outro ponto negativo é o fato de esta plataforma ser proprietária, o que isto quer dizer é que não é possível correr a plataforma de forma nativa e efetuar implementações extra sobre as já existentes.
 \par
 \textbf{\textit{Open mHealth}}
 \par
