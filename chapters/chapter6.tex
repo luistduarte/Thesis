@@ -97,7 +97,7 @@ Todos os esquemas de dados disponíveis estão no repositório associado à adap
 \subsection{Comunicação com módulos externos}
 Para a possível integração com módulos externos foi utilizada a plataforma do Vert.x. No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} podem verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de arritmia cardíaca.
-O projeto é então composto por dois \textit{verticles} em que um dos \textit{verticles} cria um \textit{endPoint} \gls{REST} e permite publicar os mesmo \textit{Eventbus} assim que os recebe.
+O projeto é então composto por dois \textit{verticles} em que um dos \textit{verticles} cria um \textit{endPoint} \gls{REST} para receber os dados e os publicar no \textit{Eventbus} assim que os recebe.
 
 \begin{figure}[H]
   \centering
@@ -349,7 +349,7 @@ Podemos então visualizar os dados em gráficos relativos a cada tipo de dados r
 \caption[Dados fisiológicos do participante numa determinada sessão]{Dados fisiológicos do participante numa determinada sessão}
 \label{f:leiturasdados}
 \end{figure}
- Relativamente a cada tipo de dados pode ser efetuado o \textit{zoom} para em cada um dos gráficos, e ainda no caso do acelerómetro escolher os dados a apresentar, neste caso escolhi apenas a aceleração (Figura \ref{f:withzoom}).
+ Relativamente a cada tipo de dados pode ser efetuado o \textit{zoom} para em cada um dos gráficos, e ainda no caso do acelerómetro escolher os dados a apresentar, neste caso foi seleccionada apenas a aceleração (Figura \ref{f:withzoom}).
  
  \begin{figure}[H]
 \centering
