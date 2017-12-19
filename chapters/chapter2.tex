@@ -73,7 +73,7 @@ Na figura \ref{f:mobileapparch} \footnote{Imagem retirada do livro \textit{Mobil
   \label{f:mobileapparch}
 \end{figure}
 
-No desenvolvimento de uma aplicação móvel tem que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer \textit{smartphone}. A lista de fatores a ter em conta é bastante alargada mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação e Acesso de dados \cite{mobileappbook}. Cada um destes fatores será analisado com mais detalhe de seguida.
+No desenvolvimento de uma aplicação móvel têm que se ter em conta vários fatores importantes para garantir que a aplicação tem os requisitos necessários e é executável em qualquer \textit{smartphone}. A lista de fatores a ter em conta é bastante alargada, mas entre eles temos: Autenticação e Autorização, Armazenamento em \textit{Cache}, Comunicação e Acesso aos dados \cite{mobileappbook}. Cada um destes fatores será analisado com mais detalhe de seguida.
 
 
 \subsection{Autenticação e Autorização}
@@ -118,7 +118,7 @@ Esta tecnologia está presente em grande percentagem de dispositivos eletrónico
 Para a comunicação entre os sensores e os dispositivos móveis ser estabelecida ambos têm que ter pelo menos uma interface de comunicação em comum, isto é, um sensor \textit{bluetooth} tem um conjunto de perfis \textit{bluetooth} a partir do qual os dispositivos móveis podem se conectar e estabelecer uma ligação recolhendo os dados. 
 Os perfis disponibilizam padrões que devem ser respeitados para permitir que dispositivos utilizem o \textit{bluetooth} de uma maneira normalizada. \cite{bluetooth-article}
 \par
-Um dos perfis é denominado de \textit{\gls{HDP}}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia \textit{bluetooth}. Os mesmo dados pode ser enviados utilizando um perfil mais comum, este perfil é o \textit{\gls{SPP}} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
+Um dos perfis é denominado de \textit{\gls{HDP}}, foi um perfil criado com o objetivo de se normalizar a comunicação entre dispositivos e sensores na área da saúde utilizando a tecnologia \textit{bluetooth}. Os mesmo dados podem ser enviados utilizando um perfil mais comum, este perfil é o \textit{\gls{SPP}} mas não está configurado para a comunicação de dispositivos na área da saúde \cite{bt-article}.
 
 \subsection{Tecnologias para a implementação de serviços}
 Vamos agora rever tecnologias com interesse direto para a implementação e adaptação da plataforma que vai ser apresentada mais à frente.
@@ -184,7 +184,7 @@ A secção de Preparação descreve as etapas que estão envolvidas na preparaç
 \par 
 Relativamente ao Desenvolvimento do \textit{Back-End} tem que se ter em consideração que vamos estar a lidar com dados e informações sensíveis e pessoais relacionados com o utente. Por isto deve se ter em atenção o envio, registo e armazenamento dos dados e informações no servidor. Para isso temos que ter em atenção algumas questões relacionadas com a segurança e privacidade dos dados \cite{mhealth-pipeline}.
 \par 
-A secção Desenvolvimento do \textit{Front-End} serve para se decidir o desenvolvimento da aplicação. Para isso deverá-se ter em conta o público alvo, desenvolvendo um ambiente com uma boa experiência de utilização satisfazendo ao máximo, os especialistas e os utentes envolvidos. Um dos requisitos da interface de utilizador deverá ser direcionada para as necessidades do utente e do especialista. Existe também cuidados a ter em conta, mas isso depende da aplicação tendo em conta a sua finalidade e considerações. Nestas considerações podemos incluir que a aplicação pode vir a ser utilizada por pessoas  cegas, surdas, pessoas com mobilidade limitada ou dificuldades de aprendizagem, contexto social, contexto cultural e idade \cite{mhealth-pipeline}.
+A secção Desenvolvimento do \textit{Front-End} serve para se decidir o desenvolvimento da aplicação. Para isso deverá-se ter em conta o público alvo, desenvolvendo um ambiente com uma boa experiência de utilização satisfazendo ao máximo, os especialistas e os utentes envolvidos. Um dos requisitos da interface de utilizador deverá ser direcionada para as necessidades do utente e do especialista. Existem também cuidados a ter em conta, mas isso depende da aplicação tendo em conta a sua finalidade e considerações. Nestas considerações podemos incluir que a aplicação pode vir a ser utilizada por pessoas  cegas, surdas, pessoas com mobilidade limitada ou dificuldades de aprendizagem, contexto social, contexto cultural e idade \cite{mhealth-pipeline}.
 \par 
 A secção do Lançamento da aplicação descreve o processo de conclusão e lançamento da aplicação. Daqui para a frente pode ser necessário consultar ajuda externa de pessoas especialistas em \textit{marketing} \cite{mhealth-pipeline}. 
 
@@ -199,7 +199,7 @@ Para dar suporte à aplicação móvel é necessário a escolha de um \textit{ba
 
 \subsubsection{\textit{Open mHealth}}
 A \textit{\gls{OMH}} foi fundada em 2011 e descreve-se a si própria como "uma \textit{start-up} sem fins lucrativos que quebra as barreiras de integração trazendo significado aos dados clínicos digitais na área da saúde" \cite{omhabout}. A \gls{OMH} trabalha com especialistas da área da saúde e com programadores com o objetivo de tornar os dados de saúde digitais úteis e possíveis de utilizar em diversas plataformas. \par 
-Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existe desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o \gls{OMH} todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor para guardar os dados.
+Um dos principais objetivos desta organização é que as aplicações na área da saúde não utilizem cada uma delas um formato de dados fechado e próprio, pois desta maneira os dados só são úteis dentro da própria aplicação, ou seja, estes não podem ser exportados para bases de dados de hospitais, ou clínicas, ou ainda outras aplicações na área da saúde. Podemos ver na figura \ref{f:omharch} a diferença que existe entre cada aplicação utilizar um formato de dados próprio, ou utilizar todas o mesmo formato\cite{omharticle}. Do lado esquerdo podemos verificar que existem desenvolvimentos diferentes para cada aplicação, enquanto que utilizando o \gls{OMH} todas podem utilizar a mesma maneira de guardar os dados, ou até, utilizar o mesmo servidor para guardar os dados.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{imgs/openmharch.png}
@@ -224,7 +224,7 @@ A \gls{OMH} tem definido um conjunto de \textit{data schemas} que é um conjunto
 \caption[Exemplo de um \gls{JSON} compatível associado à frequência cardíaca]{Exemplo de um \gls{JSON} compatível associado à frequência cardíaca \cite{omhheartrate}}
 \label{f:exemplo}
 \end{figure}
-Existe uma implementação de uma \textit{\gls{REST}full \gls{API}} denominada por \textit{dataPoint API} que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
+Existe uma implementação de uma \textit{\gls{REST}ful \gls{API}} denominada por \textit{dataPoint API} que suporta a criação, consulta e eliminação de dados inseridos. Esta \gls{API} permite a autorização utilizando o protocolo de autorização OAuth 2.0. Um \textit{dataPoint} é um documento \gls{JSON} composto por um cabeçalho e um \textit{body}, em que o \textit{body} representa um tipo de dados e está em conformidade com o \textit{dataschema} definido no cabeçalho.
 
 
 
@@ -287,7 +287,7 @@ A \gls{API} \gls{REST} dá flexibilidade ao sistema. Com a utilização da \gls{
 
 
 \subsubsection{Análise Comparativa}
-Foi ainda feito um breve estudo em relação a outros três possíveis \textit{backends}, entre eles temos o \textit{Health Vault} \footnote{https://international.healthvault.com}, \textit{Apple Research Kit} \footnote{https://www.apple.com/pt/researchkit/} e o \textit{Research Stack} \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa} \footnote{ - - nenhum suporte; - suporte fraco; + suporte suficiente; ++ muito bem suportado; n/a não aplicável}. Os requisitos analisados relativamente a cada possível \textit{backend} foram: 
+Foi ainda feito um breve estudo em relação a outros três possíveis \textit{backends}, entre eles temos o \textit{Health Vault} \footnote{https://international.healthvault.com}, \textit{Apple Research Kit} \footnote{https://www.apple.com/pt/researchkit/} e o \textit{Research Stack} \footnote{http://researchstack.org/}. O estudo não foi tão aprofundado como os apresentados anteriormente mas ainda assim serve para análise comparativa na tabela \ref{t:analisecomparativa} \footnote{ - - nenhum suporte; - suporte fraco; + suporte suficiente; ++ muito bem suportado; n/a não definido}. Os requisitos analisados relativamente a cada possível \textit{backend} foram: 
 \begin{itemize}
   \item Possibilidade de guardar dados demográficos dos utentes.
   \item Análise do grau de complexidade  do \textit{backend} para adaptação e implementação de novas funcionalidades.
@@ -308,17 +308,17 @@ Foi ainda feito um breve estudo em relação a outros três possíveis \textit{b
 
 \textbf{Dados do Paciente} & - & + + & - & + + & + + & + + \\ \hline
 
-\textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & + + & + & + + & - & n/a & n/a \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Facilidade de \\ Desenvolvimento\end{tabular}} & + + & + & + + & - & n/d & n/d \\ \hline
 
-\textbf{\begin{tabular}[c]{@{}c@{}}Modelo de Dados \\ Normalizado\end{tabular}} & + & + + & - - & - - & n/a & n/a \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Modelo de Dados \\ Normalizado\end{tabular}} & + & + + & - - & - - & n/d & n/d \\ \hline
 
-\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & + + & + & + & + & n/a & n/a \\ \hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Extensibilidade do \\ Modelo de Dados\end{tabular}} & + + & + & + & + & n/d & n/d \\ \hline
 
 \textbf{Segurança e Privacidade} & + + & + + & + + & + + & + + & + + \\ \hline
 
-\textbf{MultiPlataforma} & + + & + + & + + & + + & n/a & n/a \\ \hline
+\textbf{MultiPlataforma} & + + & + + & + + & + + & n/d & n/d \\ \hline
 
-\textbf{Código Aberto} & + + & + & - & - & n/a & n/a \\ \hline
+\textbf{Código Aberto} & + + & + & - & - & n/d & n/d \\ \hline
 
 \end{tabular}
 \caption{Comparação dos diferentes \textit{backends}}

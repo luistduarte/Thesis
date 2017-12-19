@@ -54,8 +54,9 @@ Apesar dos \textit{data schemas} especificarem um formato de dados, esta valida�
 \par 
 
 
-A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso, saiu fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
+A \gls{OMH} tem definido um conjunto de \textit{data schemas} \cite{omhschemas} que é um conjunto de esquemas de dados criados e disponíveis que especificam um formato de dados para um determinado conteúdo como por exemplo a frequência cardíaca\cite{omhschemas}. Na tabela \ref{t:schemaslist} podemos visualizar alguns dos esquemas de dados existentes disponibilizados pelo \gls{OMH}\footnote{http://www.openmhealth.org/documentation/\#/schema-docs/schema-library/}. Este conjunto de esquemas de dados pode ser estendido. Ao criar um novo esquema de dados(um novo \textit{data schema}) podemos reutilizar outros já existentes, criando um \textit{data schema} que mesmo não sendo normalizado, utiliza para definição de determinadas propriedades outros \textit{data schemas} normalizados. Para experimentar esta funcionalidade foi então adicionado um novo esquema de dados para que o sistema conseguisse suportar \gls{ECG}. Esta extensão foi conseguida com sucesso, saiu fora do cenário objetivo mas serviu para conseguir perceber melhor a plataforma. \par 
 \newpage
+
 
 \begin{table}[H]
 \centering
@@ -74,7 +75,7 @@ Período de tempo & \textit{time-frame-1.0.json} \\
 & Este esquema de dados permite que um período de tempo específico seja definido, como uma hora exata ou um intervalo de tempo. \\ \hline
 
 Pressão arterial & \textit{blood-pressure-2.0.json} \\ 
-& Este esquema de dados representa a pressão arterial de uma pessoa como uma combinação da pressão arterial sistólica com a pressão arterial diastólica. Permite indicar se o paciente estava deitado, sentado ou parado quando a medição foi obtida. Este esquema pode ser usado para uma medição única da pressão arterial, podendo ser efetuadas várias medições. \\ \hline
+& Este esquema de dados representa a pressão arterial de uma pessoa como uma combinação da pressão arterial sistólica com a pressão arterial diastólica. Permite indicar se o paciente estava deitado, sentado ou em pé quando a medição foi obtida. Este esquema pode ser usado para uma medição única da pressão arterial, podendo ser efetuadas várias medições. \\ \hline
 
 Temperatura do corpo & \textit{body-temperature-2.0.json} \\
 & Este esquema de dados representa a temperatura corporal e o local do corpo onde foi efetuada a medição. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições. \\ \hline
@@ -83,7 +84,7 @@ Glicose no sangue & \textit{blood-glucose-2.0.json} \\
 & Este esquema de dados representa o nível de glicose no sangue de uma pessoa, e o tipo de amostra do corpo utilizada para efetuar a medição. É ainda apresentada a relação temporal relativamente à refeição e ao sono. Este esquema pode ser usado para uma medição única, podendo ser efetuadas várias medições.
                  
 \end{tabularx}
-\caption{Tabela com alguns dos esquemas de dados existentes da plataforma \textit{Open mHealth}}
+\caption{Tabela com alguns dos esquemas de dados existentes na plataforma \textit{Open mHealth}}
 \end{table}
 
 

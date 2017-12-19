@@ -46,7 +46,7 @@ Na tabela \ref{t:apirest-auth} temos os métodos disponíveis do servidor de aut
 O servidor de recursos disponibiliza uma \gls{REST} \gls{API} para criação, consulta e eliminação de  \textit{dataPoints}. Estes  \textit{dataPoints} estão a ser guardados numa base de dados  \textit{MongoDB} numa coleção com o nome  \textit{dataPoint}. A maior vantagem de utilizar uma base de dados não relacional é que os esquemas de dados podem ser estendidos de forma mais flexível, não sendo necessário efetuar nenhuma alteração ao esquema da BD. 
 \par 
 Como foi referido na fase exploratória do \gls{OMH} \ref{cap4:exp-omh} estes  \textit{dataPoints} são compostos por um cabeçalho e por um corpo. Este corpo é formatado pelo esquema de dados ( \textit{data schema}) associado e definido no cabeçalho do  \textit{dataPoint}. Como foi referido também na fase exploratória foi desenvolvido um validador que verifica se o corpo do  \textit{dataPoint} está de acordo com o  \textit{data schema} definido no cabeçalho do mesmo. \par
-Estava então em falta alguns esquemas de dados para conseguirmos abranger todos os tipos dados necessários, entre eles: \gls{ECG}, dados demográficos e acelerómetro. Estes  \textit{data schemas} foram criados aproveitando as estruturas da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
+Estavam então em falta alguns esquemas de dados para conseguirmos abranger todos os tipos dados necessários, entre eles: \gls{ECG}, dados demográficos e acelerómetro. Estes  \textit{data schemas} foram criados aproveitando as estruturas da definição da \gls{API} do \gls{FHIR} e vou mostrar de seguida como exemplo o esquema de dados criado para definir o formato de dados para as entradas para o \gls{ECG}. \newpage
 \subsubsection{ \textit{data schema} ECG}
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/ecg.json}
@@ -95,7 +95,7 @@ Na tabela \ref{t:apirest-data} temos os métodos disponíveis do servidor de rec
 Todos os esquemas de dados disponíveis estão no repositório associado à adaptação deste \textit{backend}\footnote{ Diretório com os Esquemas de dados disponíveis(composto também pelos novos esquemas de dados criados) - https://github.com/luistduarte/omh-dsu-ri/tree/master/resource-server/src/main/resources/schema/omh} e estes são os tipos de dados que são utilizados para validar os  \textit{dataPoints} inseridos, ou seja, estes são todos aqueles que podem ser inseridos na coleção do  \textit{MongoDB}.
 
 \subsection{Comunicação com módulos externos}
-Para a possível integração com módulos externos foi utilizada a plataforma do Vert.x. No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x, neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} podem verificar e analisar da maneira que quiser os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
+Para a possível integração com módulos externos foi utilizada a plataforma do Vert.x. No processo de inserção de novos \textit{dataPoints}, depois de validados eles são reencaminhados para um \textit{endpoint} \gls{REST}. É enviado um documento \gls{JSON} composto pelo esquema de dados utilizado para validar o documento, como por exemplo \textit{heart-rate} e um corpo do \textit{dataPoint} inserido. Este documento é então inserido no \textit{EventBus} do Vert.x. Neste momento os módulos que subscreveram o esquema de dados \textit{heart-rate} podem verificar e analisar da maneira que quiserem os dados inseridos. Temos na figura \ref{f:toExtSeqDiagram} um diagrama de sequência com este fluxo. \par
 Isto pode ser importante para por exemplo ser desenvolvido um módulo que tenha a capacidade de verificar se um utilizador que está a fazer a colheita dos dados está a sofrer de arritmia cardíaca.
 O projeto é então composto por dois \textit{verticles} em que um dos \textit{verticles} cria um \textit{endPoint} \gls{REST} para receber os dados e os publicar no \textit{Eventbus} assim que os recebe.
 
@@ -159,7 +159,7 @@ O projeto tem um ficheiro por defeito designado por "build.gradle", que é o loc
 \label{t:defaultconfigdependency}
 \end{table}
 
-Relativamente às dependências temos que ter em atenção que existe duas dependências em especifico que tiveram que ser importadas manualmente. Uma delas é um \gls{SDK} para android (BioLib) \footnote{http://www.sdk.vitaljacket.com/} que disponibiliza uma biblioteca para a conexão a um dispositivo VitalJacket e facilita o processamento e a receção dos dados pela aplicação. Uma outra biblioteca que foi utilizada foi o ''AChartEngine'' \footnote{https://github.com/ddanny/achartengine} que é uma biblioteca para android que permite o desenho de gráficos.
+Relativamente às dependências temos que ter em atenção que existem duas dependências em especifico que tiveram que ser importadas manualmente. Uma delas é um \gls{SDK} para android (BioLib) \footnote{http://www.sdk.vitaljacket.com/} que disponibiliza uma biblioteca para a conexão a um dispositivo VitalJacket e facilita o processamento e a receção dos dados pela aplicação. Uma outra biblioteca que foi utilizada foi o ''AChartEngine'' \footnote{https://github.com/ddanny/achartengine} que é uma biblioteca para android que permite o desenho de gráficos.
 
 
 
@@ -245,7 +245,7 @@ Depois de efetuar o \textit{login} o participante pode então criar novas sessõ
 \par
 \textbf{Atividade Relativa a uma sessão}
 \par
-Depois do participante ter entrado na aplicação com a sua conta pode visualizar as medições relativas a uma sessão, para isso basta clicar numa das sessões que compõem a lista. Nesta atividade (Figura \ref{f:read_data}) pode visualizar os dados relativos a cada tipo de medição, entre eles a frequência cardíaca, \gls{ECG} e acelerómetro, para isso tem disponível três diferentes separadores para mudar de tipo de medição. 
+Depois do participante ter entrado na aplicação com a sua conta pode visualizar as medições relativas a uma sessão. Para isso basta clicar numa das sessões que compõem a lista. Nesta atividade (Figura \ref{f:read_data}) pode visualizar os dados relativos a cada tipo de medição, entre eles a frequência cardíaca, \gls{ECG} e acelerómetro. Para isso tem disponíveis três diferentes separadores para mudar de tipo de medição. 
 \begin{figure}[H]
 \centering
 \includegraphics[height=0.4\textwidth]{imgs/read_data.png}
@@ -392,7 +392,7 @@ O ficheiro fica do seguinte modo:
 \label{f:accelerometer-json-schema}
 \end{figure}
 
-\item Preencha o ficheiro com uma amostra do novo tipo de dados, para isso tem que ter em conta a definição utilizada, pois porque se esta amostra não for compatível não vai passar no validador.
+\item Preencha o ficheiro com uma amostra do novo tipo de dados, para isso tem que ter em conta a definição utilizada, porque se esta amostra não for compatível não vai passar no validador.
 
 \begin{figure}[H]
 \inputminted[fontsize=\scriptsize]{json}{code/example.json}
